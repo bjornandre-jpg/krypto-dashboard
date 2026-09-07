@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kryptosignaler</title>
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:0; }
+  img { max-width:100%; }
+
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --surface-alt: #ece9e0;
+    --border: #ddd9cd;
+    --ink: #1c1b18;
+    --ink-muted: #726d5c;
+    --ink-faint: #a29c88;
+    --accent: #a97327;
+    --good: #2f7d54;
+    --good-soft: #dcede2;
+    --critical: #b0402f;
+    --critical-soft: #f4ddd7;
+    --neutral-badge: #7d7869;
+    --neutral-soft: #eae7dd;
+    --fg-gradient-start: #b0402f;
+    --fg-gradient-mid: #a29c88;
+    --fg-gradient-end: #2f7d54;
+    --shadow: 0 1px 2px rgba(28, 27, 24, 0.06), 0 4px 14px rgba(28, 27, 24, 0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141613;
+      --surface: #1d201c;
+      --surface-alt: #262a24;
+      --border: #34382f;
+      --ink: #eeece4;
+      --ink-muted: #a3a190;
+      --ink-faint: #6f6c5d;
+      --accent: #d9a24f;
+      --good: #57b585;
+      --good-soft: #1c3327;
+      --critical: #e0776a;
+      --critical-soft: #3a2320;
+      --neutral-badge: #9a9686;
+      --neutral-soft: #2b2e27;
+      --fg-gradient-start: #e0776a;
+      --fg-gradient-mid: #6f6c5d;
+      --fg-gradient-end: #57b585;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+    padding: 0 0 40px;
+  }
+
+  .num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1, .display {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  header {
+    padding: 22px 18px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+
+  .eyebrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow h1 {
+    font-size: 18px;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  .updated-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
+
+  .updated {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .updated.stale { color: var(--critical); }
+
+  .countdown {
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .countdown .num { color: var(--accent); }
+
+  .equity-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .equity-value {
+    font-size: 34px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+
+  .equity-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+
+  main {
+    padding: 16px 18px 0;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .tile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+  }
+
+  .tile .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+
+  .tile .value {
+    font-size: 20px;
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .tile .sub {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 3px;
+  }
+
+  .fg-gauge {
+    margin-top: 8px;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--fg-gradient-start), var(--fg-gradient-mid), var(--fg-gradient-end));
+    position: relative;
+  }
+
+  .fg-gauge .marker {
+    position: absolute;
+    top: -3px;
+    width: 2px;
+    height: 12px;
+    background: var(--ink);
+    border-radius: 1px;
+    transform: translateX(-1px);
+  }
+
+  section {
+    margin-bottom: 26px;
+  }
+
+  section > h2 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    font-weight: 600;
+    margin: 0 0 4px;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+
+  section > .section-note {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin: 0 0 10px;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .position-card, .signal-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow);
+  }
+
+  .position-card .top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+
+  .asset-ticker {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .pnl {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .pnl.good { color: var(--good); }
+  .pnl.critical { color: var(--critical); }
+
+  .position-detail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  .position-detail .num { color: var(--ink); display: block; font-size: 13px; }
+
+  .signal-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .signal-row .asset-ticker { width: 74px; flex-shrink: 0; }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    flex-shrink: 0;
+    width: 64px;
+    text-align: center;
+  }
+
+  .badge.good { background: var(--good-soft); color: var(--good); }
+  .badge.critical { background: var(--critical-soft); color: var(--critical); }
+  .badge.neutral { background: var(--neutral-soft); color: var(--neutral-badge); }
+
+  .score-track {
+    flex: 1;
+    height: 5px;
+    border-radius: 3px;
+    background: var(--surface-alt);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 3px;
+  }
+
+  .score-fill.good { background: var(--good); }
+  .score-fill.critical { background: var(--critical); }
+
+  .score-value {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    color: var(--ink-muted);
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .empty-state, .placeholder {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 13px;
+  }
+
+  .empty-state .display { color: var(--ink); font-size: 17px; margin-bottom: 6px; }
+
+  footer {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 4px 18px 0;
+    font-size: 11px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+
+  footer p { margin: 0 0 6px; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">
+    <h1>Kryptosignaler</h1>
+    <div class="updated-block">
+      <span class="updated" id="updated-label">laster …</span>
+      <span class="countdown" id="countdown-label"></span>
+    </div>
+  </div>
+  <div class="equity-row">
+    <span class="equity-label">Portefølje</span>
+  </div>
+  <div class="equity-row">
+    <span class="equity-value num" id="equity-value">–</span>
+  </div>
+</header>
+
+<main>
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <h2>Posisjoner</h2>
+    <div class="card-list" id="positions-list">
+      <div class="placeholder">Ingen data ennå.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Signaler</h2>
+    <p class="section-note" id="signals-note"></p>
+    <div class="card-list" id="signals-list">
+      <div class="placeholder">Ingen data ennå.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Simulert papirhandel (ikke ekte penger). PC-en henter ferske priser fra børsen og regner ut alt selv rett etter hver times-kjøring av handelssystemet, og denne siden leser resultatet direkte - ingen mellomledd. Ikke finansiell rådgivning.</p>
+</footer>
+
+<script>
+  const GIST_RAW_URL = "https://gist.githubusercontent.com/bjornandre-jpg/41f107f9b09ad04c30acd362e108c0f6/raw/dashboard_state.json";
+  const POLL_INTERVAL_MS = 2 * 60 * 1000; // henter på nytt hvert 2. minutt (GitHub cacher selv i ca 5 min)
+  const STALE_AFTER_MS = 100 * 60 * 1000; // ~1.5 uteblitt time-kjøring på PC-en
+
+  const fmtUsd = (v) => v == null ? "–" : "$" + v.toLocaleString("en-US", { maximumFractionDigits: v >= 1000 ? 0 : 2 });
+  const fmtPct = (v, digits = 1) => v == null ? "–" : (v >= 0 ? "+" : "") + v.toFixed(digits) + "%";
+  const fmtPrice = (v) => {
+    if (v == null) return "–";
+    const digits = v >= 100 ? 2 : v >= 1 ? 3 : 5;
+    return "$" + v.toLocaleString("en-US", { maximumFractionDigits: digits });
+  };
+  const decisionClass = (d) => d === "KJØP" ? "good" : d === "SELG" ? "critical" : "neutral";
+  const tickerName = (asset) => (asset || "").split("/")[0];
+
+  function relativeTime(iso, staleAfterMs = STALE_AFTER_MS) {
+    if (!iso) return { text: "ingen data", stale: true, ms: Infinity };
+    const then = new Date(iso).getTime();
+    const diffMs = Date.now() - then;
+    const diffMin = Math.round(diffMs / 60000);
+    const stale = diffMs > staleAfterMs;
+    if (diffMin < 1) return { text: "akkurat nå", stale, ms: diffMs };
+    if (diffMin < 60) return { text: `${diffMin} min siden`, stale, ms: diffMs };
+    const h = Math.round(diffMin / 60);
+    return { text: `${h} t siden`, stale, ms: diffMs };
+  }
+
+  function countdownLabel(iso) {
+    if (!iso) return "";
+    const then = new Date(iso).getTime();
+    const remainingMs = then + 60 * 60 * 1000 - Date.now();
+    if (remainingMs <= 0) return `neste oppdatering: <span class="num">venter …</span>`;
+    const totalSec = Math.floor(remainingMs / 1000);
+    const m = Math.floor(totalSec / 60);
+    const s = totalSec % 60;
+    return `neste om <span class="num">${m}:${String(s).padStart(2, "0")}</span>`;
+  }
+
+  function renderTiles(data) {
+    const fg = data.fear_greed_value;
+    const fgLabel = fg == null ? "–" : fg <= 24 ? "Ekstrem frykt" : fg <= 44 ? "Frykt" : fg <= 55 ? "Nøytral" : fg <= 75 ? "Grådighet" : "Ekstrem grådighet";
+    const exposurePct = data.total_exposure_pct;
+    document.getElementById("tiles").innerHTML = `
+      <div class="tile">
+        <div class="label">Total eksponering</div>
+        <div class="value num">${exposurePct == null ? "–" : exposurePct.toFixed(0) + "%"}</div>
+        <div class="sub">av porteføljen i krypto (tak 60%)</div>
+      </div>
+      <div class="tile">
+        <div class="label">Fear &amp; Greed</div>
+        <div class="value num">${fg == null ? "–" : fg} <span style="font-family:'IBM Plex Sans';font-size:12px;color:var(--ink-muted)">${fgLabel}</span></div>
+        <div class="fg-gauge">${fg == null ? "" : `<div class="marker" style="left:${fg}%"></div>`}</div>
+      </div>
+    `;
+  }
+
+  function renderPositions(data) {
+    const el = document.getElementById("positions-list");
+    const positions = data.positions || [];
+    if (!positions.length) {
+      el.innerHTML = `<div class="placeholder">Ingen åpne posisjoner akkurat nå.</div>`;
+      return;
+    }
+    el.innerHTML = positions.map(p => {
+      const pnlCls = p.pnl_pct == null ? "" : p.pnl_pct >= 0 ? "good" : "critical";
+      return `
+        <div class="position-card">
+          <div class="top-line">
+            <span class="asset-ticker">${tickerName(p.asset)}</span>
+            <span class="pnl ${pnlCls}">${fmtPct(p.pnl_pct)}</span>
+          </div>
+          <div class="position-detail">
+            <div>Verdi<span class="num">${fmtUsd(p.value_usd)}</span></div>
+            <div>Kostpris<span class="num">${fmtPrice(p.entry_price)}</span></div>
+            <div>Nå<span class="num">${fmtPrice(p.current_price)}</span></div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderSignalsNote(data) {
+    const note = document.getElementById("signals-note");
+    const signalsIso = data.signals_updated_at;
+    if (!signalsIso) { note.textContent = ""; return; }
+    const { text } = relativeTime(signalsIso, 90 * 60000); // signaler er ventet å vare ~1t
+    note.textContent = `Beslutninger fra siste times-kjøring – ${text}`;
+  }
+
+  function renderSignals(data) {
+    const el = document.getElementById("signals-list");
+    const signals = data.signals || [];
+    if (!signals.length) {
+      el.innerHTML = `<div class="placeholder">Ingen signaler ennå.</div>`;
+      return;
+    }
+    el.innerHTML = signals.map(s => {
+      const cls = decisionClass(s.decision);
+      const score = s.score == null ? 0 : Math.max(-1, Math.min(1, s.score));
+      const pct = Math.abs(score) * 50;
+      const left = score >= 0 ? 50 : 50 - pct;
+      return `
+        <div class="signal-row">
+          <span class="asset-ticker">${tickerName(s.asset)}</span>
+          <span class="badge ${cls}">${s.decision || "–"}</span>
+          <div class="score-track">
+            <div class="score-fill ${score >= 0 ? "good" : "critical"}" style="left:${left}%;width:${pct}%"></div>
+          </div>
+          <span class="score-value">${s.score == null ? "–" : s.score.toFixed(2)}</span>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function tickHeader() {
+    if (!lastData) return;
+    const { text, stale } = relativeTime(lastData.updated_at);
+    const label = document.getElementById("updated-label");
+    label.textContent = "oppdatert " + text;
+    label.classList.toggle("stale", stale);
+    document.getElementById("countdown-label").innerHTML = countdownLabel(lastData.updated_at);
+  }
+
+  function render(data) {
+    if (!data) return;
+    tickHeader();
+    document.getElementById("equity-value").textContent = fmtUsd(data.equity_usd);
+    renderTiles(data);
+    renderPositions(data);
+    renderSignals(data);
+    renderSignalsNote(data);
+  }
+
+  let lastData = null;
+  setInterval(tickHeader, 1000);
+
+  async function fetchLatest() {
+    try {
+      const resp = await fetch(GIST_RAW_URL, { cache: "no-store" });
+      if (!resp.ok) throw new Error("HTTP " + resp.status);
+      const data = await resp.json();
+      lastData = data;
+      render(lastData);
+    } catch (e) {
+      console.error("Klarte ikke hente dashboard-data:", e);
+      // Behold forrige kjente data på skjermen - tickHeader() viser da automatisk
+      // at tallene er i ferd med å bli gamle (rød "stale"-farge) hvis dette
+      // fortsetter, i stedet for å blanke ut siden ved en forbigående nettverksfeil.
+    }
+  }
+
+  fetchLatest();
+  setInterval(fetchLatest, POLL_INTERVAL_MS);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") fetchLatest();
+  });
+</script>
+
+</body>
+</html>
