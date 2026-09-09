@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Krypto50">
+<meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141613" media="(prefers-color-scheme: dark)">
+<title>Krypto50</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f6f5f1;
+    --kort: #ffffff;
+    --tekst: #1c1b18;
+    --svak: #6b6862;
+    --linje: #e3e0d8;
+    --opp: #1a7f52;
+    --ned: #b3401f;
+    --aksent: #a97327;
+    --gul: #8a6d1f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141613; --kort: #1e211d; --tekst: #eeece4; --svak: #9c988e;
+      --linje: #2c302a; --opp: #5cc08d; --ned: #e0724f; --aksent: #d9a24f;
+      --gul: #d9b45f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--tekst);
+    font-family: -apple-system, BlinkMacSystemFont, "IBM Plex Sans", "Segoe UI", sans-serif;
+    padding: 18px 16px calc(28px + env(safe-area-inset-bottom));
+    -webkit-font-smoothing: antialiased;
+  }
+  header { margin-bottom: 16px; }
+  h1 { font-size: 17px; margin: 0; letter-spacing: -0.01em; }
+  .konfig { font-size: 12px; color: var(--svak); margin-top: 3px; }
+
+  .hero {
+    background: var(--kort); border: 1px solid var(--linje); border-radius: 14px;
+    padding: 18px; margin-bottom: 12px;
+  }
+  .hero .merke { font-size: 12px; color: var(--svak); }
+  .hero .tall {
+    font-size: 34px; font-weight: 650; letter-spacing: -0.02em;
+    margin: 2px 0 0; font-variant-numeric: tabular-nums;
+  }
+  .hero .endring { font-size: 15px; font-weight: 600; margin-top: 2px; }
+
+  .rutenett { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+  .kort {
+    background: var(--kort); border: 1px solid var(--linje); border-radius: 12px;
+    padding: 11px 12px;
+  }
+  .kort .merke { font-size: 11px; color: var(--svak); }
+  .kort .tall {
+    font-size: 17px; font-weight: 600; margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h2 {
+    font-size: 12px; font-weight: 600; color: var(--svak); margin: 22px 0 8px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .liste { background: var(--kort); border: 1px solid var(--linje); border-radius: 12px; overflow: hidden; }
+  .rad {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 13px; border-bottom: 1px solid var(--linje);
+  }
+  .rad:last-child { border-bottom: none; }
+  .navn { font-weight: 600; font-size: 14px; flex: 0 0 auto; min-width: 72px; }
+  .detalj { font-size: 12px; color: var(--svak); flex: 1 1 auto; font-variant-numeric: tabular-nums; }
+  .hoyre { margin-left: auto; text-align: right; font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+  .hoyre .stor { font-size: 14px; font-weight: 600; }
+  .hoyre .liten { font-size: 11px; color: var(--svak); }
+  .opp { color: var(--opp); } .ned { color: var(--ned); }
+
+  .merkelapp {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
+    padding: 3px 7px; border-radius: 999px; flex: 0 0 auto;
+  }
+  .m-kjop { background: color-mix(in srgb, var(--opp) 16%, transparent); color: var(--opp); }
+  .m-selg { background: color-mix(in srgb, var(--ned) 16%, transparent); color: var(--ned); }
+  .m-avvent { background: color-mix(in srgb, var(--svak) 16%, transparent); color: var(--svak); }
+
+  .tom { padding: 16px 13px; font-size: 13px; color: var(--svak); }
+
+  details { margin-top: 8px; }
+  summary {
+    cursor: pointer; font-size: 13px; color: var(--aksent); font-weight: 600;
+    padding: 9px 2px; list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: " ▾"; }
+  details[open] summary::after { content: " ▴"; }
+
+  footer { margin-top: 24px; font-size: 11px; color: var(--svak); line-height: 1.5; }
+  .fersk { display: flex; align-items: center; gap: 6px; font-size: 12px;
+           color: var(--svak); margin-top: 7px; }
+  .prikk { width: 7px; height: 7px; border-radius: 50%; background: var(--opp); flex: 0 0 auto; }
+  .prikk.gammel { background: var(--gul); }
+  .prikk.borte { background: var(--ned); }
+  .advarsel { color: var(--gul); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Krypto50 &middot; aggressivt TA-system</h1>
+  <div class="konfig" id="konfig">4-timers candles &middot; 50 mynter</div>
+  <!-- Ferskhet står ØVERST med vilje: med 50 mynter blir lista lang, og gammel
+       data som ikke oppdages er nettopp feilen som rammet det første systemet. -->
+  <div class="fersk"><span class="prikk" id="prikk"></span><span id="ferskhet">–</span></div>
+</header>
+
+<div class="hero">
+  <div class="merke">Egenkapital (simulert)</div>
+  <div class="tall" id="egenkapital">–</div>
+  <div class="endring" id="avkastning">&nbsp;</div>
+</div>
+
+<div class="rutenett">
+  <div class="kort"><div class="merke">Kontanter</div><div class="tall" id="kontanter">–</div></div>
+  <div class="kort"><div class="merke">Investert</div><div class="tall" id="investert">–</div></div>
+  <div class="kort"><div class="merke">Fear &amp; Greed</div><div class="tall" id="fng">–</div></div>
+</div>
+
+<h2 id="posisjoner-tittel">Åpne posisjoner</h2>
+<div class="liste" id="posisjoner"><div class="tom">Laster…</div></div>
+
+<h2>Signaler med handling</h2>
+<div class="liste" id="aktive"><div class="tom">Laster…</div></div>
+
+<details>
+  <summary id="avvent-knapp">Vis mynter uten handling</summary>
+  <div class="liste" id="avvent"></div>
+</details>
+
+<footer>
+  <div id="fotnote">
+    Simulert papirhandel med 1000 USDT &mdash; ingen ekte penger, ingen børskonto.
+    PC-en regner ut alt selv hver time og pusher resultatet hit; denne siden leser det
+    direkte hvert 2. minutt. Ingen Claude involvert, ingen godkjenning nødvendig.
+  </div>
+</footer>
+
+<script>
+const GIST_URL = "https://gist.githubusercontent.com/bjornandre-jpg/5cb98d9ad8244c1f94c136f405f9cc9d/raw/krypto50_state.json";
+const POLL_MS = 2 * 60 * 1000;
+const GAMMEL_MS = 100 * 60 * 1000;   // times-jobb: eldre enn 100 min er mistenkelig
+const BORTE_MS = 4 * 60 * 60 * 1000;
+
+let siste = null;
+
+const el = id => document.getElementById(id);
+const tall = (v, d = 2) => (v === null || v === undefined || isNaN(v))
+  ? "–" : Number(v).toLocaleString("nb-NO", {minimumFractionDigits: d, maximumFractionDigits: d});
+
+function pris(v) {
+  if (v === null || v === undefined || isNaN(v)) return "–";
+  const a = Math.abs(v);
+  const d = a >= 100 ? 2 : a >= 1 ? 4 : a >= 0.01 ? 5 : 8;
+  return Number(v).toLocaleString("nb-NO", {minimumFractionDigits: 2, maximumFractionDigits: d});
+}
+
+function fargeklasse(v) { return v >= 0 ? "opp" : "ned"; }
+
+function ferskhet(oppdatert) {
+  const p = el("prikk"), t = el("ferskhet");
+  if (!oppdatert) { t.textContent = "Ingen data ennå"; p.className = "prikk borte"; return; }
+  const alder = Date.now() - new Date(oppdatert).getTime();
+  const min = Math.round(alder / 60000);
+  const nar = min < 1 ? "nå nettopp" : min < 60 ? `for ${min} min siden`
+    : `for ${Math.floor(min / 60)} t ${min % 60} min siden`;
+  t.textContent = `Oppdatert ${nar}`;
+  if (alder > BORTE_MS) {
+    p.className = "prikk borte";
+    t.innerHTML = `<span class="advarsel">Oppdatert ${nar} &mdash; PC-en har trolig ikke kjørt</span>`;
+  } else if (alder > GAMMEL_MS) {
+    p.className = "prikk gammel";
+  } else {
+    p.className = "prikk";
+  }
+}
+
+function tegnPosisjoner(d) {
+  const boks = el("posisjoner");
+  const pos = (d.positions || []).slice().sort((a, b) => (b.value_usd || 0) - (a.value_usd || 0));
+  el("posisjoner-tittel").textContent = `Åpne posisjoner (${pos.length})`;
+  if (!pos.length) {
+    boks.innerHTML = '<div class="tom">Ingen åpne posisjoner. Systemet står i kontanter.</div>';
+    return;
+  }
+  boks.innerHTML = pos.map(p => {
+    const pnl = p.pnl_pct;
+    const k = pnl === undefined ? "" : fargeklasse(pnl);
+    return `<div class="rad">
+      <span class="navn">${p.asset.replace("/USDT", "")}</span>
+      <span class="detalj">inn ${pris(p.entry_price)} → ${pris(p.current_price)}</span>
+      <span class="hoyre">
+        <div class="stor">${p.value_usd !== undefined ? tall(p.value_usd) + " $" : "–"}</div>
+        <div class="liten ${k}">${pnl === undefined ? "" : (pnl >= 0 ? "+" : "") + tall(pnl, 1) + " %"}</div>
+      </span></div>`;
+  }).join("");
+}
+
+function signalRad(s) {
+  const m = s.decision === "KJØP" ? "m-kjop" : s.decision === "SELG" ? "m-selg" : "m-avvent";
+  return `<div class="rad">
+    <span class="navn">${s.asset.replace("/USDT", "")}</span>
+    <span class="merkelapp ${m}">${s.decision}</span>
+    <span class="hoyre">
+      <div class="stor">${(s.score >= 0 ? "+" : "") + tall(s.score, 2)}</div>
+      <div class="liten">${pris(s.price)}</div>
+    </span></div>`;
+}
+
+function tegnSignaler(d) {
+  const sig = (d.signals || []).slice().sort((a, b) => (b.score || 0) - (a.score || 0));
+  const aktive = sig.filter(s => s.decision !== "AVVENT");
+  const rolige = sig.filter(s => s.decision === "AVVENT");
+
+  el("aktive").innerHTML = aktive.length
+    ? aktive.map(signalRad).join("")
+    : '<div class="tom">Ingen mynter over terskelen akkurat nå.</div>';
+
+  el("avvent").innerHTML = rolige.map(signalRad).join("");
+  el("avvent-knapp").textContent = `Vis ${rolige.length} mynter uten handling`;
+}
+
+function tegn(d) {
+  const ek = d.equity_usd, start = d.start_capital_usd || 1000;
+  el("egenkapital").textContent = ek === undefined ? "–" : tall(ek) + " USDT";
+  if (ek !== undefined) {
+    const pct = (ek / start - 1) * 100;
+    const e = el("avkastning");
+    e.textContent = `${pct >= 0 ? "+" : ""}${tall(pct, 2)} % siden start`;
+    e.className = "endring " + fargeklasse(pct);
+  }
+  el("kontanter").textContent = d.cash_usd === undefined ? "–" : tall(d.cash_usd, 0) + " $";
+  el("investert").textContent = d.total_exposure_pct === undefined
+    ? "–" : tall(d.total_exposure_pct, 1) + " %";
+  el("fng").textContent = d.fear_greed_value ?? "–";
+
+  const c = d.config || {};
+  el("konfig").textContent =
+    `${c.timeframe || "4h"}-candles · terskel ±${tall(c.threshold ?? 0.3, 2)} · `
+    + `${c.confirmations ?? 2} bekreftelser · ${c.universe_size ?? 50} mynter`;
+
+  tegnPosisjoner(d);
+  tegnSignaler(d);
+  ferskhet(d.updated_at);
+}
+
+async function hent() {
+  try {
+    const r = await fetch(GIST_URL, {cache: "no-store"});
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    siste = await r.json();
+    tegn(siste);
+  } catch (e) {
+    // Behold forrige visning; ferskhets-indikatoren avslører et reelt problem.
+    console.error("Klarte ikke hente data:", e);
+    if (siste) ferskhet(siste.updated_at);
+  }
+}
+
+hent();
+setInterval(hent, POLL_MS);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") hent();
+});
+</script>
+</body>
+</html>
