@@ -10,7 +10,7 @@ GitHub Pages) leser `state/*/dashboard.json` direkte.
 | | System 1 | Krypto50 |
 |---|---|---|
 | Mynter | 13 faste (inkl. CAKE) | Topp 50 etter volum, ≥365 d historikk |
-| Candles | Daglige, SMA 50/200 | 4-timers, SMA 50/200 (= 8/33 dager) |
+| Candles | Daglige, SMA 8/33 (giret opp 2026-09-19) | 4-timers, SMA 50/200 (= 8/33 dager) |
 | Signal | Nyheter, on-chain (BTC), TA, Fear&Greed, funding | TA 80 %, Fear&Greed 10 %, funding 10 % |
 | Hysterese | 2 like beslutninger på rad (kjøringer) | 2 like på rad per LUKKET candle (8 t) |
 | Grenser | 10 % per mynt, 60 % totalt | 4 % per mynt, 80 % totalt |
@@ -36,3 +36,17 @@ Signalomregningene i `felles/signal.py` er ny kode (originalen gikk tapt). Valid
 dokumentert +78 % (-18 %) for originalen; stokket signal +13 %.
 System 1 ble gjenopprettet fra siste Gist-status (2026-09-16 04:32 UTC);
 handelshistorikk før det gikk tapt.
+
+## System 1 giret opp (2026-09-19)
+Backtest, 13 mynter, daglige candles, ~3 år (nyheter/on-chain uten historikk, satt nøytrale):
+
+| Variant | Avkastning | Maks nedgang | Handler |
+|---|---|---|---|
+| Før: SMA 50/200, TA 65 % | -24,9 % | -28,3 % | 790 |
+| Etter: SMA 8/33, TA 80 % | +35,8 % til +60,7 %* | -29 til -37 % | ~2 500-2 800 |
+| Nabovinduer 6/25, 10/40, 12/50 | +41 til +57 % | -29 til -33 % | |
+| Stokket signal (kontroll) | +6,2 % | -40,1 % | |
+| Kjøp&hold likevektet | +109,4 % | (ikke beregnet) | |
+
+*avhengig av bekreftelseskrav (2 dager vs 1). Live bekreftes per time på daglig
+candle inkl. dagens pris, som ligger nærmest 1-dags-varianten.

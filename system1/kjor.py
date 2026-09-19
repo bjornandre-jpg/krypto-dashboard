@@ -12,8 +12,10 @@ from felles.portefolje import Portefolje, vurder_mynt, lagre, utc_iso
 MAPPE = os.path.join("state", "system1")
 MYNTER = ["BTC-USDT", "ETH-USDT", "XRP-USDT", "SOL-USDT", "BNB-USDT", "DOGE-USDT", "ADA-USDT",
           "LINK-USDT", "AVAX-USDT", "DOT-USDT", "LTC-USDT", "UNI-USDT", "CAKE-USDT"]
-VEKT_BTC = {"nyheter": 0.15, "onchain": 0.15, "ta": 0.45, "fg": 0.10, "funding": 0.15}
-VEKT_ANDRE = {"nyheter": 0.10, "ta": 0.65, "fg": 0.10, "funding": 0.15}
+# Giret opp 2026-09-19: kortere trendvindu (SMA 8/33) og tyngre TA-vekt, se backtest i README.
+VEKT_BTC = {"nyheter": 0.05, "onchain": 0.05, "ta": 0.75, "fg": 0.05, "funding": 0.10}
+VEKT_ANDRE = {"nyheter": 0.05, "ta": 0.80, "fg": 0.05, "funding": 0.10}
+SMA_RASK, SMA_TREG = 8, 33
 CFG = {"max_per_mynt": 0.10, "max_total": 0.60,
        "kill_switch": os.path.exists(os.path.join(MAPPE, "STOPP"))}
 
@@ -41,8 +43,8 @@ def main():
             print(f"ADVARSEL: mangler pris for {s}")
             continue
         try:
-            closes = [c[4] for c in kucoin.candles(s, "1day", 260, kun_lukkede=False)]
-            ta = ta_serie(closes)[-1]
+            closes = [c[4] for c in kucoin.candles(s, "1day", 120, kun_lukkede=False)]
+            ta = ta_serie(closes, SMA_RASK, SMA_TREG)[-1]
         except RuntimeError as e:
             print(f"ADVARSEL: {s} candles: {e}")
             ta = None
