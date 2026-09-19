@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kryptosignaler</title>
+<title>Krypto papirhandel</title>
 <style>
   :root { color-scheme: light dark; }
   * { box-sizing: border-box; }
@@ -338,205 +338,195 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  .tabs { display:flex; gap:6px; margin: 12px 0 14px; }
+  .tab { flex:1; border:1px solid var(--border); background:var(--surface-alt); color:var(--ink-muted);
+         border-radius:999px; padding:7px 10px; font:600 13px "IBM Plex Sans",sans-serif; }
+  .tab.active { background:var(--ink); color:var(--surface); border-color:var(--ink); }
+  .ret { font-family:"IBM Plex Mono",monospace; font-size:14px; }
+  .ret.good { color:var(--good); } .ret.critical { color:var(--critical); }
+  .trade-row { display:flex; justify-content:space-between; gap:8px; font-size:12px;
+               background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:9px 12px; }
+  .trade-row .why { color:var(--ink-faint); }
+  .conf { font-size:10px; color:var(--ink-faint); width:14px; text-align:center; flex-shrink:0; }
+  svg.curve { width:100%; height:70px; display:block; margin-top:10px; }
+</style>
 </head>
 <body>
-
 <header>
   <div class="eyebrow">
-    <h1>Kryptosignaler</h1>
+    <h1 id="title">Kryptosignaler</h1>
     <div class="updated-block">
       <span class="updated" id="updated-label">laster …</span>
       <span class="countdown" id="countdown-label"></span>
     </div>
   </div>
-  <div class="equity-row">
-    <span class="equity-label">Portefølje</span>
+  <div class="tabs">
+    <button class="tab active" data-sys="system1">System 1 · 13</button>
+    <button class="tab" data-sys="krypto50">Krypto50 · 4t</button>
   </div>
+  <div class="equity-row"><span class="equity-label">Portefølje</span></div>
   <div class="equity-row">
     <span class="equity-value num" id="equity-value">–</span>
+    <span class="ret" id="ret-value"></span>
   </div>
+  <svg class="curve" id="curve" viewBox="0 0 300 70" preserveAspectRatio="none"></svg>
 </header>
 
 <main>
   <div class="tiles" id="tiles"></div>
-
   <section>
     <h2>Posisjoner</h2>
-    <div class="card-list" id="positions-list">
-      <div class="placeholder">Ingen data ennå.</div>
-    </div>
+    <div class="card-list" id="positions-list"><div class="placeholder">Ingen data ennå.</div></div>
   </section>
-
+  <section>
+    <h2>Siste handler</h2>
+    <div class="card-list" id="trades-list"><div class="placeholder">Ingen handler ennå.</div></div>
+  </section>
   <section>
     <h2>Signaler</h2>
     <p class="section-note" id="signals-note"></p>
-    <div class="card-list" id="signals-list">
-      <div class="placeholder">Ingen data ennå.</div>
-    </div>
+    <div class="card-list" id="signals-list"><div class="placeholder">Ingen data ennå.</div></div>
   </section>
 </main>
 
 <footer>
-  <p>Simulert papirhandel (ikke ekte penger). PC-en henter ferske priser fra børsen og regner ut alt selv rett etter hver times-kjøring av handelssystemet, og denne siden leser resultatet direkte - ingen mellomledd. Ikke finansiell rådgivning.</p>
+  <p>Simulert papirhandel (ikke ekte penger). Begge systemene kjøres hver time på GitHub sine servere (GitHub Actions) - ingen PC, ingen Claude, ingenting å trykke på. GitHub kan forsinke kjøringer med 5-30 min. ✓ = signalet er bekreftet (hysterese). Ikke finansiell rådgivning.</p>
 </footer>
 
 <script>
-  const GIST_RAW_URL = "https://gist.githubusercontent.com/bjornandre-jpg/41f107f9b09ad04c30acd362e108c0f6/raw/dashboard_state.json";
-  const POLL_INTERVAL_MS = 2 * 60 * 1000; // henter på nytt hvert 2. minutt (GitHub cacher selv i ca 5 min)
-  const STALE_AFTER_MS = 100 * 60 * 1000; // ~1.5 uteblitt time-kjøring på PC-en
+  const BASE = "https://raw.githubusercontent.com/bjornandre-jpg/krypto-dashboard/main/state/";
+  const CAP = { system1: 60, krypto50: 80 };
+  const NAVN = { system1: "System 1", krypto50: "Krypto50" };
+  const POLL_INTERVAL_MS = 2 * 60 * 1000;
+  const STALE_AFTER_MS = 150 * 60 * 1000;
+  let sys = (location.hash || "").replace("#", "") in CAP ? location.hash.slice(1) : "system1";
+  const cache = {};
 
   const fmtUsd = (v) => v == null ? "–" : "$" + v.toLocaleString("en-US", { maximumFractionDigits: v >= 1000 ? 0 : 2 });
-  const fmtPct = (v, digits = 1) => v == null ? "–" : (v >= 0 ? "+" : "") + v.toFixed(digits) + "%";
-  const fmtPrice = (v) => {
-    if (v == null) return "–";
-    const digits = v >= 100 ? 2 : v >= 1 ? 3 : 5;
-    return "$" + v.toLocaleString("en-US", { maximumFractionDigits: digits });
-  };
+  const fmtPct = (v, d = 1) => v == null ? "–" : (v >= 0 ? "+" : "") + v.toFixed(d) + "%";
+  const fmtPrice = (v) => { if (v == null) return "–"; const d = v >= 100 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8;
+    return "$" + v.toLocaleString("en-US", { maximumFractionDigits: d }); };
   const decisionClass = (d) => d === "KJØP" ? "good" : d === "SELG" ? "critical" : "neutral";
-  const tickerName = (asset) => (asset || "").split("/")[0];
+  const tickerName = (a) => (a || "").split(/[\/-]/)[0];
 
   function relativeTime(iso, staleAfterMs = STALE_AFTER_MS) {
-    if (!iso) return { text: "ingen data", stale: true, ms: Infinity };
-    const then = new Date(iso).getTime();
-    const diffMs = Date.now() - then;
-    const diffMin = Math.round(diffMs / 60000);
-    const stale = diffMs > staleAfterMs;
-    if (diffMin < 1) return { text: "akkurat nå", stale, ms: diffMs };
-    if (diffMin < 60) return { text: `${diffMin} min siden`, stale, ms: diffMs };
-    const h = Math.round(diffMin / 60);
-    return { text: `${h} t siden`, stale, ms: diffMs };
+    if (!iso) return { text: "ingen data", stale: true };
+    const ms = Date.now() - new Date(iso).getTime(), min = Math.round(ms / 60000);
+    const stale = ms > staleAfterMs;
+    if (min < 1) return { text: "akkurat nå", stale };
+    if (min < 60) return { text: `${min} min siden`, stale };
+    return { text: `${Math.round(min / 60)} t siden`, stale };
   }
 
   function countdownLabel(iso) {
     if (!iso) return "";
-    const then = new Date(iso).getTime();
-    const remainingMs = then + 60 * 60 * 1000 - Date.now();
-    if (remainingMs <= 0) return `neste oppdatering: <span class="num">venter …</span>`;
-    const totalSec = Math.floor(remainingMs / 1000);
-    const m = Math.floor(totalSec / 60);
-    const s = totalSec % 60;
-    return `neste om <span class="num">${m}:${String(s).padStart(2, "0")}</span>`;
+    const rem = new Date(iso).getTime() + 60 * 60 * 1000 - Date.now();
+    if (rem <= 0) return `neste kjøring: <span class="num">venter …</span>`;
+    const s = Math.floor(rem / 1000);
+    return `neste om ca <span class="num">${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}</span>`;
+  }
+
+  function renderCurve(data) {
+    const el = document.getElementById("curve");
+    const pts = (data.equity_curve || []).map(p => p[1]);
+    if (pts.length < 2) { el.innerHTML = ""; return; }
+    const lo = Math.min(...pts, data.start_capital), hi = Math.max(...pts, data.start_capital), span = (hi - lo) || 1;
+    const y = v => 66 - (v - lo) / span * 62;
+    const d = pts.map((v, i) => `${(i / (pts.length - 1) * 300).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+    el.innerHTML = `<line x1="0" x2="300" y1="${y(data.start_capital)}" y2="${y(data.start_capital)}" stroke="var(--ink-faint)" stroke-dasharray="3 3" stroke-width="1" vector-effect="non-scaling-stroke"/>
+      <polyline points="${d}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>`;
   }
 
   function renderTiles(data) {
     const fg = data.fear_greed_value;
     const fgLabel = fg == null ? "–" : fg <= 24 ? "Ekstrem frykt" : fg <= 44 ? "Frykt" : fg <= 55 ? "Nøytral" : fg <= 75 ? "Grådighet" : "Ekstrem grådighet";
-    const exposurePct = data.total_exposure_pct;
+    const e = data.total_exposure_pct;
     document.getElementById("tiles").innerHTML = `
-      <div class="tile">
-        <div class="label">Total eksponering</div>
-        <div class="value num">${exposurePct == null ? "–" : exposurePct.toFixed(0) + "%"}</div>
-        <div class="sub">av porteføljen i krypto (tak 60%)</div>
-      </div>
-      <div class="tile">
-        <div class="label">Fear &amp; Greed</div>
+      <div class="tile"><div class="label">Total eksponering</div>
+        <div class="value num">${e == null ? "–" : e.toFixed(0) + "%"}</div>
+        <div class="sub">i krypto (tak ${CAP[sys]}%)</div></div>
+      <div class="tile"><div class="label">Fear &amp; Greed</div>
         <div class="value num">${fg == null ? "–" : fg} <span style="font-family:'IBM Plex Sans';font-size:12px;color:var(--ink-muted)">${fgLabel}</span></div>
-        <div class="fg-gauge">${fg == null ? "" : `<div class="marker" style="left:${fg}%"></div>`}</div>
-      </div>
-    `;
+        <div class="fg-gauge">${fg == null ? "" : `<div class="marker" style="left:${fg}%"></div>`}</div></div>`;
   }
 
   function renderPositions(data) {
-    const el = document.getElementById("positions-list");
-    const positions = data.positions || [];
-    if (!positions.length) {
-      el.innerHTML = `<div class="placeholder">Ingen åpne posisjoner akkurat nå.</div>`;
-      return;
-    }
-    el.innerHTML = positions.map(p => {
-      const pnlCls = p.pnl_pct == null ? "" : p.pnl_pct >= 0 ? "good" : "critical";
-      return `
-        <div class="position-card">
-          <div class="top-line">
-            <span class="asset-ticker">${tickerName(p.asset)}</span>
-            <span class="pnl ${pnlCls}">${fmtPct(p.pnl_pct)}</span>
-          </div>
-          <div class="position-detail">
-            <div>Verdi<span class="num">${fmtUsd(p.value_usd)}</span></div>
-            <div>Kostpris<span class="num">${fmtPrice(p.entry_price)}</span></div>
-            <div>Nå<span class="num">${fmtPrice(p.current_price)}</span></div>
-          </div>
-        </div>
-      `;
-    }).join("");
+    const el = document.getElementById("positions-list"), ps = data.positions || [];
+    if (!ps.length) { el.innerHTML = `<div class="placeholder">Ingen åpne posisjoner akkurat nå.</div>`; return; }
+    el.innerHTML = ps.sort((a, b) => b.value_usd - a.value_usd).map(p => `
+      <div class="position-card"><div class="top-line">
+        <span class="asset-ticker">${tickerName(p.asset)}</span>
+        <span class="pnl ${p.pnl_pct >= 0 ? "good" : "critical"}">${fmtPct(p.pnl_pct)}</span></div>
+        <div class="position-detail">
+          <div>Verdi<span class="num">${fmtUsd(p.value_usd)}</span></div>
+          <div>Kostpris<span class="num">${fmtPrice(p.entry_price)}</span></div>
+          <div>Nå<span class="num">${fmtPrice(p.current_price)}</span></div></div></div>`).join("");
   }
 
-  function renderSignalsNote(data) {
-    const note = document.getElementById("signals-note");
-    const signalsIso = data.signals_updated_at;
-    if (!signalsIso) { note.textContent = ""; return; }
-    const { text } = relativeTime(signalsIso, 90 * 60000); // signaler er ventet å vare ~1t
-    note.textContent = `Beslutninger fra siste times-kjøring – ${text}`;
+  function renderTrades(data) {
+    const el = document.getElementById("trades-list"), ts = (data.recent_trades || []).slice(0, 8);
+    if (!ts.length) { el.innerHTML = `<div class="placeholder">Ingen handler ennå.</div>`; return; }
+    el.innerHTML = ts.map(t => `
+      <div class="trade-row"><span><span class="badge ${decisionClass(t.side)}" style="width:auto;padding:2px 7px">${t.side}</span>
+        <b>${tickerName(t.mynt)}</b> ${fmtUsd(parseFloat(t.belop_usdt))}</span>
+        <span class="why">${t.grunn} · ${relativeTime(t.tid).text}</span></div>`).join("");
   }
 
   function renderSignals(data) {
     const el = document.getElementById("signals-list");
-    const signals = data.signals || [];
-    if (!signals.length) {
-      el.innerHTML = `<div class="placeholder">Ingen signaler ennå.</div>`;
-      return;
-    }
-    el.innerHTML = signals.map(s => {
-      const cls = decisionClass(s.decision);
-      const score = s.score == null ? 0 : Math.max(-1, Math.min(1, s.score));
-      const pct = Math.abs(score) * 50;
-      const left = score >= 0 ? 50 : 50 - pct;
-      return `
-        <div class="signal-row">
-          <span class="asset-ticker">${tickerName(s.asset)}</span>
-          <span class="badge ${cls}">${s.decision || "–"}</span>
-          <div class="score-track">
-            <div class="score-fill ${score >= 0 ? "good" : "critical"}" style="left:${left}%;width:${pct}%"></div>
-          </div>
-          <span class="score-value">${s.score == null ? "–" : s.score.toFixed(2)}</span>
-        </div>
-      `;
+    const ss = (data.signals || []).slice().sort((a, b) => (b.score ?? -9) - (a.score ?? -9));
+    document.getElementById("signals-note").textContent = sys === "krypto50"
+      ? "Sortert etter score. Nye beslutninger hver 4. time (lukket candle), to på rad kreves."
+      : "Sortert etter score. Oppdateres hver time, to like beslutninger på rad kreves.";
+    if (!ss.length) { el.innerHTML = `<div class="placeholder">Ingen signaler ennå.</div>`; return; }
+    el.innerHTML = ss.map(s => {
+      const sc = s.score == null ? 0 : Math.max(-1, Math.min(1, s.score)), pct = Math.abs(sc) * 50;
+      return `<div class="signal-row">
+        <span class="asset-ticker">${tickerName(s.asset)}</span>
+        <span class="badge ${decisionClass(s.decision)}">${s.decision || "–"}</span>
+        <span class="conf">${s.confirmed && s.decision !== "AVVENT" ? "✓" : ""}</span>
+        <div class="score-track"><div class="score-fill ${sc >= 0 ? "good" : "critical"}" style="left:${sc >= 0 ? 50 : 50 - pct}%;width:${pct}%"></div></div>
+        <span class="score-value">${s.score == null ? "–" : s.score.toFixed(2)}</span></div>`;
     }).join("");
   }
 
   function tickHeader() {
-    if (!lastData) return;
-    const { text, stale } = relativeTime(lastData.updated_at);
-    const label = document.getElementById("updated-label");
-    label.textContent = "oppdatert " + text;
-    label.classList.toggle("stale", stale);
-    document.getElementById("countdown-label").innerHTML = countdownLabel(lastData.updated_at);
+    const d = cache[sys]; if (!d) return;
+    const { text, stale } = relativeTime(d.updated_at);
+    const l = document.getElementById("updated-label");
+    l.textContent = "oppdatert " + text; l.classList.toggle("stale", stale);
+    document.getElementById("countdown-label").innerHTML = countdownLabel(d.updated_at);
   }
 
-  function render(data) {
-    if (!data) return;
+  function render() {
+    document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b.dataset.sys === sys));
+    document.getElementById("title").textContent = NAVN[sys];
+    const d = cache[sys]; if (!d) return;
     tickHeader();
-    document.getElementById("equity-value").textContent = fmtUsd(data.equity_usd);
-    renderTiles(data);
-    renderPositions(data);
-    renderSignals(data);
-    renderSignalsNote(data);
+    document.getElementById("equity-value").textContent = fmtUsd(d.equity_usd);
+    const r = (d.equity_usd / d.start_capital - 1) * 100, rv = document.getElementById("ret-value");
+    rv.textContent = fmtPct(r, 2) + " siden start"; rv.className = "ret " + (r >= 0 ? "good" : "critical");
+    renderCurve(d); renderTiles(d); renderPositions(d); renderTrades(d); renderSignals(d);
   }
 
-  let lastData = null;
-  setInterval(tickHeader, 1000);
-
-  async function fetchLatest() {
+  async function fetchSys(s) {
     try {
-      const resp = await fetch(GIST_RAW_URL, { cache: "no-store" });
+      const resp = await fetch(BASE + s + "/dashboard.json?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" });
       if (!resp.ok) throw new Error("HTTP " + resp.status);
-      const data = await resp.json();
-      lastData = data;
-      render(lastData);
-    } catch (e) {
-      console.error("Klarte ikke hente dashboard-data:", e);
-      // Behold forrige kjente data på skjermen - tickHeader() viser da automatisk
-      // at tallene er i ferd med å bli gamle (rød "stale"-farge) hvis dette
-      // fortsetter, i stedet for å blanke ut siden ved en forbigående nettverksfeil.
-    }
+      cache[s] = await resp.json();
+      if (s === sys) render();
+    } catch (e) { console.error("Klarte ikke hente " + s, e); }
   }
+  const fetchAll = () => { fetchSys("system1"); fetchSys("krypto50"); };
 
-  fetchLatest();
-  setInterval(fetchLatest, POLL_INTERVAL_MS);
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") fetchLatest();
-  });
+  document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
+    sys = b.dataset.sys; history.replaceState(null, "", "#" + sys); render();
+  }));
+  setInterval(tickHeader, 1000);
+  fetchAll(); setInterval(fetchAll, POLL_INTERVAL_MS);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") fetchAll(); });
+  render();
 </script>
-
 </body>
 </html>

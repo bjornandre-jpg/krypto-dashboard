@@ -1,0 +1,228 @@
+{
+ "bygget": "2026-09-19T20:02:30Z",
+ "min_dager_historikk": 365,
+ "mynter": [
+  {
+   "symbol": "BTC-USDT",
+   "volum_usdt_24t": 533869917
+  },
+  {
+   "symbol": "ETH-USDT",
+   "volum_usdt_24t": 212088322
+  },
+  {
+   "symbol": "ZEC-USDT",
+   "volum_usdt_24t": 96057561
+  },
+  {
+   "symbol": "XMR-USDT",
+   "volum_usdt_24t": 77352481
+  },
+  {
+   "symbol": "XRP-USDT",
+   "volum_usdt_24t": 69516410
+  },
+  {
+   "symbol": "AVAX-USDT",
+   "volum_usdt_24t": 61278296
+  },
+  {
+   "symbol": "NEAR-USDT",
+   "volum_usdt_24t": 52575514
+  },
+  {
+   "symbol": "TAO-USDT",
+   "volum_usdt_24t": 45587607
+  },
+  {
+   "symbol": "DOT-USDT",
+   "volum_usdt_24t": 44901925
+  },
+  {
+   "symbol": "SUI-USDT",
+   "volum_usdt_24t": 41168747
+  },
+  {
+   "symbol": "UNI-USDT",
+   "volum_usdt_24t": 40619744
+  },
+  {
+   "symbol": "SOL-USDT",
+   "volum_usdt_24t": 40331558
+  },
+  {
+   "symbol": "AAVE-USDT",
+   "volum_usdt_24t": 35706988
+  },
+  {
+   "symbol": "DOGE-USDT",
+   "volum_usdt_24t": 31844836
+  },
+  {
+   "symbol": "ARB-USDT",
+   "volum_usdt_24t": 28706256
+  },
+  {
+   "symbol": "LINK-USDT",
+   "volum_usdt_24t": 26508079
+  },
+  {
+   "symbol": "SEI-USDT",
+   "volum_usdt_24t": 24351734
+  },
+  {
+   "symbol": "ENA-USDT",
+   "volum_usdt_24t": 23584389
+  },
+  {
+   "symbol": "LTC-USDT",
+   "volum_usdt_24t": 17097151
+  },
+  {
+   "symbol": "WIF-USDT",
+   "volum_usdt_24t": 16680376
+  },
+  {
+   "symbol": "PEPE-USDT",
+   "volum_usdt_24t": 15315863
+  },
+  {
+   "symbol": "BNB-USDT",
+   "volum_usdt_24t": 14831382
+  },
+  {
+   "symbol": "AKE-USDT",
+   "volum_usdt_24t": 14598361
+  },
+  {
+   "symbol": "TRUMP-USDT",
+   "volum_usdt_24t": 11852717
+  },
+  {
+   "symbol": "SHIB-USDT",
+   "volum_usdt_24t": 10773276
+  },
+  {
+   "symbol": "HYPE-USDT",
+   "volum_usdt_24t": 8200607
+  },
+  {
+   "symbol": "KCS-USDT",
+   "volum_usdt_24t": 8057511
+  },
+  {
+   "symbol": "TRX-USDT",
+   "volum_usdt_24t": 7303832
+  },
+  {
+   "symbol": "INJ-USDT",
+   "volum_usdt_24t": 6759877
+  },
+  {
+   "symbol": "ADA-USDT",
+   "volum_usdt_24t": 5756354
+  },
+  {
+   "symbol": "ONDO-USDT",
+   "volum_usdt_24t": 5753147
+  },
+  {
+   "symbol": "XLM-USDT",
+   "volum_usdt_24t": 5042091
+  },
+  {
+   "symbol": "STRK-USDT",
+   "volum_usdt_24t": 4967694
+  },
+  {
+   "symbol": "FIL-USDT",
+   "volum_usdt_24t": 4756609
+  },
+  {
+   "symbol": "B2-USDT",
+   "volum_usdt_24t": 4465116
+  },
+  {
+   "symbol": "AR-USDT",
+   "volum_usdt_24t": 3587508
+  },
+  {
+   "symbol": "DASH-USDT",
+   "volum_usdt_24t": 3539118
+  },
+  {
+   "symbol": "GRAM-USDT",
+   "volum_usdt_24t": 3069369
+  },
+  {
+   "symbol": "USELESS-USDT",
+   "volum_usdt_24t": 2934176
+  },
+  {
+   "symbol": "APT-USDT",
+   "volum_usdt_24t": 2910607
+  },
+  {
+   "symbol": "VVV-USDT",
+   "volum_usdt_24t": 2797582
+  },
+  {
+   "symbol": "PUMP-USDT",
+   "volum_usdt_24t": 2756480
+  },
+  {
+   "symbol": "BB-USDT",
+   "volum_usdt_24t": 2609350
+  },
+  {
+   "symbol": "FET-USDT",
+   "volum_usdt_24t": 2567422
+  },
+  {
+   "symbol": "SYN-USDT",
+   "volum_usdt_24t": 2496024
+  },
+  {
+   "symbol": "BCH-USDT",
+   "volum_usdt_24t": 2215663
+  },
+  {
+   "symbol": "ONE-USDT",
+   "volum_usdt_24t": 2057543
+  },
+  {
+   "symbol": "LSK-USDT",
+   "volum_usdt_24t": 2023339
+  },
+  {
+   "symbol": "XTZ-USDT",
+   "volum_usdt_24t": 1839001
+  },
+  {
+   "symbol": "RENDER-USDT",
+   "volum_usdt_24t": 1828523
+  }
+ ],
+ "forkastet_for_lite_historikk": [
+  "ASTER-USDT",
+  "LONGXIA-USDT",
+  "PIEVERSE-USDT",
+  "GNOT-USDT",
+  "ZAMA-USDT",
+  "LAPTOP-USDT",
+  "MCAT-USDT",
+  "PONS-USDT",
+  "TA-USDT",
+  "ADI-USDT",
+  "MHA-USDT",
+  "CAP-USDT",
+  "MARSCOIN-USDT",
+  "NIULAI-USDT",
+  "ON-USDT",
+  "DGAI-USDT",
+  "TEA-USDT",
+  "TINA-USDT",
+  "KII-USDT",
+  "SWARM-USDT"
+ ]
+}

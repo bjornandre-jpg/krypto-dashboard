@@ -1,0 +1,54 @@
+name: Papirhandel hver time
+
+on:
+  schedule:
+    - cron: "7 * * * *"      # hvert time, 7 min over (UTC). GitHub kan forsinke 5-30 min.
+  workflow_dispatch: {}       # "Run workflow"-knapp for manuell kjøring
+
+concurrency:
+  group: handel               # aldri to kjøringer samtidig
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  kjor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install vaderSentiment==3.3.2
+
+      - name: Sjekk datakilder
+        continue-on-error: true
+        run: python sjekk_kilder.py
+
+      - name: System 1 (13 mynter)
+        id: s1
+        continue-on-error: true
+        run: python -m system1.kjor
+
+      - name: Krypto50
+        id: k50
+        continue-on-error: true
+        run: python -m krypto50.kjor
+
+      - name: Lagre status
+        run: |
+          git config user.name "krypto-bot"
+          git config user.email "krypto-bot@users.noreply.github.com"
+          git add state
+          git diff --cached --quiet && exit 0
+          git commit -m "Kjøring $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
+          exit 1
+
+      - name: Varsle hvis et system feilet
+        if: steps.s1.outcome == 'failure' || steps.k50.outcome == 'failure'
+        run: |
+          echo "System 1: ${{ steps.s1.outcome }}, Krypto50: ${{ steps.k50.outcome }}"
+          exit 1

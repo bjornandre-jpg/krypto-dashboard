@@ -1,0 +1,19 @@
+{
+ "kontanter": 929.4377087165393,
+ "startkapital": 1000.0,
+ "posisjoner": {
+  "LINK-USDT": {
+   "mengde": 2.918180961144724,
+   "snittpris": 10.9316,
+   "maalvekt": 0.0319
+  },
+  "UNI-USDT": {
+   "mengde": 5.945244299499883,
+   "snittpris": 5.8764,
+   "maalvekt": 0.035
+  }
+ },
+ "dag": {},
+ "opprettet": "2026-09-05T00:00:00Z",
+ "gjenopprettet": "Gjenopprettet 2026-09-19 fra siste Gist-status (2026-09-16T04:32Z) etter at PC-en ble ødelagt. Handelshistorikk før dette gikk tapt."
+}

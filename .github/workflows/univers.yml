@@ -1,0 +1,22 @@
+name: Oppdater Krypto50-univers (manuelt)
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  univers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m krypto50.univers
+      - run: |
+          git config user.name "krypto-bot"
+          git config user.email "krypto-bot@users.noreply.github.com"
+          git add krypto50/univers.json
+          git diff --cached --quiet || (git commit -m "Oppdatert univers" && git pull --rebase && git push)
