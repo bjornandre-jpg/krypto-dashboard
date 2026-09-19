@@ -1,5 +1,5 @@
 {
- "kontanter": 768.9943126735826,
+ "kontanter": 741.5687771519482,
  "startkapital": 1000.0,
  "posisjoner": {
   "LINK-USDT": {
@@ -15,28 +15,28 @@
   "SOL-USDT": {
    "mengde": 0.3641248786066012,
    "snittpris": 110.76,
-   "maalvekt": 0.03969590925946985
+   "maalvekt": 0.04219465554565758
   },
   "BNB-USDT": {
    "mengde": 0.05014004477164272,
    "snittpris": 759.071,
-   "maalvekt": 0.0374610176771514
+   "maalvekt": 0.03360299439245335
   },
   "UNI-USDT": {
-   "mengde": 5.882681055679622,
-   "snittpris": 8.5441,
-   "maalvekt": 0.04947138620423739
+   "mengde": 7.663040831417467,
+   "snittpris": 8.534040079925793,
+   "maalvekt": 0.06412602277209012
   },
   "CAKE-USDT": {
-   "mengde": 18.471377305337466,
-   "snittpris": 2.384,
-   "maalvekt": 0.043342901893545435
+   "mengde": 23.61120446565618,
+   "snittpris": 2.384435371873366,
+   "maalvekt": 0.05545689921607641
   }
  },
  "dag": {
   "dato": "2026-09-19",
   "start_egenkapital": 1017.4398203313257,
-  "handler": 6
+  "handler": 8
  },
  "opprettet": "2026-09-05T00:00:00Z",
  "gjenopprettet": "Gjenopprettet 2026-09-19 fra siste Gist-status (2026-09-16T04:32Z) etter at PC-en ble ødelagt. Handelshistorikk før dette gikk tapt."
