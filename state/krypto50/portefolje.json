@@ -1,0 +1,11 @@
+{
+ "kontanter": 1000.0,
+ "startkapital": 1000.0,
+ "posisjoner": {},
+ "dag": {
+  "dato": "2026-09-19",
+  "start_egenkapital": 1000.0,
+  "handler": 0
+ },
+ "opprettet": "2026-09-19T20:26:56Z"
+}
