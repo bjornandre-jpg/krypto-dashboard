@@ -32,7 +32,7 @@ def godkjent_base(base):
     return not (base in STABLE or base in WRAPPED or base in GULL or GIRET.search(base))
 
 
-def bygg():
+def bygg(antall=ANTALL, fil=FIL):
     tickere = kucoin.alle_tickere()
     kandidater = sorted(
         (t for s, t in tickere.items()
@@ -41,7 +41,7 @@ def bygg():
     grense = time.time() - MIN_DAGER * 86400
     valgt, forkastet = [], []
     for t in kandidater:
-        if len(valgt) >= ANTALL:
+        if len(valgt) >= antall:
             break
         sym = t["symbol"]
         try:
@@ -55,17 +55,22 @@ def bygg():
         time.sleep(0.1)
     data = {"bygget": utc_iso(), "min_dager_historikk": MIN_DAGER,
             "mynter": valgt, "forkastet_for_lite_historikk": forkastet}
-    with open(FIL, "w", encoding="utf-8") as f:
+    with open(fil, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
     return data
 
 
-def last():
-    with open(FIL, encoding="utf-8") as f:
+def last(fil=FIL):
+    with open(fil, encoding="utf-8") as f:
         return [m["symbol"] for m in json.load(f)["mynter"]]
 
 
 if __name__ == "__main__":
-    d = bygg()
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == "100":
+        from krypto100 import UNIVERS_FIL
+        d = bygg(100, UNIVERS_FIL)
+    else:
+        d = bygg()
     print(f"{len(d['mynter'])} mynter valgt, {len(d['forkastet_for_lite_historikk'])} forkastet")
     print(", ".join(m["symbol"][:-5] for m in d["mynter"]))

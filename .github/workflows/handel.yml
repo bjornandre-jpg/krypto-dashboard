@@ -15,7 +15,7 @@ permissions:
 jobs:
   kjor:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,7 +27,7 @@ jobs:
         continue-on-error: true
         run: python sjekk_kilder.py
 
-      - name: System 1 (13 mynter)
+      - name: Krypto13 (tidl. System 1)
         id: s1
         continue-on-error: true
         run: python -m system1.kjor
@@ -36,6 +36,11 @@ jobs:
         id: k50
         continue-on-error: true
         run: python -m krypto50.kjor
+
+      - name: Krypto100
+        id: k100
+        continue-on-error: true
+        run: python -m krypto100.kjor
 
       - name: Lagre status
         run: |
@@ -48,7 +53,7 @@ jobs:
           exit 1
 
       - name: Varsle hvis et system feilet
-        if: steps.s1.outcome == 'failure' || steps.k50.outcome == 'failure'
+        if: steps.s1.outcome == 'failure' || steps.k50.outcome == 'failure' || steps.k100.outcome == 'failure'
         run: |
-          echo "System 1: ${{ steps.s1.outcome }}, Krypto50: ${{ steps.k50.outcome }}"
+          echo "Krypto13: ${{ steps.s1.outcome }}, Krypto50: ${{ steps.k50.outcome }}, Krypto100: ${{ steps.k100.outcome }}"
           exit 1

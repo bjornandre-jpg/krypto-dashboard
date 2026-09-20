@@ -1,4 +1,4 @@
-# Krypto papirhandel - to systemer, kjører på GitHub Actions
+# Krypto papirhandel - Krypto13, Krypto50 og Krypto100 på GitHub Actions
 
 **Simulert papirhandel. Ingen ekte penger, ingen API-nøkler, ingen ordre sendes til noen børs.**
 
@@ -50,3 +50,10 @@ Backtest, 13 mynter, daglige candles, ~3 år (nyheter/on-chain uten historikk, s
 
 *avhengig av bekreftelseskrav (2 dager vs 1). Live bekreftes per time på daglig
 candle inkl. dagens pris, som ligger nærmest 1-dags-varianten.
+
+## Krypto100 (lagt til 2026-09-20)
+Identisk med Krypto50, men topp 100 mynter etter volum (≥365 d historikk,
+`krypto100/univers.json`, bygges med `python -m krypto50.univers 100`) og maks
+2 % per mynt (80 % totalt). Backtest ~3 år: +66,5 % (-28,0 % maks nedgang);
+med 4 % per mynt +95,7 % men -40,3 % nedgang; stokket signal -9,5 %.
+System 1 heter nå Krypto13 i dashbordet (mappen er fortsatt `state/system1`).

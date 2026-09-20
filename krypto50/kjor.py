@@ -14,13 +14,13 @@ from krypto50.univers import last
 MAPPE = os.path.join("state", "krypto50")
 VEKTER = {"ta": 0.80, "fg": 0.10, "funding": 0.10}
 BEKREFTELSER = 2
-CFG = {"max_per_mynt": 0.04, "max_total": 0.80,
-       "kill_switch": os.path.exists(os.path.join(MAPPE, "STOPP"))}
 
 
-def main():
-    mynter = last()
-    pf = Portefolje(CFG, 1000.0, MAPPE)
+def main(mappe=MAPPE, univers_fil=None, max_per_mynt=0.04, navn="Krypto50 - 50 mynter, 4t"):
+    mynter = last(univers_fil) if univers_fil else last()
+    cfg = {"max_per_mynt": max_per_mynt, "max_total": 0.80,
+           "kill_switch": os.path.exists(os.path.join(mappe, "STOPP"))}
+    pf = Portefolje(cfg, 1000.0, mappe)
     priser = kucoin.priser()
     kontrakter = kucoin.aktive_kontrakter()
     try:
@@ -29,7 +29,7 @@ def main():
         fg = None
     eq = pf.egenkapital(priser)
     pf.start_dag(datetime.now(timezone.utc).strftime("%Y-%m-%d"), eq)
-    cfil = os.path.join(MAPPE, "candle_beslutninger.json")
+    cfil = os.path.join(mappe, "candle_beslutninger.json")
     hist = json.load(open(cfil, encoding="utf-8")) if os.path.exists(cfil) else {}
 
     signaler, logg = [], []
@@ -74,8 +74,8 @@ def main():
     json.dump(hist, open(cfil, "w", encoding="utf-8"))
     eq = pf.egenkapital(priser)
     lagre(pf, eq, {"signaler.csv": logg} if logg else None)
-    dashboard.skriv(pf, priser, signaler, fg, {"system": "Krypto50 - 50 mynter, 4t"})
-    print(f"Krypto50: egenkapital {eq:.2f} USDT, {len(pf.handler)} handler, "
+    dashboard.skriv(pf, priser, signaler, fg, {"system": navn})
+    print(f"{navn}: egenkapital {eq:.2f} USDT, {len(pf.handler)} handler, "
           f"{len(pf.s['posisjoner'])} posisjoner, {len(logg)} nye candle-beslutninger")
 
 

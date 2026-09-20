@@ -69,8 +69,8 @@ def main():
     eq = pf.egenkapital(priser)
     lagre(pf, eq, {"signaler.csv": logg})
     dashboard.skriv(pf, priser, signaler, fg,
-                    {"system": "System 1 - 13 mynter", "news_headlines": n_titler})
-    print(f"System 1: egenkapital {eq:.2f} USDT, {len(pf.handler)} handler, "
+                    {"system": "Krypto13 - 13 mynter", "news_headlines": n_titler})
+    print(f"Krypto13: egenkapital {eq:.2f} USDT, {len(pf.handler)} handler, "
           f"{len(pf.s['posisjoner'])} posisjoner, F&G {fg}, nyheter {nyh}, onchain {oc}")
     for h in pf.handler:
         print("  ", h)

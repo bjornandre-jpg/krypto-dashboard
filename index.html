@@ -1,532 +1,288 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="no">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F2F0ED">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Krypto">
 <title>Krypto papirhandel</title>
-<style>
-  :root { color-scheme: light dark; }
-  * { box-sizing: border-box; }
-  body { margin:0; padding:0; }
-  img { max-width:100%; }
-
-  :root {
-    --bg: #f6f5f1;
-    --surface: #ffffff;
-    --surface-alt: #ece9e0;
-    --border: #ddd9cd;
-    --ink: #1c1b18;
-    --ink-muted: #726d5c;
-    --ink-faint: #a29c88;
-    --accent: #a97327;
-    --good: #2f7d54;
-    --good-soft: #dcede2;
-    --critical: #b0402f;
-    --critical-soft: #f4ddd7;
-    --neutral-badge: #7d7869;
-    --neutral-soft: #eae7dd;
-    --fg-gradient-start: #b0402f;
-    --fg-gradient-mid: #a29c88;
-    --fg-gradient-end: #2f7d54;
-    --shadow: 0 1px 2px rgba(28, 27, 24, 0.06), 0 4px 14px rgba(28, 27, 24, 0.05);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #141613;
-      --surface: #1d201c;
-      --surface-alt: #262a24;
-      --border: #34382f;
-      --ink: #eeece4;
-      --ink-muted: #a3a190;
-      --ink-faint: #6f6c5d;
-      --accent: #d9a24f;
-      --good: #57b585;
-      --good-soft: #1c3327;
-      --critical: #e0776a;
-      --critical-soft: #3a2320;
-      --neutral-badge: #9a9686;
-      --neutral-soft: #2b2e27;
-      --fg-gradient-start: #e0776a;
-      --fg-gradient-mid: #6f6c5d;
-      --fg-gradient-end: #57b585;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "IBM Plex Sans", system-ui, sans-serif;
-    font-size: 15px;
-    line-height: 1.45;
-    padding: 0 0 40px;
-  }
-
-  .num {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-variant-numeric: tabular-nums;
-  }
-
-  h1, .display {
-    font-family: "Fraunces", Georgia, serif;
-    font-weight: 600;
-    text-wrap: balance;
-  }
-
-  header {
-    padding: 22px 18px 18px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    position: sticky;
-    top: 0;
-    z-index: 5;
-  }
-
-  .eyebrow {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-
-  .eyebrow h1 {
-    font-size: 18px;
-    margin: 0;
-    letter-spacing: 0.01em;
-  }
-
-  .updated-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 2px;
-  }
-
-  .updated {
-    font-size: 12px;
-    color: var(--ink-faint);
-    font-family: "IBM Plex Mono", monospace;
-  }
-
-  .updated.stale { color: var(--critical); }
-
-  .countdown {
-    font-size: 11px;
-    color: var(--ink-faint);
-    font-family: "IBM Plex Mono", monospace;
-  }
-
-  .countdown .num { color: var(--accent); }
-
-  .equity-row {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .equity-value {
-    font-size: 34px;
-    line-height: 1;
-    letter-spacing: -0.01em;
-  }
-
-  .equity-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-muted);
-  }
-
-  main {
-    padding: 16px 18px 0;
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  .tiles {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 22px;
-  }
-
-  .tile {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    box-shadow: var(--shadow);
-  }
-
-  .tile .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--ink-muted);
-    margin-bottom: 6px;
-  }
-
-  .tile .value {
-    font-size: 20px;
-    font-family: "IBM Plex Mono", monospace;
-  }
-
-  .tile .sub {
-    font-size: 11px;
-    color: var(--ink-faint);
-    margin-top: 3px;
-  }
-
-  .fg-gauge {
-    margin-top: 8px;
-    height: 6px;
-    border-radius: 3px;
-    background: linear-gradient(90deg, var(--fg-gradient-start), var(--fg-gradient-mid), var(--fg-gradient-end));
-    position: relative;
-  }
-
-  .fg-gauge .marker {
-    position: absolute;
-    top: -3px;
-    width: 2px;
-    height: 12px;
-    background: var(--ink);
-    border-radius: 1px;
-    transform: translateX(-1px);
-  }
-
-  section {
-    margin-bottom: 26px;
-  }
-
-  section > h2 {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-muted);
-    font-weight: 600;
-    margin: 0 0 4px;
-    font-family: "IBM Plex Sans", sans-serif;
-  }
-
-  section > .section-note {
-    font-size: 11px;
-    color: var(--ink-faint);
-    margin: 0 0 10px;
-  }
-
-  .card-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .position-card, .signal-row {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    box-shadow: var(--shadow);
-  }
-
-  .position-card .top-line {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 6px;
-  }
-
-  .asset-ticker {
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  .pnl {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
-    font-weight: 600;
-  }
-
-  .pnl.good { color: var(--good); }
-  .pnl.critical { color: var(--critical); }
-
-  .position-detail {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    font-size: 12px;
-    color: var(--ink-muted);
-  }
-
-  .position-detail .num { color: var(--ink); display: block; font-size: 13px; }
-
-  .signal-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .signal-row .asset-ticker { width: 74px; flex-shrink: 0; }
-
-  .badge {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    padding: 3px 9px;
-    border-radius: 999px;
-    flex-shrink: 0;
-    width: 64px;
-    text-align: center;
-  }
-
-  .badge.good { background: var(--good-soft); color: var(--good); }
-  .badge.critical { background: var(--critical-soft); color: var(--critical); }
-  .badge.neutral { background: var(--neutral-soft); color: var(--neutral-badge); }
-
-  .score-track {
-    flex: 1;
-    height: 5px;
-    border-radius: 3px;
-    background: var(--surface-alt);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .score-fill {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    border-radius: 3px;
-  }
-
-  .score-fill.good { background: var(--good); }
-  .score-fill.critical { background: var(--critical); }
-
-  .score-value {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 12px;
-    color: var(--ink-muted);
-    width: 40px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  .empty-state, .placeholder {
-    background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 12px;
-    padding: 28px 20px;
-    text-align: center;
-    color: var(--ink-muted);
-    font-size: 13px;
-  }
-
-  .empty-state .display { color: var(--ink); font-size: 17px; margin-bottom: 6px; }
-
-  footer {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 4px 18px 0;
-    font-size: 11px;
-    color: var(--ink-faint);
-    line-height: 1.6;
-  }
-
-  footer p { margin: 0 0 6px; }
-</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  .tabs { display:flex; gap:6px; margin: 12px 0 14px; }
-  .tab { flex:1; border:1px solid var(--border); background:var(--surface-alt); color:var(--ink-muted);
-         border-radius:999px; padding:7px 10px; font:600 13px "IBM Plex Sans",sans-serif; }
-  .tab.active { background:var(--ink); color:var(--surface); border-color:var(--ink); }
-  .ret { font-family:"IBM Plex Mono",monospace; font-size:14px; }
-  .ret.good { color:var(--good); } .ret.critical { color:var(--critical); }
-  .trade-row { display:flex; justify-content:space-between; gap:8px; font-size:12px;
-               background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:9px 12px; }
-  .trade-row .why { color:var(--ink-faint); }
-  .conf { font-size:10px; color:var(--ink-faint); width:14px; text-align:center; flex-shrink:0; }
-  svg.curve { width:100%; height:70px; display:block; margin-top:10px; }
+  :root {
+    --papir: #F2F0ED;
+    --skifer: #383B46;
+    --skifer-2: #6A6E7A;
+    --skifer-3: #9A9DA6;
+    --sand: #C8B488;
+    --sand-mork: #A88F5C;
+    --stovbla: #7F95B0;
+    --panel: #DDE2E8;
+    --hvit: #FFFFFF;
+    --linje: #E3DFD8;
+    --opp: #4E7D5B;
+    --ned: #A4553A;
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+    --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html, body { margin: 0; background: var(--papir); color: var(--skifer); }
+  body { font: 400 16px/1.5 var(--sans); font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 20px 48px; }
+
+  /* topp */
+  .topp { display: flex; align-items: center; justify-content: space-between; padding: 18px 0 14px; }
+  .merke { display: flex; align-items: center; gap: 10px; font: 500 15px/1 var(--sans); letter-spacing: .18em; }
+  .merke svg { width: 22px; height: 22px; }
+  .status { font-size: 13px; color: var(--skifer-2); text-align: right; line-height: 1.35; }
+  .status.gammel { color: var(--ned); }
+
+  /* sammenligningsgraf */
+  .graf { background: var(--panel); margin: 0 -20px; padding: 22px 20px 16px; }
+  .graf h1 { font: 400 26px/1.2 var(--serif); margin: 0 0 14px; }
+  .forklaring { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 12px; padding: 0; list-style: none; }
+  .forklaring li { display: flex; align-items: center; gap: 7px; font-size: 14px; cursor: pointer; }
+  .forklaring i { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
+  .forklaring b { font-weight: 500; }
+  .forklaring li.aktiv span { font-weight: 600; }
+  svg.kurve { width: 100%; height: 190px; display: block; overflow: visible; }
+  svg.kurve text { font: 400 11px var(--sans); fill: var(--skifer-2); }
+  .tom-graf { font-size: 14px; color: var(--skifer-2); padding: 40px 0; text-align: center; }
+
+  /* faner */
+  nav.faner { display: flex; gap: 26px; border-bottom: 1px solid var(--linje); margin: 22px 0 0; }
+  nav.faner button { appearance: none; background: none; border: 0; padding: 12px 0 11px; font: 500 16px var(--sans);
+    color: var(--skifer-3); border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; }
+  nav.faner button.aktiv { color: var(--skifer); border-bottom-color: var(--sand); }
+  nav.faner button:focus-visible { outline: 2px solid var(--sand-mork); outline-offset: 2px; }
+
+  /* nøkkeltall */
+  .hode { padding: 22px 0 6px; }
+  .hode .beskr { font-size: 14px; color: var(--skifer-2); margin: 0 0 4px; }
+  .belop { font: 400 44px/1.1 var(--serif); letter-spacing: -.01em; }
+  .belop small { font: 400 18px var(--sans); color: var(--skifer-2); margin-left: 6px; }
+  .endring { font-size: 16px; font-weight: 500; margin-top: 4px; }
+  .opp { color: var(--opp); } .ned { color: var(--ned); }
+  .tall { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--linje); border: 1px solid var(--linje); margin: 18px 0 0; }
+  .tall > div { background: var(--hvit); padding: 14px 16px; }
+  .tall .n { font: 400 24px/1.2 var(--serif); }
+  .tall .t { font-size: 13px; color: var(--skifer-2); }
+  .maaler { height: 4px; background: var(--panel); margin-top: 8px; position: relative; }
+  .maaler span { position: absolute; left: 0; top: 0; bottom: 0; background: var(--sand); }
+
+  /* seksjoner */
+  section { margin-top: 32px; }
+  h2 { font: 400 22px/1.25 var(--serif); margin: 0 0 4px; }
+  .under { font-size: 14px; color: var(--skifer-2); margin: 0 0 12px; max-width: 60ch; }
+  .liste { background: var(--hvit); border: 1px solid var(--linje); }
+  .rad { display: grid; align-items: center; gap: 10px; padding: 11px 16px; border-top: 1px solid var(--linje); font-size: 15px; }
+  .rad:first-child { border-top: 0; }
+  .rad .navn { font-weight: 600; letter-spacing: .02em; }
+  .rad .liten { font-size: 13px; color: var(--skifer-2); }
+  .rad .hoyre { text-align: right; }
+  .pos { grid-template-columns: 1fr auto auto; }
+  .pos .pnl { min-width: 64px; text-align: right; font-weight: 500; }
+  .handel { grid-template-columns: auto 1fr auto; }
+  .merkelapp { font-size: 12px; font-weight: 600; padding: 2px 8px; border: 1px solid currentColor; }
+  .sig { grid-template-columns: 64px 70px 1fr 46px; }
+  .sig .beslutning { font-size: 13px; font-weight: 600; }
+  .sig .beslutning.kjop { color: var(--opp); } .sig .beslutning.selg { color: var(--ned); } .sig .beslutning.avvent { color: var(--skifer-3); }
+  .sig .bar { height: 6px; background: var(--papir); position: relative; }
+  .sig .bar::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--skifer-3); }
+  .sig .bar span { position: absolute; top: 0; bottom: 0; }
+  .sig .score { text-align: right; font-size: 14px; }
+  .tom { padding: 22px 16px; font-size: 15px; color: var(--skifer-2); }
+  .mer { appearance: none; background: none; border: 0; border-top: 1px solid var(--linje); width: 100%; padding: 12px 16px;
+    font: 500 14px var(--sans); color: var(--sand-mork); text-align: left; cursor: pointer; }
+  footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--linje); font-size: 13px; color: var(--skifer-2); max-width: 62ch; }
 </style>
 </head>
 <body>
-<header>
-  <div class="eyebrow">
-    <h1 id="title">Kryptosignaler</h1>
-    <div class="updated-block">
-      <span class="updated" id="updated-label">laster …</span>
-      <span class="countdown" id="countdown-label"></span>
+<div class="wrap">
+  <header class="topp">
+    <div class="merke" aria-label="Krypto">
+      <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#C8B488"/><path d="M5 14 L9 10 L12 12.5 L17 7" stroke="#383B46" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      KRYPTO
     </div>
-  </div>
-  <div class="tabs">
-    <button class="tab active" data-sys="system1">System 1 · 13</button>
-    <button class="tab" data-sys="krypto50">Krypto50 · 4t</button>
-  </div>
-  <div class="equity-row"><span class="equity-label">Portefølje</span></div>
-  <div class="equity-row">
-    <span class="equity-value num" id="equity-value">–</span>
-    <span class="ret" id="ret-value"></span>
-  </div>
-  <svg class="curve" id="curve" viewBox="0 0 300 70" preserveAspectRatio="none"></svg>
-</header>
+    <div class="status" id="status">henter data …</div>
+  </header>
 
-<main>
-  <div class="tiles" id="tiles"></div>
+  <div class="graf">
+    <h1>Utvikling siden start</h1>
+    <ul class="forklaring" id="forklaring"></ul>
+    <svg class="kurve" id="kurve" viewBox="0 0 340 190" preserveAspectRatio="none" role="img" aria-label="Avkastning i prosent for de tre systemene"></svg>
+  </div>
+
+  <nav class="faner" id="faner" aria-label="Velg system"></nav>
+
+  <div class="hode">
+    <p class="beskr" id="beskr"></p>
+    <div class="belop" id="belop">–</div>
+    <div class="endring" id="endring"></div>
+  </div>
+  <div class="tall" id="tall"></div>
+
   <section>
     <h2>Posisjoner</h2>
-    <div class="card-list" id="positions-list"><div class="placeholder">Ingen data ennå.</div></div>
+    <p class="under" id="pos-under"></p>
+    <div class="liste" id="posisjoner"></div>
   </section>
   <section>
     <h2>Siste handler</h2>
-    <div class="card-list" id="trades-list"><div class="placeholder">Ingen handler ennå.</div></div>
+    <div class="liste" id="handler"></div>
   </section>
   <section>
     <h2>Signaler</h2>
-    <p class="section-note" id="signals-note"></p>
-    <div class="card-list" id="signals-list"><div class="placeholder">Ingen data ennå.</div></div>
+    <p class="under" id="sig-under"></p>
+    <div class="liste" id="signaler"></div>
   </section>
-</main>
 
-<footer>
-  <p>Simulert papirhandel (ikke ekte penger). Begge systemene kjøres hver time på GitHub sine servere (GitHub Actions) - ingen PC, ingen Claude, ingenting å trykke på. GitHub kan forsinke kjøringer med 5-30 min. ✓ = signalet er bekreftet (hysterese). Ikke finansiell rådgivning.</p>
-</footer>
+  <footer>
+    Simulert papirhandel med 1 000 USDT i startkapital per system. Ingen ekte penger. Systemene kjøres hver time på GitHub sine servere, ofte 5–30 minutter forsinket. Ikke finansiell rådgivning.
+  </footer>
+</div>
 
 <script>
   const BASE = "https://raw.githubusercontent.com/bjornandre-jpg/krypto-dashboard/main/state/";
-  const CAP = { system1: 60, krypto50: 80 };
-  const NAVN = { system1: "System 1", krypto50: "Krypto50" };
-  const POLL_INTERVAL_MS = 2 * 60 * 1000;
-  const STALE_AFTER_MS = 150 * 60 * 1000;
-  let sys = (location.hash || "").replace("#", "") in CAP ? location.hash.slice(1) : "system1";
-  const cache = {};
+  const SYS = {
+    system1:   { navn: "Krypto13",  farge: "#383B46", tak: 60, beskr: "13 faste mynter, daglige candles og seks signalkilder",
+                 sig: "Ny vurdering hver time. Kjøp eller salg krever samme signal to timer på rad." },
+    krypto50:  { navn: "Krypto50",  farge: "#A88F5C", tak: 80, beskr: "De 50 største myntene etter volum, 4-timers candles",
+                 sig: "Ny vurdering hver fjerde time når en candle lukkes. Samme signal to ganger på rad kreves." },
+    krypto100: { navn: "Krypto100", farge: "#7F95B0", tak: 80, beskr: "De 100 største myntene etter volum, 4-timers candles",
+                 sig: "Ny vurdering hver fjerde time når en candle lukkes. Samme signal to ganger på rad kreves." },
+  };
+  const NOKKEL = Object.keys(SYS);
+  const data = {};
+  let valgt = { krypto50: "krypto50", krypto100: "krypto100", system1: "system1", krypto13: "system1" }[location.hash.slice(1)] || "system1";
+  let visAlleSignaler = false;
 
-  const fmtUsd = (v) => v == null ? "–" : "$" + v.toLocaleString("en-US", { maximumFractionDigits: v >= 1000 ? 0 : 2 });
-  const fmtPct = (v, d = 1) => v == null ? "–" : (v >= 0 ? "+" : "") + v.toFixed(d) + "%";
-  const fmtPrice = (v) => { if (v == null) return "–"; const d = v >= 100 ? 2 : v >= 1 ? 3 : v >= 0.01 ? 5 : 8;
-    return "$" + v.toLocaleString("en-US", { maximumFractionDigits: d }); };
-  const decisionClass = (d) => d === "KJØP" ? "good" : d === "SELG" ? "critical" : "neutral";
-  const tickerName = (a) => (a || "").split(/[\/-]/)[0];
+  const nf = (v, d = 0) => v.toLocaleString("nb-NO", { minimumFractionDigits: d, maximumFractionDigits: d });
+  const pst = (v, d = 1) => (v > 0 ? "+" : v < 0 ? "−" : "") + nf(Math.abs(v), d) + " %";
+  const kurs = v => v >= 100 ? nf(v, 2) : v >= 1 ? nf(v, 3) : v >= 0.01 ? nf(v, 5) : v.toPrecision(3);
+  const tick = a => (a || "").split(/[\/-]/)[0];
+  const klokke = iso => new Date(iso).toLocaleTimeString("nb-NO", { hour: "2-digit", minute: "2-digit" });
+  const siden = iso => { const m = Math.round((Date.now() - new Date(iso)) / 60000);
+    return m < 1 ? "akkurat nå" : m < 60 ? `${m} min siden` : m < 1440 ? `${Math.round(m / 60)} t siden` : `${Math.round(m / 1440)} d siden`; };
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-  function relativeTime(iso, staleAfterMs = STALE_AFTER_MS) {
-    if (!iso) return { text: "ingen data", stale: true };
-    const ms = Date.now() - new Date(iso).getTime(), min = Math.round(ms / 60000);
-    const stale = ms > staleAfterMs;
-    if (min < 1) return { text: "akkurat nå", stale };
-    if (min < 60) return { text: `${min} min siden`, stale };
-    return { text: `${Math.round(min / 60)} t siden`, stale };
-  }
-
-  function countdownLabel(iso) {
-    if (!iso) return "";
-    const rem = new Date(iso).getTime() + 60 * 60 * 1000 - Date.now();
-    if (rem <= 0) return `neste kjøring: <span class="num">venter …</span>`;
-    const s = Math.floor(rem / 1000);
-    return `neste om ca <span class="num">${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}</span>`;
-  }
-
-  function renderCurve(data) {
-    const el = document.getElementById("curve");
-    const pts = (data.equity_curve || []).map(p => p[1]);
-    if (pts.length < 2) { el.innerHTML = ""; return; }
-    const lo = Math.min(...pts, data.start_capital), hi = Math.max(...pts, data.start_capital), span = (hi - lo) || 1;
-    const y = v => 66 - (v - lo) / span * 62;
-    const d = pts.map((v, i) => `${(i / (pts.length - 1) * 300).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
-    el.innerHTML = `<line x1="0" x2="300" y1="${y(data.start_capital)}" y2="${y(data.start_capital)}" stroke="var(--ink-faint)" stroke-dasharray="3 3" stroke-width="1" vector-effect="non-scaling-stroke"/>
-      <polyline points="${d}" fill="none" stroke="var(--accent)" stroke-width="2" vector-effect="non-scaling-stroke"/>`;
-  }
-
-  function renderTiles(data) {
-    const fg = data.fear_greed_value;
-    const fgLabel = fg == null ? "–" : fg <= 24 ? "Ekstrem frykt" : fg <= 44 ? "Frykt" : fg <= 55 ? "Nøytral" : fg <= 75 ? "Grådighet" : "Ekstrem grådighet";
-    const e = data.total_exposure_pct;
-    document.getElementById("tiles").innerHTML = `
-      <div class="tile"><div class="label">Total eksponering</div>
-        <div class="value num">${e == null ? "–" : e.toFixed(0) + "%"}</div>
-        <div class="sub">i krypto (tak ${CAP[sys]}%)</div></div>
-      <div class="tile"><div class="label">Fear &amp; Greed</div>
-        <div class="value num">${fg == null ? "–" : fg} <span style="font-family:'IBM Plex Sans';font-size:12px;color:var(--ink-muted)">${fgLabel}</span></div>
-        <div class="fg-gauge">${fg == null ? "" : `<div class="marker" style="left:${fg}%"></div>`}</div></div>`;
-  }
-
-  function renderPositions(data) {
-    const el = document.getElementById("positions-list"), ps = data.positions || [];
-    if (!ps.length) { el.innerHTML = `<div class="placeholder">Ingen åpne posisjoner akkurat nå.</div>`; return; }
-    el.innerHTML = ps.sort((a, b) => b.value_usd - a.value_usd).map(p => `
-      <div class="position-card"><div class="top-line">
-        <span class="asset-ticker">${tickerName(p.asset)}</span>
-        <span class="pnl ${p.pnl_pct >= 0 ? "good" : "critical"}">${fmtPct(p.pnl_pct)}</span></div>
-        <div class="position-detail">
-          <div>Verdi<span class="num">${fmtUsd(p.value_usd)}</span></div>
-          <div>Kostpris<span class="num">${fmtPrice(p.entry_price)}</span></div>
-          <div>Nå<span class="num">${fmtPrice(p.current_price)}</span></div></div></div>`).join("");
-  }
-
-  function renderTrades(data) {
-    const el = document.getElementById("trades-list"), ts = (data.recent_trades || []).slice(0, 8);
-    if (!ts.length) { el.innerHTML = `<div class="placeholder">Ingen handler ennå.</div>`; return; }
-    el.innerHTML = ts.map(t => `
-      <div class="trade-row"><span><span class="badge ${decisionClass(t.side)}" style="width:auto;padding:2px 7px">${t.side}</span>
-        <b>${tickerName(t.mynt)}</b> ${fmtUsd(parseFloat(t.belop_usdt))}</span>
-        <span class="why">${t.grunn} · ${relativeTime(t.tid).text}</span></div>`).join("");
-  }
-
-  function renderSignals(data) {
-    const el = document.getElementById("signals-list");
-    const ss = (data.signals || []).slice().sort((a, b) => (b.score ?? -9) - (a.score ?? -9));
-    document.getElementById("signals-note").textContent = sys === "krypto50"
-      ? "Sortert etter score. Nye beslutninger hver 4. time (lukket candle), to på rad kreves."
-      : "Sortert etter score. Oppdateres hver time, to like beslutninger på rad kreves.";
-    if (!ss.length) { el.innerHTML = `<div class="placeholder">Ingen signaler ennå.</div>`; return; }
-    el.innerHTML = ss.map(s => {
-      const sc = s.score == null ? 0 : Math.max(-1, Math.min(1, s.score)), pct = Math.abs(sc) * 50;
-      return `<div class="signal-row">
-        <span class="asset-ticker">${tickerName(s.asset)}</span>
-        <span class="badge ${decisionClass(s.decision)}">${s.decision || "–"}</span>
-        <span class="conf">${s.confirmed && s.decision !== "AVVENT" ? "✓" : ""}</span>
-        <div class="score-track"><div class="score-fill ${sc >= 0 ? "good" : "critical"}" style="left:${sc >= 0 ? 50 : 50 - pct}%;width:${pct}%"></div></div>
-        <span class="score-value">${s.score == null ? "–" : s.score.toFixed(2)}</span></div>`;
+  function tegnGraf() {
+    const svg = document.getElementById("kurve"), W = 340, H = 190, L = 34, R = 6, T = 8, B = 22;
+    const serier = NOKKEL.filter(k => data[k]).map(k => {
+      const d = data[k], s = d.start_capital || 1000;
+      const pkt = (d.equity_curve || []).map(([t, v]) => [new Date(t).getTime(), (v / s - 1) * 100]);
+      pkt.push([new Date(d.updated_at).getTime(), (d.equity_usd / s - 1) * 100]);
+      return { k, pkt };
+    }).filter(s => s.pkt.length);
+    document.getElementById("forklaring").innerHTML = NOKKEL.map(k => {
+      const d = data[k]; const r = d ? (d.equity_usd / (d.start_capital || 1000) - 1) * 100 : null;
+      return `<li data-k="${k}" class="${k === valgt ? "aktiv" : ""}"><i style="background:${SYS[k].farge}"></i><span>${SYS[k].navn}</span>
+        <b class="${r > 0 ? "opp" : r < 0 ? "ned" : ""}">${r == null ? "–" : pst(r, 2)}</b></li>`;
     }).join("");
+    document.querySelectorAll("#forklaring li").forEach(li => li.onclick = () => velg(li.dataset.k));
+    if (!serier.length) { svg.innerHTML = ""; return; }
+    const alle = serier.flatMap(s => s.pkt);
+    let t0 = Math.min(...alle.map(p => p[0])), t1 = Math.max(...alle.map(p => p[0]));
+    if (t1 - t0 < 3600e3) t0 = t1 - 3600e3;
+    let y0 = Math.min(0, ...alle.map(p => p[1])), y1 = Math.max(0, ...alle.map(p => p[1]));
+    const pad = Math.max(0.5, (y1 - y0) * 0.12); y0 -= pad; y1 += pad;
+    const x = t => L + (t - t0) / (t1 - t0) * (W - L - R), y = v => T + (y1 - v) / (y1 - y0) * (H - T - B);
+    const steg = [0.25, 0.5, 1, 2, 5, 10, 20, 50, 100].find(s => (y1 - y0) / s <= 5) || 200;
+    let g = "";
+    for (let v = Math.ceil(y0 / steg) * steg; v <= y1; v += steg) {
+      g += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="${v === 0 ? "#6A6E7A" : "#C5CCD5"}" stroke-width="1" ${v === 0 ? "" : 'stroke-dasharray="2 3"'} vector-effect="non-scaling-stroke"/>
+            <text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${(v > 0 ? "+" : v < 0 ? "−" : "") + nf(Math.abs(v), steg < 1 ? 2 : 0)}%</text>`;
+    }
+    const dato = t => new Date(t).toLocaleDateString("nb-NO", { day: "numeric", month: "short" });
+    g += `<text x="${L}" y="${H - 4}">${dato(t0)}</text><text x="${W - R}" y="${H - 4}" text-anchor="end">${dato(t1)}</text>`;
+    for (const s of [...serier].sort((a, b) => (a.k === valgt) - (b.k === valgt))) {
+      const aktiv = s.k === valgt, p = s.pkt.map(([t, v]) => `${x(t).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+      g += `<polyline points="${p}" fill="none" stroke="${SYS[s.k].farge}" stroke-width="${aktiv ? 2.6 : 1.6}"
+             stroke-opacity="${aktiv ? 1 : .75}" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`;
+      const [lt, lv] = s.pkt[s.pkt.length - 1];
+      g += `<circle cx="${x(lt)}" cy="${y(lv)}" r="${aktiv ? 3.5 : 2.5}" fill="${SYS[s.k].farge}"/>`;
+    }
+    svg.innerHTML = g;
   }
 
-  function tickHeader() {
-    const d = cache[sys]; if (!d) return;
-    const { text, stale } = relativeTime(d.updated_at);
-    const l = document.getElementById("updated-label");
-    l.textContent = "oppdatert " + text; l.classList.toggle("stale", stale);
-    document.getElementById("countdown-label").innerHTML = countdownLabel(d.updated_at);
+  function tegnSystem() {
+    document.getElementById("faner").innerHTML = NOKKEL.map(k =>
+      `<button data-k="${k}" class="${k === valgt ? "aktiv" : ""}" aria-pressed="${k === valgt}">${SYS[k].navn}</button>`).join("");
+    document.querySelectorAll("#faner button").forEach(b => b.onclick = () => velg(b.dataset.k));
+    const d = data[valgt], S = SYS[valgt];
+    document.getElementById("beskr").textContent = S.beskr;
+    document.getElementById("sig-under").textContent = S.sig;
+    if (!d) { document.getElementById("belop").textContent = "–"; return; }
+    const r = (d.equity_usd / (d.start_capital || 1000) - 1) * 100;
+    document.getElementById("belop").innerHTML = `${nf(d.equity_usd, 2)}<small>USDT</small>`;
+    const e = document.getElementById("endring");
+    e.textContent = `${pst(r, 2)} siden start`; e.className = "endring " + (r > 0 ? "opp" : r < 0 ? "ned" : "");
+    const eks = d.total_exposure_pct || 0, fg = d.fear_greed_value;
+    const fgTekst = fg == null ? "" : fg <= 24 ? "Ekstrem frykt" : fg <= 44 ? "Frykt" : fg <= 55 ? "Nøytral" : fg <= 75 ? "Grådighet" : "Ekstrem grådighet";
+    document.getElementById("tall").innerHTML = `
+      <div><div class="n">${nf(eks, 0)} %</div><div class="t">investert i krypto, tak ${S.tak} %</div>
+        <div class="maaler"><span style="width:${Math.min(100, eks / S.tak * 100)}%"></span></div></div>
+      <div><div class="n">${fg ?? "–"}</div><div class="t">Fear &amp; Greed: ${fgTekst}</div>
+        <div class="maaler"><span style="width:${fg ?? 0}%"></span></div></div>`;
+
+    const ps = (d.positions || []).slice().sort((a, b) => b.value_usd - a.value_usd);
+    document.getElementById("pos-under").textContent = ps.length
+      ? `${ps.length} åpne posisjoner, til sammen ${nf(d.positions_value_usd || 0, 0)} USDT. Kontanter ${nf(d.cash_usd, 0)} USDT.` : "";
+    document.getElementById("posisjoner").innerHTML = ps.length ? ps.map(p => `
+      <div class="rad pos"><div><div class="navn">${esc(tick(p.asset))}</div><div class="liten">kjøpt ${kurs(p.entry_price)}, nå ${kurs(p.current_price)}</div></div>
+        <div class="hoyre">${nf(p.value_usd, 0)}</div><div class="pnl ${p.pnl_pct >= 0 ? "opp" : "ned"}">${pst(p.pnl_pct)}</div></div>`).join("")
+      : `<div class="tom">Ingen åpne posisjoner. Systemet kjøper når et signal er bekreftet.</div>`;
+
+    const hs = (d.recent_trades || []).slice(0, 10);
+    document.getElementById("handler").innerHTML = hs.length ? hs.map(h => `
+      <div class="rad handel"><span class="merkelapp ${h.side === "KJØP" ? "opp" : "ned"}">${h.side === "KJØP" ? "Kjøp" : "Salg"}</span>
+        <div><span class="navn">${esc(tick(h.mynt))}</span> <span class="liten">${esc(h.grunn)}</span></div>
+        <div class="hoyre"><div>${nf(parseFloat(h.belop_usdt), 0)}</div><div class="liten">${siden(h.tid)}</div></div></div>`).join("")
+      : `<div class="tom">Ingen handler ennå.</div>`;
+
+    const ss = (d.signals || []).slice().sort((a, b) => (b.score ?? -9) - (a.score ?? -9));
+    const vis = visAlleSignaler ? ss : ss.slice(0, 12);
+    document.getElementById("signaler").innerHTML = ss.length ? vis.map(s => {
+      const sc = Math.max(-1, Math.min(1, s.score ?? 0)), w = Math.abs(sc) * 50;
+      const kl = s.decision === "KJØP" ? "kjop" : s.decision === "SELG" ? "selg" : "avvent";
+      const tekst = { KJØP: "Kjøp", SELG: "Selg", AVVENT: "Avvent" }[s.decision] || "–";
+      return `<div class="rad sig"><span class="navn">${esc(tick(s.asset))}</span>
+        <span class="beslutning ${kl}">${tekst}${s.confirmed && s.decision !== "AVVENT" ? " ✓" : ""}</span>
+        <div class="bar"><span style="left:${sc >= 0 ? 50 : 50 - w}%;width:${w}%;background:${sc >= 0 ? "var(--opp)" : "var(--ned)"}"></span></div>
+        <span class="score">${s.score == null ? "–" : nf(s.score, 2)}</span></div>`;
+    }).join("") + (ss.length > 12 ? `<button class="mer" id="mer">${visAlleSignaler ? "Vis færre" : `Vis alle ${ss.length}`}</button>` : "")
+      : `<div class="tom">Ingen signaler ennå.</div>`;
+    const m = document.getElementById("mer"); if (m) m.onclick = () => { visAlleSignaler = !visAlleSignaler; tegnSystem(); };
   }
 
-  function render() {
-    document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b.dataset.sys === sys));
-    document.getElementById("title").textContent = NAVN[sys];
-    const d = cache[sys]; if (!d) return;
-    tickHeader();
-    document.getElementById("equity-value").textContent = fmtUsd(d.equity_usd);
-    const r = (d.equity_usd / d.start_capital - 1) * 100, rv = document.getElementById("ret-value");
-    rv.textContent = fmtPct(r, 2) + " siden start"; rv.className = "ret " + (r >= 0 ? "good" : "critical");
-    renderCurve(d); renderTiles(d); renderPositions(d); renderTrades(d); renderSignals(d);
+  function tegnStatus() {
+    const tider = NOKKEL.map(k => data[k]?.updated_at).filter(Boolean).sort();
+    const el = document.getElementById("status");
+    if (!tider.length) return;
+    const siste = tider[tider.length - 1], gammel = Date.now() - new Date(siste) > 150 * 60000;
+    el.className = "status" + (gammel ? " gammel" : "");
+    el.innerHTML = `oppdatert ${siden(siste)}<br>neste ca. kl. ${klokke(new Date(new Date(siste).getTime() + 3600e3))}`;
   }
 
-  async function fetchSys(s) {
-    try {
-      const resp = await fetch(BASE + s + "/dashboard.json?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" });
-      if (!resp.ok) throw new Error("HTTP " + resp.status);
-      cache[s] = await resp.json();
-      if (s === sys) render();
-    } catch (e) { console.error("Klarte ikke hente " + s, e); }
-  }
-  const fetchAll = () => { fetchSys("system1"); fetchSys("krypto50"); };
+  function velg(k) { valgt = k; visAlleSignaler = false; history.replaceState(null, "", "#" + (k === "system1" ? "krypto13" : k)); tegnGraf(); tegnSystem(); }
 
-  document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
-    sys = b.dataset.sys; history.replaceState(null, "", "#" + sys); render();
-  }));
-  setInterval(tickHeader, 1000);
-  fetchAll(); setInterval(fetchAll, POLL_INTERVAL_MS);
-  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") fetchAll(); });
-  render();
+  async function hent() {
+    await Promise.all(NOKKEL.map(async k => {
+      try {
+        const r = await fetch(BASE + k + "/dashboard.json?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" });
+        if (r.ok) data[k] = await r.json();
+      } catch (e) { console.error(k, e); }
+    }));
+    tegnStatus(); tegnGraf(); tegnSystem();
+  }
+  tegnSystem();
+  hent(); setInterval(hent, 2 * 60 * 1000); setInterval(tegnStatus, 30 * 1000);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") hent(); });
 </script>
 </body>
 </html>
