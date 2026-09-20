@@ -1,5 +1,5 @@
 {
- "kontanter": 692.9501385768821,
+ "kontanter": 706.9099620376725,
  "startkapital": 1000.0,
  "posisjoner": {
   "AVAX-USDT": {
@@ -102,11 +102,6 @@
    "snittpris": 1.10457,
    "maalvekt": 0.012563033323875886
   },
-  "CELR-USDT": {
-   "mengde": 4247.354789680376,
-   "snittpris": 0.00359,
-   "maalvekt": 0.015263266961914462
-  },
   "XTZ-USDT": {
    "mengde": 34.84002506332625,
    "snittpris": 0.346,
@@ -156,7 +151,7 @@
  "dag": {
   "dato": "2026-09-20",
   "start_egenkapital": 1000.0,
-  "handler": 30
+  "handler": 31
  },
  "opprettet": "2026-09-20T17:20:01Z"
 }
