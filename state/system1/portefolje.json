@@ -1,5 +1,5 @@
 {
- "kontanter": 528.0696219451936,
+ "kontanter": 528.1666709291551,
  "startkapital": 1000.0,
  "posisjoner": {
   "LINK-USDT": {
@@ -13,50 +13,50 @@
    "maalvekt": 0.03832922868573567
   },
   "SOL-USDT": {
-   "mengde": 0.3463133931481344,
-   "snittpris": 110.76950681472893,
-   "maalvekt": 0.03819620232821258
+   "mengde": 0.39833224551792007,
+   "snittpris": 110.65595651309293,
+   "maalvekt": 0.04244197272201682
   },
   "BNB-USDT": {
    "mengde": 0.05014004477164272,
    "snittpris": 759.071,
-   "maalvekt": 0.033792565896386954
+   "maalvekt": 0.03599585437884939
   },
   "UNI-USDT": {
    "mengde": 7.700412448775963,
    "snittpris": 8.542108445122292,
-   "maalvekt": 0.06297919536204334
+   "maalvekt": 0.06353665419338313
   },
   "CAKE-USDT": {
-   "mengde": 24.02905586926812,
+   "mengde": 21.681969276684057,
    "snittpris": 2.4007052462775142,
-   "maalvekt": 0.05756192713742793
+   "maalvekt": 0.05216703319033161
   },
   "AVAX-USDT": {
    "mengde": 5.159837441453333,
    "snittpris": 9.891597830700313,
-   "maalvekt": 0.05621661863972262
+   "maalvekt": 0.05550010713883796
   },
   "DOT-USDT": {
    "mengde": 52.30563431057949,
    "snittpris": 1.1237,
-   "maalvekt": 0.05947555182576478
+   "maalvekt": 0.06347283249942458
   },
   "LTC-USDT": {
    "mengde": 1.1277616898438092,
    "snittpris": 57.83707834188463,
-   "maalvekt": 0.0634918200069011
+   "maalvekt": 0.05977929389014835
   },
   "ADA-USDT": {
    "mengde": 172.6262011054457,
    "snittpris": 0.22869999999999996,
-   "maalvekt": 0.03720709631374523
+   "maalvekt": 0.04080240648215725
   }
  },
  "dag": {
   "dato": "2026-09-20",
   "start_egenkapital": 1021.6995127521532,
-  "handler": 16
+  "handler": 18
  },
  "opprettet": "2026-09-05T00:00:00Z",
  "gjenopprettet": "Gjenopprettet 2026-09-19 fra siste Gist-status (2026-09-16T04:32Z) etter at PC-en ble ødelagt. Handelshistorikk før dette gikk tapt."
