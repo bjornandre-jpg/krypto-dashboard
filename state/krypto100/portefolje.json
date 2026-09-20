@@ -1,5 +1,5 @@
 {
- "kontanter": 706.9099620376725,
+ "kontanter": 719.8825927687928,
  "startkapital": 1000.0,
  "posisjoner": {
   "AVAX-USDT": {
@@ -31,11 +31,6 @@
    "mengde": 1545333.6709309563,
    "snittpris": 3.998e-06,
    "maalvekt": 0.00618442844482679
-  },
-  "AKE-USDT": {
-   "mengde": 227.81783065732992,
-   "snittpris": 0.0627935,
-   "maalvekt": 0.014319798748129177
   },
   "LTC-USDT": {
    "mengde": 0.16793170583649839,
@@ -151,7 +146,7 @@
  "dag": {
   "dato": "2026-09-20",
   "start_egenkapital": 1000.0,
-  "handler": 31
+  "handler": 32
  },
  "opprettet": "2026-09-20T17:20:01Z"
 }
