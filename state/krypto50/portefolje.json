@@ -1,5 +1,5 @@
 {
- "kontanter": 443.5581176091984,
+ "kontanter": 460.22123680210797,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -16,11 +16,6 @@
    "mengde": 0.03674581161278728,
    "snittpris": 547.57,
    "maalvekt": 0.020141045109923858
-  },
-  "AVAX-USDT": {
-   "mengde": 1.735309924251086,
-   "snittpris": 10.499,
-   "maalvekt": 0.018237256150863013
   },
   "NEAR-USDT": {
    "mengde": 4.317637995907687,
@@ -156,7 +151,7 @@
  "dag": {
   "dato": "2026-09-20",
   "start_egenkapital": 1000.0,
-  "handler": 30
+  "handler": 31
  },
  "opprettet": "2026-09-19T20:26:56Z"
 }
