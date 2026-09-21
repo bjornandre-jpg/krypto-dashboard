@@ -2,7 +2,11 @@
  "kontanter": 1000.0,
  "startkapital": 1000.0,
  "posisjoner": {},
- "dag": {},
+ "dag": {
+  "dato": "2026-09-21",
+  "start_egenkapital": 1000.0,
+  "handler": 0
+ },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
 }
