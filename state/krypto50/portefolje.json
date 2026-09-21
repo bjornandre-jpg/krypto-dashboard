@@ -1,5 +1,5 @@
 {
- "kontanter": 501.0244260496062,
+ "kontanter": 519.7455303990507,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -16,11 +16,6 @@
    "mengde": 0.02464762983245116,
    "snittpris": 547.57,
    "maalvekt": 0.016390109691005943
-  },
-  "NEAR-USDT": {
-   "mengde": 4.317637995907687,
-   "snittpris": 3.5713,
-   "maalvekt": 0.01847536725510243
   },
   "TAO-USDT": {
    "mengde": 0.061739889671654974,
@@ -151,7 +146,7 @@
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1017.1233691264114,
-  "handler": 8
+  "handler": 9
  },
  "opprettet": "2026-09-19T20:26:56Z"
 }
