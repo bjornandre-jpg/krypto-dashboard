@@ -1,5 +1,5 @@
 {
- "kontanter": 545.3353944488204,
+ "kontanter": 556.1237225210107,
  "startkapital": 1000.0,
  "posisjoner": {
   "AVAX-USDT": {
@@ -51,11 +51,6 @@
    "mengde": 8.935547388263204,
    "snittpris": 0.9476,
    "maalvekt": 0.00914465775360378
-  },
-  "STRK-USDT": {
-   "mengde": 241.37521679458413,
-   "snittpris": 0.0494,
-   "maalvekt": 0.009365411645922488
   },
   "AR-USDT": {
    "mengde": 2.470214790541174,
@@ -256,7 +251,7 @@
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1004.998460742193,
-  "handler": 33
+  "handler": 34
  },
  "opprettet": "2026-09-20T17:20:01Z"
 }

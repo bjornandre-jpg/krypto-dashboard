@@ -1,5 +1,5 @@
 {
- "kontanter": 423.67672680587987,
+ "kontanter": 443.5498610932127,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -26,11 +26,6 @@
    "mengde": 17.63816854877563,
    "snittpris": 1.1296362086526024,
    "maalvekt": 0.021453106553856446
-  },
-  "SUI-USDT": {
-   "mengde": 18.91871356599858,
-   "snittpris": 0.8634000000000001,
-   "maalvekt": 0.01480261666882249
   },
   "UNI-USDT": {
    "mengde": 1.4852331024378636,
@@ -171,7 +166,7 @@
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1017.1233691264114,
-  "handler": 23
+  "handler": 24
  },
  "opprettet": "2026-09-19T20:26:56Z"
 }
