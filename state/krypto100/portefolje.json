@@ -1,5 +1,5 @@
 {
- "kontanter": 581.7684008872241,
+ "kontanter": 593.4729899874451,
  "startkapital": 1000.0,
  "posisjoner": {
   "AVAX-USDT": {
@@ -33,7 +33,7 @@
    "maalvekt": 0.009522292930569625
   },
   "INJ-USDT": {
-   "mengde": 1.6493531607096978,
+   "mengde": 1.002852735500854,
    "snittpris": 7.681,
    "maalvekt": 0.00787450889211847
   },
@@ -167,11 +167,6 @@
    "snittpris": 0.4277,
    "maalvekt": 0.006675440998497261
   },
-  "SOMI-USDT": {
-   "mengde": 35.50248546588467,
-   "snittpris": 0.2029,
-   "maalvekt": 0.006863922499122794
-  },
   "OP-USDT": {
    "mengde": 73.85387258716295,
    "snittpris": 0.1277,
@@ -241,7 +236,7 @@
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1004.998460742193,
-  "handler": 38
+  "handler": 40
  },
  "opprettet": "2026-09-20T17:20:01Z"
 }

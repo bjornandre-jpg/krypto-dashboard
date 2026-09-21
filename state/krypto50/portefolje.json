@@ -1,5 +1,5 @@
 {
- "kontanter": 405.5326388853781,
+ "kontanter": 424.6793480133977,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -132,11 +132,6 @@
    "snittpris": 0.3503,
    "maalvekt": 0.013565245830859184
   },
-  "NEAR-USDT": {
-   "mengde": 4.815909491424637,
-   "snittpris": 4.352,
-   "maalvekt": 0.02179535028992561
-  },
   "VVV-USDT": {
    "mengde": 0.9011530310603618,
    "snittpris": 32.08990517184401,
@@ -181,7 +176,7 @@
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1017.1233691264114,
-  "handler": 30
+  "handler": 31
  },
  "opprettet": "2026-09-19T20:26:56Z"
 }
