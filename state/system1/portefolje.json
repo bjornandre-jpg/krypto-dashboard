@@ -1,11 +1,72 @@
 {
- "kontanter": 1000.0,
+ "kontanter": 399.4097720846243,
  "startkapital": 1000.0,
- "posisjoner": {},
+ "posisjoner": {
+  "BTC-USDT": {
+   "mengde": 0.0004341293612111516,
+   "snittpris": 87001.2,
+   "maalvekt": 0.037807582963567204
+  },
+  "ETH-USDT": {
+   "mengde": 0.016282461482470877,
+   "snittpris": 2800.0,
+   "maalvekt": 0.04563652867959806
+  },
+  "SOL-USDT": {
+   "mengde": 0.5106768739404494,
+   "snittpris": 119.26,
+   "maalvekt": 0.06096428827441241
+  },
+  "BNB-USDT": {
+   "mengde": 0.06151471402058326,
+   "snittpris": 805.372,
+   "maalvekt": 0.04959182008026545
+  },
+  "DOGE-USDT": {
+   "mengde": 405.4248370496647,
+   "snittpris": 0.10057000000000002,
+   "maalvekt": 0.04081439025233712
+  },
+  "ADA-USDT": {
+   "mengde": 240.5552852286601,
+   "snittpris": 0.2463,
+   "maalvekt": 0.05930807482664562
+  },
+  "LINK-USDT": {
+   "mengde": 3.6026668766478016,
+   "snittpris": 13.2195,
+   "maalvekt": 0.04767312790374936
+  },
+  "AVAX-USDT": {
+   "mengde": 5.3069011439719205,
+   "snittpris": 11.041,
+   "maalvekt": 0.05865214767827225
+  },
+  "DOT-USDT": {
+   "mengde": 56.439365373220056,
+   "snittpris": 1.1865,
+   "maalvekt": 0.0670323393546803
+  },
+  "LTC-USDT": {
+   "mengde": 0.9687527947761437,
+   "snittpris": 62.72,
+   "maalvekt": 0.06082099628464438
+  },
+  "UNI-USDT": {
+   "mengde": 7.003417949664197,
+   "snittpris": 8.8335,
+   "maalvekt": 0.06192661907743612
+  },
+  "CAKE-USDT": {
+   "mengde": 4.064369936092492,
+   "snittpris": 2.547,
+   "maalvekt": 0.05663109213710757
+  }
+ },
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1000.0,
-  "handler": 0
+  "handler": 12
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
