@@ -1,5 +1,5 @@
 {
- "kontanter": 483.105436681905,
+ "kontanter": 482.86587546077044,
  "startkapital": 1000.0,
  "posisjoner": {
   "LINK-USDT": {
@@ -10,53 +10,53 @@
   "ETH-USDT": {
    "mengde": 0.014070317130741347,
    "snittpris": 2638.952773510331,
-   "maalvekt": 0.03630508693681416
+   "maalvekt": 0.03930037148719605
   },
   "SOL-USDT": {
    "mengde": 0.5105205464260579,
    "snittpris": 111.02383219558446,
-   "maalvekt": 0.05319438134513269
+   "maalvekt": 0.056834983115904215
   },
   "BNB-USDT": {
    "mengde": 0.060131556340703426,
    "snittpris": 764.4572304294554,
-   "maalvekt": 0.043715256834192535
+   "maalvekt": 0.04416834955967602
   },
   "UNI-USDT": {
    "mengde": 7.700412448775963,
    "snittpris": 8.542108445122292,
-   "maalvekt": 0.06369313684780853
+   "maalvekt": 0.06228713042028211
   },
   "CAKE-USDT": {
-   "mengde": 25.128774352619246,
+   "mengde": 23.116844673152983,
    "snittpris": 2.414325077326247,
-   "maalvekt": 0.06094938764347431
+   "maalvekt": 0.05659579074998627
   },
   "AVAX-USDT": {
-   "mengde": 5.159837441453333,
-   "snittpris": 9.891597830700313,
-   "maalvekt": 0.05940979487010857
+   "mengde": 5.643257212555658,
+   "snittpris": 9.987917778354028,
+   "maalvekt": 0.060091272227299354
   },
   "DOT-USDT": {
    "mengde": 57.440955864887115,
    "snittpris": 1.1263820522797634,
-   "maalvekt": 0.06539362386059376
+   "maalvekt": 0.06602752896994186
   },
   "LTC-USDT": {
    "mengde": 1.1277616898438092,
    "snittpris": 57.83707834188463,
-   "maalvekt": 0.06676836501554291
+   "maalvekt": 0.06745278404533833
   },
   "ADA-USDT": {
    "mengde": 223.38535769569964,
    "snittpris": 0.22966736547413233,
-   "maalvekt": 0.052068888028690245
+   "maalvekt": 0.05269730744237283
   }
  },
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1039.4594533707368,
-  "handler": 7
+  "handler": 9
  },
  "opprettet": "2026-09-05T00:00:00Z",
  "gjenopprettet": "Gjenopprettet 2026-09-19 fra siste Gist-status (2026-09-16T04:32Z) etter at PC-en ble ødelagt. Handelshistorikk før dette gikk tapt."
