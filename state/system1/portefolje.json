@@ -1,62 +1,62 @@
 {
- "kontanter": 461.29740526515343,
+ "kontanter": 473.1485764714488,
  "startkapital": 1000.0,
  "posisjoner": {
   "LINK-USDT": {
    "mengde": 3.3932210083724055,
    "snittpris": 11.202871779009348,
-   "maalvekt": 0.041826110418882484
+   "maalvekt": 0.04406675322775368
   },
   "ETH-USDT": {
    "mengde": 0.016993322768926077,
    "snittpris": 2649.573856486617,
-   "maalvekt": 0.043959118277535514
+   "maalvekt": 0.04700508107658137
   },
   "SOL-USDT": {
    "mengde": 0.5105205464260579,
    "snittpris": 111.02383219558446,
-   "maalvekt": 0.05984770861057159
+   "maalvekt": 0.060742369900499055
   },
   "BNB-USDT": {
    "mengde": 0.060131556340703426,
    "snittpris": 764.4572304294554,
-   "maalvekt": 0.04936290519312439
+   "maalvekt": 0.04558407584223883
   },
   "UNI-USDT": {
    "mengde": 7.102191201974298,
    "snittpris": 8.542108445122292,
-   "maalvekt": 0.06228713042028211
+   "maalvekt": 0.0612377758036456
   },
   "CAKE-USDT": {
-   "mengde": 25.837616455804877,
+   "mengde": 23.250506152354095,
    "snittpris": 2.4254529361299593,
-   "maalvekt": 0.06236175299039877
+   "maalvekt": 0.05648716133441736
   },
   "AVAX-USDT": {
-   "mengde": 5.643257212555658,
+   "mengde": 5.177555015092761,
    "snittpris": 9.987917778354028,
-   "maalvekt": 0.05801480182695831
+   "maalvekt": 0.056273166177777924
   },
   "DOT-USDT": {
    "mengde": 57.440955864887115,
    "snittpris": 1.1263820522797634,
-   "maalvekt": 0.0677794773968945
+   "maalvekt": 0.06566088302774957
   },
   "LTC-USDT": {
    "mengde": 1.1277616898438092,
    "snittpris": 57.83707834188463,
-   "maalvekt": 0.06149344151955998
+   "maalvekt": 0.06158091524261461
   },
   "ADA-USDT": {
    "mengde": 249.21627812849528,
    "snittpris": 0.23054139630836307,
-   "maalvekt": 0.05683297744486553
+   "maalvekt": 0.057058250592115146
   }
  },
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1039.4594533707368,
-  "handler": 14
+  "handler": 16
  },
  "opprettet": "2026-09-05T00:00:00Z",
  "gjenopprettet": "Gjenopprettet 2026-09-19 fra siste Gist-status (2026-09-16T04:32Z) etter at PC-en ble ødelagt. Handelshistorikk før dette gikk tapt."
