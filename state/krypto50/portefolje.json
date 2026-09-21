@@ -1,5 +1,5 @@
 {
- "kontanter": 454.8974487956889,
+ "kontanter": 501.0244260496062,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -132,11 +132,6 @@
    "snittpris": 0.7324,
    "maalvekt": 0.017577251580523836
   },
-  "VVV-USDT": {
-   "mengde": 0.5933370359290591,
-   "snittpris": 25.876,
-   "maalvekt": 0.021926699782231638
-  },
   "AVAX-USDT": {
    "mengde": 1.9155950363586343,
    "snittpris": 11.726,
@@ -147,11 +142,6 @@
    "snittpris": 0.055789,
    "maalvekt": 0.021406759531129724
   },
-  "ONE-USDT": {
-   "mengde": 5621.923595755133,
-   "snittpris": 0.005746,
-   "maalvekt": 0.031791530773569596
-  },
   "XTZ-USDT": {
    "mengde": 64.58739981561038,
    "snittpris": 0.3503,
@@ -161,7 +151,7 @@
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1017.1233691264114,
-  "handler": 6
+  "handler": 8
  },
  "opprettet": "2026-09-19T20:26:56Z"
 }
