@@ -1,5 +1,5 @@
 {
- "kontanter": 574.1892688476474,
+ "kontanter": 581.7684008872241,
  "startkapital": 1000.0,
  "posisjoner": {
   "AVAX-USDT": {
@@ -187,11 +187,6 @@
    "snittpris": 0.00452,
    "maalvekt": 0.009227613979562467
   },
-  "PENDLE-USDT": {
-   "mengde": 2.9859566901507213,
-   "snittpris": 2.7689,
-   "maalvekt": 0.006978560162209113
-  },
   "ZEN-USDT": {
    "mengde": 1.0219596996128242,
    "snittpris": 8.028,
@@ -246,7 +241,7 @@
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1004.998460742193,
-  "handler": 37
+  "handler": 38
  },
  "opprettet": "2026-09-20T17:20:01Z"
 }
