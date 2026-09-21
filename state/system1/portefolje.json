@@ -1,72 +1,72 @@
 {
- "kontanter": 427.70283949440346,
+ "kontanter": 422.26344662917603,
  "startkapital": 1000.0,
  "posisjoner": {
   "LINK-USDT": {
    "mengde": 3.3932210083724055,
    "snittpris": 11.202871779009348,
-   "maalvekt": 0.04399405210237359
+   "maalvekt": 0.04496537324245949
   },
   "ETH-USDT": {
    "mengde": 0.016993322768926077,
    "snittpris": 2649.573856486617,
-   "maalvekt": 0.04386523390190697
+   "maalvekt": 0.04451472077584241
   },
   "SOL-USDT": {
    "mengde": 0.5583608902432026,
    "snittpris": 111.48960288503525,
-   "maalvekt": 0.06419776653873673
+   "maalvekt": 0.06467122863958774
   },
   "BNB-USDT": {
    "mengde": 0.060131556340703426,
    "snittpris": 764.4572304294554,
-   "maalvekt": 0.04918307992694041
+   "maalvekt": 0.049295002135105376
   },
   "UNI-USDT": {
    "mengde": 7.102191201974298,
    "snittpris": 8.542108445122292,
-   "maalvekt": 0.06185484709529439
+   "maalvekt": 0.061341353860998496
   },
   "CAKE-USDT": {
    "mengde": 23.250506152354095,
    "snittpris": 2.4254529361299593,
-   "maalvekt": 0.056322290572584865
+   "maalvekt": 0.05687038547994103
   },
   "AVAX-USDT": {
    "mengde": 5.177555015092761,
    "snittpris": 9.987917778354028,
-   "maalvekt": 0.05716327675353651
+   "maalvekt": 0.05839620629186032
   },
   "DOT-USDT": {
    "mengde": 57.440955864887115,
    "snittpris": 1.1263820522797634,
-   "maalvekt": 0.06578969784355941
+   "maalvekt": 0.06827955520053346
   },
   "LTC-USDT": {
    "mengde": 1.0315920038327662,
    "snittpris": 57.83707834188463,
-   "maalvekt": 0.06123018047443653
+   "maalvekt": 0.06047529975715857
   },
   "ADA-USDT": {
    "mengde": 249.21627812849528,
    "snittpris": 0.23054139630836307,
-   "maalvekt": 0.05814372099077947
+   "maalvekt": 0.05885897205455466
   },
   "BTC-USDT": {
    "mengde": 0.00038156979288507786,
    "snittpris": 85179.9,
-   "maalvekt": 0.03489201559882306
+   "maalvekt": 0.03495856130651089
   },
   "DOGE-USDT": {
-   "mengde": 142.5068551338375,
-   "snittpris": 0.09418,
-   "maalvekt": 0.03375827723398744
+   "mengde": 198.6195510483584,
+   "snittpris": 0.09493148579454942,
+   "maalvekt": 0.0411653488630826
   }
  },
  "dag": {
   "dato": "2026-09-21",
   "start_egenkapital": 1039.4594533707368,
-  "handler": 20
+  "handler": 21
  },
  "opprettet": "2026-09-05T00:00:00Z",
  "gjenopprettet": "Gjenopprettet 2026-09-19 fra siste Gist-status (2026-09-16T04:32Z) etter at PC-en ble ødelagt. Handelshistorikk før dette gikk tapt."
