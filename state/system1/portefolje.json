@@ -1,5 +1,5 @@
 {
- "kontanter": 527.3810765851243,
+ "kontanter": 487.22294531989104,
  "startkapital": 1000.0,
  "posisjoner": {
   "LINK-USDT": {
@@ -8,55 +8,55 @@
    "maalvekt": 0.030977971976015286
   },
   "ETH-USDT": {
-   "mengde": 0.01243331547886099,
-   "snittpris": 2624.23,
-   "maalvekt": 0.031766969387150984
+   "mengde": 0.016251114779873933,
+   "snittpris": 2638.952773510331,
+   "maalvekt": 0.042017404790219384
   },
   "SOL-USDT": {
-   "mengde": 0.39833224551792007,
-   "snittpris": 110.65595651309293,
-   "maalvekt": 0.04654896075994942
+   "mengde": 0.5105205464260579,
+   "snittpris": 111.02383219558446,
+   "maalvekt": 0.055181938574518585
   },
   "BNB-USDT": {
    "mengde": 0.05859977431478089,
    "snittpris": 761.3505161081782,
-   "maalvekt": 0.04395252768324192
+   "maalvekt": 0.046911508835398685
   },
   "UNI-USDT": {
    "mengde": 7.700412448775963,
    "snittpris": 8.542108445122292,
-   "maalvekt": 0.06386396706367167
+   "maalvekt": 0.06324677230044362
   },
   "CAKE-USDT": {
    "mengde": 21.681969276684057,
    "snittpris": 2.4007052462775142,
-   "maalvekt": 0.05441773833180431
+   "maalvekt": 0.05619032434832092
   },
   "AVAX-USDT": {
    "mengde": 5.159837441453333,
    "snittpris": 9.891597830700313,
-   "maalvekt": 0.05491289661919542
+   "maalvekt": 0.05420240526315789
   },
   "DOT-USDT": {
    "mengde": 57.440955864887115,
    "snittpris": 1.1263820522797634,
-   "maalvekt": 0.061841486851921125
+   "maalvekt": 0.0640821062661165
   },
   "LTC-USDT": {
    "mengde": 1.1277616898438092,
    "snittpris": 57.83707834188463,
-   "maalvekt": 0.05965312848664193
+   "maalvekt": 0.061316930181389
   },
   "ADA-USDT": {
-   "mengde": 148.86974305379456,
-   "snittpris": 0.22869999999999996,
-   "maalvekt": 0.037653708410476834
+   "mengde": 223.38535769569964,
+   "snittpris": 0.22966736547413233,
+   "maalvekt": 0.0497886894634918
   }
  },
  "dag": {
-  "dato": "2026-09-20",
-  "start_egenkapital": 1021.6995127521532,
-  "handler": 22
+  "dato": "2026-09-21",
+  "start_egenkapital": 1039.4594533707368,
+  "handler": 3
  },
  "opprettet": "2026-09-05T00:00:00Z",
  "gjenopprettet": "Gjenopprettet 2026-09-19 fra siste Gist-status (2026-09-16T04:32Z) etter at PC-en ble ødelagt. Handelshistorikk før dette gikk tapt."
