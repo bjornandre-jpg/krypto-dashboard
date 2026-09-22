@@ -1,5 +1,5 @@
 {
- "kontanter": 490.78386516873593,
+ "kontanter": 501.0324219843164,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -172,11 +172,6 @@
    "snittpris": 0.00642,
    "maalvekt": 0.006269178005544327
   },
-  "USELESS-USDT": {
-   "mengde": 40.32553314155523,
-   "snittpris": 0.28354,
-   "maalvekt": 0.01140171011080256
-  },
   "CELR-USDT": {
    "mengde": 2101.7200926440096,
    "snittpris": 0.00325,
@@ -296,7 +291,7 @@
  "dag": {
   "dato": "2026-09-22",
   "start_egenkapital": 1003.827224402648,
-  "handler": 32
+  "handler": 33
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."

@@ -1,5 +1,5 @@
 {
- "kontanter": 366.9685908797366,
+ "kontanter": 387.0362480468197,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -137,11 +137,6 @@
    "snittpris": 60.01,
    "maalvekt": 0.01889709311524367
   },
-  "USELESS-USDT": {
-   "mengde": 78.95195107493267,
-   "snittpris": 0.28781,
-   "maalvekt": 0.02280342022160512
-  },
   "APT-USDT": {
    "mengde": 24.70106358025561,
    "snittpris": 0.7717,
@@ -181,7 +176,7 @@
  "dag": {
   "dato": "2026-09-22",
   "start_egenkapital": 1003.730340068148,
-  "handler": 5
+  "handler": 6
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
