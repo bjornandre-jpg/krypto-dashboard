@@ -7,13 +7,13 @@ import urllib.request
 UA = {"User-Agent": "Mozilla/5.0 (krypto-bot papirhandel)"}
 
 
-def get(url, params=None, retries=3, timeout=25):
+def get(url, params=None, retries=3, timeout=25, headers=None):
     if params:
         url = url + "?" + urllib.parse.urlencode(params)
     last = None
     for i in range(retries):
         try:
-            req = urllib.request.Request(url, headers=UA)
+            req = urllib.request.Request(url, headers={**UA, **(headers or {})})
             with urllib.request.urlopen(req, timeout=timeout) as r:
                 return r.read()
         except Exception as e:  # noqa: BLE001

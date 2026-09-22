@@ -42,6 +42,10 @@ jobs:
         continue-on-error: true
         run: python -m krypto100.kjor
 
+      - name: Referanser (S&P 500, Nordnet 125, Virtune Top 10)
+        continue-on-error: true
+        run: python -m felles.referanser
+
       - name: Lagre status
         run: |
           git config user.name "krypto-bot"

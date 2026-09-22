@@ -45,11 +45,18 @@
   /* sammenligningsgraf */
   .graf { background: var(--panel); margin: 0 -20px; padding: 22px 20px 16px; }
   .graf h1 { font: 400 26px/1.2 var(--serif); margin: 0 0 14px; }
-  .forklaring { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 12px; padding: 0; list-style: none; }
-  .forklaring li { display: flex; align-items: center; gap: 7px; font-size: 14px; cursor: pointer; }
-  .forklaring i { width: 18px; height: 3px; border-radius: 2px; display: inline-block; }
-  .forklaring b { font-weight: 500; }
-  .forklaring li.aktiv span { font-weight: 600; }
+  .forklaring { margin: 0 0 12px; }
+  .gruppe { font-size: 12px; color: var(--skifer-2); margin: 8px 0 4px; letter-spacing: .02em; }
+  .brytere { display: flex; flex-wrap: wrap; gap: 6px; }
+  .bryter { appearance: none; display: inline-flex; align-items: center; gap: 7px; padding: 4px 8px 4px 7px;
+    background: rgba(255,255,255,.55); border: 1px solid #C5CCD5; font: 400 12.5px var(--sans); color: var(--skifer); cursor: pointer; }
+  .bryter .boks { width: 14px; height: 14px; border: 1.5px solid var(--farge); display: inline-grid; place-items: center; flex-shrink: 0; }
+  .bryter[aria-pressed="true"] .boks { background: var(--farge); }
+  .bryter[aria-pressed="true"] .boks::after { content: ""; width: 7px; height: 4px; border: 1.6px solid #fff; border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
+  .bryter[aria-pressed="false"] { color: var(--skifer-3); background: transparent; }
+  .bryter b { font-weight: 500; }
+  .bryter.aktiv span { font-weight: 600; }
+  .bryter:focus-visible { outline: 2px solid var(--sand-mork); outline-offset: 1px; }
   svg.kurve { width: 100%; height: 190px; display: block; overflow: visible; }
   svg.kurve text { font: 400 11px var(--sans); fill: var(--skifer-2); }
   .tom-graf { font-size: 14px; color: var(--skifer-2); padding: 40px 0; text-align: center; }
@@ -114,8 +121,8 @@
 
   <div class="graf">
     <h1>Utvikling siden start</h1>
-    <ul class="forklaring" id="forklaring"></ul>
-    <svg class="kurve" id="kurve" viewBox="0 0 340 190" preserveAspectRatio="none" role="img" aria-label="Avkastning i prosent for de tre systemene"></svg>
+    <div class="forklaring" id="forklaring"></div>
+    <svg class="kurve" id="kurve" viewBox="0 0 340 190" preserveAspectRatio="none" role="img" aria-label="Avkastning i prosent for systemene og valgte referanser"></svg>
   </div>
 
   <nav class="faner" id="faner" aria-label="Velg system"></nav>
@@ -158,6 +165,15 @@
                  sig: "Ny vurdering hver fjerde time når en candle lukkes. Samme signal to ganger på rad kreves." },
   };
   const NOKKEL = Object.keys(SYS);
+  const REF = {
+    sp500:      { navn: "S&P 500", farge: "#5E7C6B" },
+    nordnet125: { navn: "Nordnet Global 125", farge: "#B2785A" },
+    virtune10:  { navn: "Virtune Top 10", farge: "#6E5A8C" },
+  };
+  let referanser = null;
+  let synlig = { system1: true, krypto50: true, krypto100: true, sp500: true, nordnet125: true, virtune10: true };
+  try { Object.assign(synlig, JSON.parse(localStorage.getItem("krypto-synlig") || "{}")); } catch (e) {}
+  const lagreSynlig = () => { try { localStorage.setItem("krypto-synlig", JSON.stringify(synlig)); } catch (e) {} };
   const data = {};
   let valgt = { krypto50: "krypto50", krypto100: "krypto100", system1: "system1", krypto13: "system1" }[location.hash.slice(1)] || "system1";
   let visAlleSignaler = false;
@@ -173,19 +189,29 @@
 
   function tegnGraf() {
     const svg = document.getElementById("kurve"), W = 340, H = 190, L = 34, R = 6, T = 8, B = 22;
-    const serier = NOKKEL.filter(k => data[k]).map(k => {
+    const sysSerier = NOKKEL.filter(k => data[k]).map(k => {
       const d = data[k], s = d.start_capital || 1000;
       const pkt = (d.equity_curve || []).map(([t, v]) => [new Date(t).getTime(), (v / s - 1) * 100]);
       pkt.push([new Date(d.updated_at).getTime(), (d.equity_usd / s - 1) * 100]);
-      return { k, pkt };
-    }).filter(s => s.pkt.length);
-    document.getElementById("forklaring").innerHTML = NOKKEL.map(k => {
-      const d = data[k]; const r = d ? (d.equity_usd / (d.start_capital || 1000) - 1) * 100 : null;
-      return `<li data-k="${k}" class="${k === valgt ? "aktiv" : ""}"><i style="background:${SYS[k].farge}"></i><span>${SYS[k].navn}</span>
-        <b class="${r > 0 ? "opp" : r < 0 ? "ned" : ""}">${r == null ? "–" : pst(r, 2)}</b></li>`;
-    }).join("");
-    document.querySelectorAll("#forklaring li").forEach(li => li.onclick = () => velg(li.dataset.k));
-    if (!serier.length) { svg.innerHTML = ""; return; }
+      return { k, pkt, farge: SYS[k].farge, ref: false, siste: pkt[pkt.length - 1][1] };
+    });
+    const refSerier = Object.keys(REF).filter(k => referanser?.serier?.[k]).map(k => {
+      const pkt = referanser.serier[k].kurve.map(([t, v]) => [new Date(t).getTime(), v]);
+      return { k, pkt, farge: REF[k].farge, ref: true, siste: pkt[pkt.length - 1][1] };
+    });
+    const alleSerier = [...sysSerier, ...refSerier];
+    const verdi = k => alleSerier.find(x => x.k === k)?.siste;
+    const knapp = (k, navn, farge, ekstra = "") => { const v = verdi(k);
+      return `<button class="bryter ${ekstra}" data-t="${k}" aria-pressed="${!!synlig[k]}" style="--farge:${farge}">
+        <span class="boks"></span><span>${navn}</span><b class="${v > 0 ? "opp" : v < 0 ? "ned" : ""}">${v == null ? "–" : pst(v, 2)}</b></button>`; };
+    document.getElementById("forklaring").innerHTML =
+      `<div class="brytere">${NOKKEL.map(k => knapp(k, SYS[k].navn, SYS[k].farge, k === valgt ? "aktiv" : "")).join("")}</div>
+       <div class="gruppe">Referanser, i egen valuta (stiplet)</div>
+       <div class="brytere">${Object.keys(REF).map(k => knapp(k, REF[k].navn, REF[k].farge)).join("")}</div>`;
+    document.querySelectorAll("#forklaring .bryter").forEach(b => b.onclick = () => {
+      synlig[b.dataset.t] = !synlig[b.dataset.t]; lagreSynlig(); tegnGraf(); });
+    const serier = alleSerier.filter(x => synlig[x.k] && x.pkt.length);
+    if (!serier.length) { svg.innerHTML = `<text x="170" y="95" text-anchor="middle">Ingen kurver valgt</text>`; return; }
     const alle = serier.flatMap(s => s.pkt);
     let t0 = Math.min(...alle.map(p => p[0])), t1 = Math.max(...alle.map(p => p[0]));
     if (t1 - t0 < 3600e3) t0 = t1 - 3600e3;
@@ -202,10 +228,11 @@
     g += `<text x="${L}" y="${H - 4}">${dato(t0)}</text><text x="${W - R}" y="${H - 4}" text-anchor="end">${dato(t1)}</text>`;
     for (const s of [...serier].sort((a, b) => (a.k === valgt) - (b.k === valgt))) {
       const aktiv = s.k === valgt, p = s.pkt.map(([t, v]) => `${x(t).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
-      g += `<polyline points="${p}" fill="none" stroke="${SYS[s.k].farge}" stroke-width="${aktiv ? 2.6 : 1.6}"
-             stroke-opacity="${aktiv ? 1 : .75}" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`;
+      g += `<polyline points="${p}" fill="none" stroke="${s.farge}" stroke-width="${aktiv ? 2.6 : 1.6}"
+             ${s.ref ? 'stroke-dasharray="5 3"' : ""} stroke-opacity="${aktiv || s.ref ? 1 : .75}"
+             stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`;
       const [lt, lv] = s.pkt[s.pkt.length - 1];
-      g += `<circle cx="${x(lt)}" cy="${y(lv)}" r="${aktiv ? 3.5 : 2.5}" fill="${SYS[s.k].farge}"/>`;
+      g += `<circle cx="${x(lt)}" cy="${y(lv)}" r="${aktiv ? 3.5 : 2.5}" fill="${s.farge}"/>`;
     }
     svg.innerHTML = g;
   }
@@ -278,6 +305,10 @@
         if (r.ok) data[k] = await r.json();
       } catch (e) { console.error(k, e); }
     }));
+    try {
+      const r = await fetch(BASE + "referanser.json?t=" + Math.floor(Date.now() / 60000), { cache: "no-store" });
+      if (r.ok) referanser = await r.json();
+    } catch (e) { console.error("referanser", e); }
     tegnStatus(); tegnGraf(); tegnSystem();
   }
   tegnSystem();
