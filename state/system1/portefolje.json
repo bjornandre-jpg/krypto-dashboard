@@ -1,5 +1,5 @@
 {
- "kontanter": 398.8816771881813,
+ "kontanter": 405.2089600529196,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-USDT": {
@@ -30,32 +30,32 @@
   "ADA-USDT": {
    "mengde": 240.5552852286601,
    "snittpris": 0.2463,
-   "maalvekt": 0.05883283634943368
+   "maalvekt": 0.05878912133368175
   },
   "LINK-USDT": {
    "mengde": 3.6026668766478016,
    "snittpris": 13.2195,
-   "maalvekt": 0.050593060141917556
+   "maalvekt": 0.050840315528618896
   },
   "AVAX-USDT": {
    "mengde": 5.3069011439719205,
    "snittpris": 11.041,
-   "maalvekt": 0.0577754695715991
+   "maalvekt": 0.05648438873799924
   },
   "DOT-USDT": {
    "mengde": 56.439365373220056,
    "snittpris": 1.1865,
-   "maalvekt": 0.06986186338942439
+   "maalvekt": 0.07050442492339716
   },
   "LTC-USDT": {
    "mengde": 0.9687527947761437,
    "snittpris": 62.72,
-   "maalvekt": 0.06032901188380596
+   "maalvekt": 0.06002296258115944
   },
   "UNI-USDT": {
-   "mengde": 6.439087470425658,
+   "mengde": 5.800418483018352,
    "snittpris": 8.8335,
-   "maalvekt": 0.05885106732299172
+   "maalvekt": 0.05724797508253254
   },
   "CAKE-USDT": {
    "mengde": 6.316253414426023,
@@ -66,7 +66,7 @@
  "dag": {
   "dato": "2026-09-22",
   "start_egenkapital": 1001.7620810975016,
-  "handler": 2
+  "handler": 3
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
