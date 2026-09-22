@@ -15,7 +15,7 @@
   "SOL-USDT": {
    "mengde": 0.5106768739404494,
    "snittpris": 119.26,
-   "maalvekt": 0.060258263037818297
+   "maalvekt": 0.06554803627008504
   },
   "BNB-USDT": {
    "mengde": 0.06151471402058326,
@@ -40,22 +40,22 @@
   "AVAX-USDT": {
    "mengde": 5.3069011439719205,
    "snittpris": 11.041,
-   "maalvekt": 0.056301872062314406
+   "maalvekt": 0.05676502922048822
   },
   "DOT-USDT": {
    "mengde": 56.439365373220056,
    "snittpris": 1.1865,
-   "maalvekt": 0.0710485480331994
+   "maalvekt": 0.07164314857403022
   },
   "LTC-USDT": {
    "mengde": 0.9687527947761437,
    "snittpris": 62.72,
-   "maalvekt": 0.06156156548253794
+   "maalvekt": 0.06068658288783255
   },
   "UNI-USDT": {
    "mengde": 7.003417949664197,
    "snittpris": 8.8335,
-   "maalvekt": 0.06105096808296756
+   "maalvekt": 0.05961255434981173
   },
   "CAKE-USDT": {
    "mengde": 4.064369936092492,
@@ -64,9 +64,9 @@
   }
  },
  "dag": {
-  "dato": "2026-09-21",
-  "start_egenkapital": 1000.0,
-  "handler": 12
+  "dato": "2026-09-22",
+  "start_egenkapital": 1001.7620810975016,
+  "handler": 0
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
