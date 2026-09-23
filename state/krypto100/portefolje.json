@@ -1,5 +1,5 @@
 {
- "kontanter": 519.3507947814036,
+ "kontanter": 527.3704340968076,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -232,11 +232,6 @@
    "snittpris": 1.3935,
    "maalvekt": 0.010593782872173862
   },
-  "AIOZ-USDT": {
-   "mengde": 68.05991506898133,
-   "snittpris": 0.12911,
-   "maalvekt": 0.00875976250948957
-  },
   "RSR-USDT": {
    "mengde": 5372.956255305601,
    "snittpris": 0.0017479999999999998,
@@ -276,7 +271,7 @@
  "dag": {
   "dato": "2026-09-23",
   "start_egenkapital": 1010.0772457675455,
-  "handler": 47
+  "handler": 48
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
