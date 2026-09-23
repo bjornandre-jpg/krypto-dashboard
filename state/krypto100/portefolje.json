@@ -1,5 +1,5 @@
 {
- "kontanter": 527.3704340968076,
+ "kontanter": 532.9281337917643,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -192,11 +192,6 @@
    "snittpris": 0.00462,
    "maalvekt": 0.0067626770313341505
   },
-  "ZEN-USDT": {
-   "mengde": 0.7813571570104744,
-   "snittpris": 7.753,
-   "maalvekt": 0.00610553181444216
-  },
   "BOME-USDT": {
    "mengde": 5872.930580530628,
    "snittpris": 0.0010678,
@@ -271,7 +266,7 @@
  "dag": {
   "dato": "2026-09-23",
   "start_egenkapital": 1010.0772457675455,
-  "handler": 48
+  "handler": 49
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
