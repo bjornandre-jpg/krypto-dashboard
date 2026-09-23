@@ -1,5 +1,5 @@
 {
- "kontanter": 401.5062554521466,
+ "kontanter": 477.7446904024711,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -82,11 +82,6 @@
    "snittpris": 0.2244,
    "maalvekt": 0.010124046792614772
   },
-  "PEPE-USDT": {
-   "mengde": 1691527.2769021264,
-   "snittpris": 4.984e-06,
-   "maalvekt": 0.00751526500180897
-  },
   "LTC-USDT": {
    "mengde": 0.16859649249957032,
    "snittpris": 62.68,
@@ -101,11 +96,6 @@
    "mengde": 0.9878716735495869,
    "snittpris": 7.781,
    "maalvekt": 0.007998061628813799
-  },
-  "ONDO-USDT": {
-   "mengde": 21.482263286446987,
-   "snittpris": 0.4491,
-   "maalvekt": 0.007022876345234106
   },
   "HYPE-USDT": {
    "mengde": 0.07820227116580401,
@@ -152,21 +142,6 @@
    "snittpris": 59.27,
    "maalvekt": 0.011525176693538254
   },
-  "KAS-USDT": {
-   "mengde": 264.4153269513504,
-   "snittpris": 0.04369,
-   "maalvekt": 0.006931867805279528
-  },
-  "WLD-USDT": {
-   "mengde": 16.429652694212997,
-   "snittpris": 0.4673,
-   "maalvekt": 0.007307855871126938
-  },
-  "STX-USDT": {
-   "mengde": 30.69726199309707,
-   "snittpris": 0.3424,
-   "maalvekt": 0.006540384791833835
-  },
   "ICP-USDT": {
    "mengde": 3.477416098262309,
    "snittpris": 3.051,
@@ -181,11 +156,6 @@
    "mengde": 10.829430073812745,
    "snittpris": 0.79,
    "maalvekt": 0.009884236848129046
-  },
-  "RENDER-USDT": {
-   "mengde": 4.01638152620098,
-   "snittpris": 1.874,
-   "maalvekt": 0.007750901848825427
   },
   "S-USDT": {
    "mengde": 270.7912226369232,
@@ -216,11 +186,6 @@
    "mengde": 4.788137038981268,
    "snittpris": 1.8078999999999998,
    "maalvekt": 0.008334796219862339
-  },
-  "POL-USDT": {
-   "mengde": 72.78218498380494,
-   "snittpris": 0.112,
-   "maalvekt": 0.007072119577905322
   },
   "CRV-USDT": {
    "mengde": 21.700465345172578,
@@ -272,11 +237,6 @@
    "snittpris": 0.10087,
    "maalvekt": 0.007239022132277015
   },
-  "USELESS-USDT": {
-   "mengde": 39.31674957182541,
-   "snittpris": 0.34263,
-   "maalvekt": 0.013553764273068375
-  },
   "CELR-USDT": {
    "mengde": 2181.48741691768,
    "snittpris": 0.00306,
@@ -296,11 +256,6 @@
    "mengde": 68.05991506898133,
    "snittpris": 0.12911,
    "maalvekt": 0.00875976250948957
-  },
-  "COQ-USDT": {
-   "mengde": 50268371.05751249,
-   "snittpris": 1.437e-07,
-   "maalvekt": 0.008089164589449204
   },
   "RSR-USDT": {
    "mengde": 5372.956255305601,
@@ -346,7 +301,7 @@
  "dag": {
   "dato": "2026-09-23",
   "start_egenkapital": 1010.0772457675455,
-  "handler": 33
+  "handler": 42
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."

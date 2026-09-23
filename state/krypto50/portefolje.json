@@ -1,5 +1,5 @@
 {
- "kontanter": 351.70276135061084,
+ "kontanter": 420.52725861693875,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -82,11 +82,6 @@
    "snittpris": 0.2431951659762658,
    "maalvekt": 0.015141447956765416
   },
-  "PEPE-USDT": {
-   "mengde": 4037498.1104362514,
-   "snittpris": 4.9517308658315644e-06,
-   "maalvekt": 0.01503053000361794
-  },
   "BNB-USDT": {
    "mengde": 0.022076452482289937,
    "snittpris": 805.19,
@@ -111,11 +106,6 @@
    "mengde": 59.79846790564703,
    "snittpris": 0.2463,
    "maalvekt": 0.01803176320783653
-  },
-  "ONDO-USDT": {
-   "mengde": 30.11591178029282,
-   "snittpris": 0.44948999999999995,
-   "maalvekt": 0.014045752690468212
   },
   "XLM-USDT": {
    "mengde": 86.99324845230903,
@@ -152,11 +142,6 @@
    "snittpris": 0.2066979961871019,
    "maalvekt": 0.020850313596479108
   },
-  "RENDER-USDT": {
-   "mengde": 8.027704043865544,
-   "snittpris": 1.875,
-   "maalvekt": 0.015501803697650854
-  },
   "BTC-USDT": {
    "mengde": 0.0001464718134242401,
    "snittpris": 85532.6,
@@ -166,11 +151,6 @@
    "mengde": 140.28710249223133,
    "snittpris": 0.09794,
    "maalvekt": 0.01447804426455403
-  },
-  "UNI-USDT": {
-   "mengde": 2.6439116741134874,
-   "snittpris": 10.334016440644625,
-   "maalvekt": 0.025791287788879513
   },
   "USELESS-USDT": {
    "mengde": 81.77090911900251,
@@ -191,7 +171,7 @@
  "dag": {
   "dato": "2026-09-23",
   "start_egenkapital": 1012.8971282139294,
-  "handler": 24
+  "handler": 28
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
