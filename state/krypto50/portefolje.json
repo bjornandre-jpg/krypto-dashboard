@@ -1,5 +1,5 @@
 {
- "kontanter": 356.41819847879555,
+ "kontanter": 372.75207773847734,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -168,7 +168,7 @@
    "maalvekt": 0.012513181724955476
   },
   "DOGE-USDT": {
-   "mengde": 191.0386506446845,
+   "mengde": 140.28710249223133,
    "snittpris": 0.09794,
    "maalvekt": 0.01430727539136609
   },
@@ -181,17 +181,12 @@
    "mengde": 30.503820723681393,
    "snittpris": 0.5193,
    "maalvekt": 0.019382795527323426
-  },
-  "ONE-USDT": {
-   "mengde": 2323.4908169808773,
-   "snittpris": 0.005391,
-   "maalvekt": 0.01237882616364525
   }
  },
  "dag": {
   "dato": "2026-09-23",
   "start_egenkapital": 1012.8971282139294,
-  "handler": 5
+  "handler": 7
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
