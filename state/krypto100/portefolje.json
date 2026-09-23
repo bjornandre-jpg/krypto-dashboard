@@ -1,5 +1,5 @@
 {
- "kontanter": 383.662416202314,
+ "kontanter": 401.5062554521466,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -267,11 +267,6 @@
    "snittpris": 86517.3,
    "maalvekt": 0.0062559332372667375
   },
-  "UNI-USDT": {
-   "mengde": 0.8795666527388214,
-   "snittpris": 10.42,
-   "maalvekt": 0.012895643894439757
-  },
   "DOGE-USDT": {
    "mengde": 71.56241632015015,
    "snittpris": 0.10087,
@@ -298,7 +293,7 @@
    "maalvekt": 0.008909473984625035
   },
   "AIOZ-USDT": {
-   "mengde": 107.36952968370862,
+   "mengde": 68.05991506898133,
    "snittpris": 0.12911,
    "maalvekt": 0.00875976250948957
   },
@@ -327,11 +322,6 @@
    "snittpris": 1.56671,
    "maalvekt": 0.007466070012458348
   },
-  "ONE-USDT": {
-   "mengde": 1342.4401308534439,
-   "snittpris": 0.005295,
-   "maalvekt": 0.007125919827031974
-  },
   "BCH-USDT": {
    "mengde": 0.019505814988180534,
    "snittpris": 343.01,
@@ -356,7 +346,7 @@
  "dag": {
   "dato": "2026-09-23",
   "start_egenkapital": 1010.0772457675455,
-  "handler": 30
+  "handler": 33
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
