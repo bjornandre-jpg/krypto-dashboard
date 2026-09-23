@@ -30,7 +30,7 @@
   "ADA-USDT": {
    "mengde": 240.5552852286601,
    "snittpris": 0.2463,
-   "maalvekt": 0.05848940663392295
+   "maalvekt": 0.0643789166399074
   },
   "LINK-USDT": {
    "mengde": 3.6026668766478016,
@@ -40,22 +40,22 @@
   "AVAX-USDT": {
    "mengde": 5.3069011439719205,
    "snittpris": 11.041,
-   "maalvekt": 0.05526501870705772
+   "maalvekt": 0.05631932679226276
   },
   "DOT-USDT": {
    "mengde": 56.439365373220056,
    "snittpris": 1.1865,
-   "maalvekt": 0.07126062019344953
+   "maalvekt": 0.07154533009777522
   },
   "LTC-USDT": {
    "mengde": 0.9687527947761437,
    "snittpris": 62.72,
-   "maalvekt": 0.05906564208436779
+   "maalvekt": 0.060202259049886124
   },
   "UNI-USDT": {
    "mengde": 5.800418483018352,
    "snittpris": 8.8335,
-   "maalvekt": 0.05654367935560855
+   "maalvekt": 0.056405223271427565
   },
   "CAKE-USDT": {
    "mengde": 6.316253414426023,
@@ -64,9 +64,9 @@
   }
  },
  "dag": {
-  "dato": "2026-09-22",
-  "start_egenkapital": 1001.7620810975016,
-  "handler": 3
+  "dato": "2026-09-23",
+  "start_egenkapital": 1013.3751306382046,
+  "handler": 0
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
