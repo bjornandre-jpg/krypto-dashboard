@@ -1,5 +1,5 @@
 {
- "kontanter": 448.54561718607266,
+ "kontanter": 477.23924414708125,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -40,7 +40,7 @@
   "SOL-USDT": {
    "mengde": 0.14052041124627368,
    "snittpris": 119.25,
-   "maalvekt": 0.01285944043306066
+   "maalvekt": 0.013952531480489805
   },
   "AAVE-USDT": {
    "mengde": 0.12299790683970034,
@@ -70,7 +70,7 @@
   "LTC-USDT": {
    "mengde": 0.2274368374210432,
    "snittpris": 62.730000000000004,
-   "maalvekt": 0.02021093029594613
+   "maalvekt": 0.02062685965913696
   },
   "WIF-USDT": {
    "mengde": 62.05657330081238,
@@ -95,7 +95,7 @@
   "INJ-USDT": {
    "mengde": 1.9757433470991739,
    "snittpris": 7.781,
-   "maalvekt": 0.015996123257627597
+   "maalvekt": 0.012775027833593697
   },
   "ADA-USDT": {
    "mengde": 59.79846790564703,
@@ -120,7 +120,7 @@
   "DASH-USDT": {
    "mengde": 0.25900250752334514,
    "snittpris": 60.01,
-   "maalvekt": 0.014427916228215622
+   "maalvekt": 0.016119139629956307
   },
   "APT-USDT": {
    "mengde": 24.70106358025561,
@@ -155,7 +155,7 @@
   "BCH-USDT": {
    "mengde": 0.057836996677448294,
    "snittpris": 341.5363948946365,
-   "maalvekt": 0.01941961291490261
+   "maalvekt": 0.018037965799644277
   },
   "UNI-USDT": {
    "mengde": 1.2913710038861503,
@@ -166,17 +166,12 @@
    "mengde": 41.41885801358348,
    "snittpris": 0.29741,
    "maalvekt": 0.012820953496838677
-  },
-  "LSK-USDT": {
-   "mengde": 68.14317748592855,
-   "snittpris": 0.3473,
-   "maalvekt": 0.025477958217135787
   }
  },
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 961.7625770295009,
-  "handler": 7
+  "handler": 8
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
