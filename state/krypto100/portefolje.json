@@ -1,5 +1,5 @@
 {
- "kontanter": 493.2696291567816,
+ "kontanter": 484.31326474987327,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -20,17 +20,17 @@
   "NEAR-USDT": {
    "mengde": 2.457436722326425,
    "snittpris": 4.1205,
-   "maalvekt": 0.007297568887240772
+   "maalvekt": 0.008313346253542433
   },
   "DOT-USDT": {
    "mengde": 9.109146689931498,
    "snittpris": 1.1861,
-   "maalvekt": 0.007777917782907666
+   "maalvekt": 0.007995666935315114
   },
   "SOL-USDT": {
    "mengde": 0.07027199128205207,
    "snittpris": 119.23,
-   "maalvekt": 0.006976265740244902
+   "maalvekt": 0.008422278757061476
   },
   "LINK-USDT": {
    "mengde": 0.6134894936437306,
@@ -40,17 +40,17 @@
   "AAVE-USDT": {
    "mengde": 0.061567909210701266,
    "snittpris": 147.157,
-   "maalvekt": 0.009928323339722208
+   "maalvekt": 0.00814654898592191
   },
   "ENA-USDT": {
    "mengde": 45.83612425276194,
    "snittpris": 0.2126,
-   "maalvekt": 0.006229930358307874
+   "maalvekt": 0.00851727941762011
   },
   "BNB-USDT": {
    "mengde": 0.011042848056859475,
    "snittpris": 804.853,
-   "maalvekt": 0.007284734957330615
+   "maalvekt": 0.006732040625257299
   },
   "WIF-USDT": {
    "mengde": 32.8027331463958,
@@ -70,7 +70,7 @@
   "LTC-USDT": {
    "mengde": 0.16859649249957032,
    "snittpris": 62.68,
-   "maalvekt": 0.012084991394549245
+   "maalvekt": 0.013801848042545509
   },
   "SHIB-USDT": {
    "mengde": 1243563.3557225147,
@@ -80,17 +80,17 @@
   "INJ-USDT": {
    "mengde": 0.9878716735495869,
    "snittpris": 7.781,
-   "maalvekt": 0.009323182280290871
+   "maalvekt": 0.009409327837288414
   },
   "HYPE-USDT": {
    "mengde": 0.07820227116580401,
    "snittpris": 93.362,
-   "maalvekt": 0.006893303669092847
+   "maalvekt": 0.007341360113193571
   },
   "ADA-USDT": {
    "mengde": 29.899233952823515,
    "snittpris": 0.2463,
-   "maalvekt": 0.006175571635993358
+   "maalvekt": 0.0073945205913405355
   },
   "XLM-USDT": {
    "mengde": 43.45601113163897,
@@ -100,12 +100,12 @@
   "FIL-USDT": {
    "mengde": 8.563126906044776,
    "snittpris": 0.9745999999999999,
-   "maalvekt": 0.006015297901311826
+   "maalvekt": 0.007587053732581489
   },
   "FET-USDT": {
    "mengde": 31.192905974209953,
    "snittpris": 0.2033,
-   "maalvekt": 0.006971359041942991
+   "maalvekt": 0.011378045413990743
   },
   "AR-USDT": {
    "mengde": 1.5632559595461781,
@@ -120,22 +120,22 @@
   "DASH-USDT": {
    "mengde": 0.1598654219219022,
    "snittpris": 59.27,
-   "maalvekt": 0.008981078347429006
+   "maalvekt": 0.00995395468830916
   },
   "ICP-USDT": {
    "mengde": 3.477416098262309,
    "snittpris": 3.051,
-   "maalvekt": 0.008720775332835691
+   "maalvekt": 0.009552252099766092
   },
   "ALGO-USDT": {
    "mengde": 97.8965963395379,
    "snittpris": 0.1121,
-   "maalvekt": 0.006814027919777281
+   "maalvekt": 0.007907897063251393
   },
   "APT-USDT": {
    "mengde": 10.829430073812745,
    "snittpris": 0.79,
-   "maalvekt": 0.007384541049910648
+   "maalvekt": 0.0077126714469959385
   },
   "S-USDT": {
    "mengde": 270.7912226369232,
@@ -145,32 +145,32 @@
   "AERO-USDT": {
    "mengde": 14.539499143273662,
    "snittpris": 0.6972,
-   "maalvekt": 0.008124606773661227
+   "maalvekt": 0.008507481087831009
   },
   "RAY-USDT": {
    "mengde": 5.662511751901637,
    "snittpris": 1.8157,
-   "maalvekt": 0.012098670801361658
+   "maalvekt": 0.013173848060863936
   },
   "CAKE-USDT": {
    "mengde": 3.9405093868071583,
    "snittpris": 2.546,
-   "maalvekt": 0.011622403351414004
+   "maalvekt": 0.011677599906860748
   },
   "VET-USDT": {
    "mengde": 1133.1576998477165,
    "snittpris": 0.009198,
-   "maalvekt": 0.006035618229123622
+   "maalvekt": 0.0073789055896438275
   },
   "ATOM-USDT": {
    "mengde": 4.788137038981268,
    "snittpris": 1.8078999999999998,
-   "maalvekt": 0.008334796219862339
+   "maalvekt": 0.0088802421831379
   },
   "OP-USDT": {
    "mengde": 58.20693333913843,
    "snittpris": 0.1264,
-   "maalvekt": 0.006821910030247056
+   "maalvekt": 0.007887236464655346
   },
   "SKL-USDT": {
    "mengde": 1684.2180449393845,
@@ -185,12 +185,12 @@
   "ETC-USDT": {
    "mengde": 0.7349177776021328,
    "snittpris": 8.8966,
-   "maalvekt": 0.009773799637316059
+   "maalvekt": 0.011303996902666714
   },
   "ROSE-USDT": {
    "mengde": 1170.4130939330244,
    "snittpris": 0.007760000000000001,
-   "maalvekt": 0.006012238886555152
+   "maalvekt": 0.00827438664143147
   },
   "BTC-USDT": {
    "mengde": 7.297176895487538e-05,
@@ -200,7 +200,7 @@
   "CELR-USDT": {
    "mengde": 2181.48741691768,
    "snittpris": 0.00306,
-   "maalvekt": 0.007500013675995318
+   "maalvekt": 0.006993278135646937
   },
   "XDC-USDT": {
    "mengde": 279.85595043009266,
@@ -210,12 +210,12 @@
   "ZRO-USDT": {
    "mengde": 5.916050454864028,
    "snittpris": 1.3935,
-   "maalvekt": 0.011355631613780472
+   "maalvekt": 0.010401407359487764
   },
   "RSR-USDT": {
    "mengde": 5372.956255305601,
    "snittpris": 0.0017479999999999998,
-   "maalvekt": 0.006172541839677239
+   "maalvekt": 0.009163062682798661
   },
   "BONK-USDT": {
    "mengde": 1661011.5374982832,
@@ -230,17 +230,17 @@
   "BCH-USDT": {
    "mengde": 0.019505814988180534,
    "snittpris": 343.01,
-   "maalvekt": 0.0075189588137706586
+   "maalvekt": 0.006725905195063291
   },
   "SOMI-USDT": {
    "mengde": 36.044635263517925,
    "snittpris": 0.1944,
-   "maalvekt": 0.008193360253806976
+   "maalvekt": 0.009189038399775192
   },
   "DATA-USDT": {
    "mengde": 47.3009494794325,
    "snittpris": 0.22600000000000003,
-   "maalvekt": 0.006154134187630927
+   "maalvekt": 0.006644393547793175
   },
   "UNI-USDT": {
    "mengde": 0.648193256501732,
@@ -255,48 +255,48 @@
   "COTI-USDT": {
    "mengde": 782.3259074546121,
    "snittpris": 0.01635,
-   "maalvekt": 0.008570797802713396
+   "maalvekt": 0.011473561345178681
   },
   "TIA-USDT": {
    "mengde": 14.232525536712448,
    "snittpris": 0.4603,
-   "maalvekt": 0.006958938119895273
+   "maalvekt": 0.00820903184876951
   },
   "PENDLE-USDT": {
    "mengde": 2.730234212472232,
    "snittpris": 2.4701,
-   "maalvekt": 0.008607304822343018
+   "maalvekt": 0.010822510447071223
   },
   "CFG-USDT": {
    "mengde": 51.81273899015701,
    "snittpris": 0.1424,
-   "maalvekt": 0.0103107517464225
+   "maalvekt": 0.011946778879700349
   },
   "ONDO-USDT": {
-   "mengde": 13.587034943041122,
-   "snittpris": 0.45579,
-   "maalvekt": 0.010595628283104673
+   "mengde": 24.12081468495675,
+   "snittpris": 0.47952077355188516,
+   "maalvekt": 0.012434480622013726
   },
   "B2-USDT": {
    "mengde": 15.204651766168773,
    "snittpris": 0.4992,
-   "maalvekt": 0.009361291806032715
+   "maalvekt": 0.01043378255694624
   },
   "LSK-USDT": {
    "mengde": 31.775371549954844,
    "snittpris": 0.396,
-   "maalvekt": 0.01296007066540759
+   "maalvekt": 0.013335354962704113
   },
-  "ONE-USDT": {
-   "mengde": 3178.157967004109,
-   "snittpris": 0.001905,
-   "maalvekt": 0.0061156858114025025
+  "RENDER-USDT": {
+   "mengde": 4.700297848903116,
+   "snittpris": 1.865,
+   "maalvekt": 0.008863469032338395
   }
  },
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 966.4643963000134,
-  "handler": 17
+  "handler": 20
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
