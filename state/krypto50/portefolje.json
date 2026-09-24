@@ -1,5 +1,5 @@
 {
- "kontanter": 477.23924414708125,
+ "kontanter": 505.13751732135006,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -16,11 +16,6 @@
    "mengde": 0.030423445840396086,
    "snittpris": 584.83,
    "maalvekt": 0.013368844801695662
-  },
-  "AVAX-USDT": {
-   "mengde": 1.2789073232202601,
-   "snittpris": 11.047,
-   "maalvekt": 0.012330903563951957
   },
   "NEAR-USDT": {
    "mengde": 3.7171907822869152,
@@ -127,11 +122,6 @@
    "snittpris": 0.7717,
    "maalvekt": 0.014769082099821296
   },
-  "VVV-USDT": {
-   "mengde": 0.5136978826186327,
-   "snittpris": 31.789,
-   "maalvekt": 0.014639940891151794
-  },
   "FET-USDT": {
    "mengde": 68.56126864133333,
    "snittpris": 0.2066979961871019,
@@ -171,7 +161,7 @@
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 961.7625770295009,
-  "handler": 8
+  "handler": 10
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."

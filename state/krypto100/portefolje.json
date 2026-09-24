@@ -1,5 +1,5 @@
 {
- "kontanter": 489.6673552944288,
+ "kontanter": 514.2606561194456,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -12,11 +12,6 @@
    "snittpris": 1477.713,
    "maalvekt": 0.006471086453431492
   },
-  "AVAX-USDT": {
-   "mengde": 0.9613700452849577,
-   "snittpris": 11.048,
-   "maalvekt": 0.0061654517819759785
-  },
   "XMR-USDT": {
    "mengde": 0.015183341726290718,
    "snittpris": 585.66,
@@ -26,11 +21,6 @@
    "mengde": 2.457436722326425,
    "snittpris": 4.1205,
    "maalvekt": 0.007297568887240772
-  },
-  "SUI-USDT": {
-   "mengde": 7.84302975372604,
-   "snittpris": 1.0301,
-   "maalvekt": 0.007926604880024573
   },
   "DOT-USDT": {
    "mengde": 9.109146689931498,
@@ -111,11 +101,6 @@
    "mengde": 8.563126906044776,
    "snittpris": 0.9745999999999999,
    "maalvekt": 0.006015297901311826
-  },
-  "VVV-USDT": {
-   "mengde": 0.25745089294853973,
-   "snittpris": 31.802,
-   "maalvekt": 0.007319970445575897
   },
   "FET-USDT": {
    "mengde": 56.56724461419819,
@@ -296,7 +281,7 @@
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 966.4643963000134,
-  "handler": 8
+  "handler": 11
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
