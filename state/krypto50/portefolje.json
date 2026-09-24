@@ -1,5 +1,5 @@
 {
- "kontanter": 465.5639819496051,
+ "kontanter": 446.51772612061325,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -60,7 +60,7 @@
   "LTC-USDT": {
    "mengde": 0.3438959509173503,
    "snittpris": 63.898329957042215,
-   "maalvekt": 0.0235907691427758
+   "maalvekt": 0.02416998278909849
   },
   "WIF-USDT": {
    "mengde": 62.05657330081238,
@@ -85,7 +85,7 @@
   "INJ-USDT": {
    "mengde": 1.9757433470991739,
    "snittpris": 7.781,
-   "maalvekt": 0.013034903915956852
+   "maalvekt": 0.018646364560581743
   },
   "ADA-USDT": {
    "mengde": 59.79846790564703,
@@ -110,7 +110,7 @@
   "DASH-USDT": {
    "mengde": 0.25900250752334514,
    "snittpris": 60.01,
-   "maalvekt": 0.01552796017665656
+   "maalvekt": 0.01796215669485801
   },
   "APT-USDT": {
    "mengde": 17.547549116749483,
@@ -140,7 +140,7 @@
   "BCH-USDT": {
    "mengde": 0.057836996677448294,
    "snittpris": 341.5363948946365,
-   "maalvekt": 0.01752199942635523
+   "maalvekt": 0.015037917627541317
   },
   "UNI-USDT": {
    "mengde": 1.2913710038861503,
@@ -153,25 +153,30 @@
    "maalvekt": 0.012820953496838677
   },
   "ONDO-USDT": {
-   "mengde": 27.03149671885789,
-   "snittpris": 0.45646,
-   "maalvekt": 0.012798185823133227
+   "mengde": 40.444786433676086,
+   "snittpris": 0.47682297038779986,
+   "maalvekt": 0.021191256566209345
   },
   "B2-USDT": {
    "mengde": 30.29422257844213,
    "snittpris": 0.49920000000000003,
-   "maalvekt": 0.01568591947919475
+   "maalvekt": 0.01872258361206543
   },
   "LSK-USDT": {
    "mengde": 63.3102416978002,
    "snittpris": 0.396,
-   "maalvekt": 0.026004274999567825
+   "maalvekt": 0.02592014133081518
+  },
+  "ONE-USDT": {
+   "mengde": 6318.516402430481,
+   "snittpris": 0.001912,
+   "maalvekt": 0.012231371622805005
   }
  },
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 961.7625770295009,
-  "handler": 16
+  "handler": 18
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
