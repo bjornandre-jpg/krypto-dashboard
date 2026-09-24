@@ -1,26 +1,26 @@
 {
- "kontanter": 396.5635261827987,
+ "kontanter": 441.5652390326774,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-USDT": {
    "mengde": 0.0004951084398329357,
    "snittpris": 86895.05485332507,
-   "maalvekt": 0.041092309876084324
+   "maalvekt": 0.04012927529700645
   },
   "ETH-USDT": {
    "mengde": 0.016500770200618485,
    "snittpris": 2793.1418937213007,
-   "maalvekt": 0.04414654252523443
+   "maalvekt": 0.04025751172847672
   },
   "SOL-USDT": {
    "mengde": 0.5106768739404494,
    "snittpris": 119.26,
-   "maalvekt": 0.06102400488817368
+   "maalvekt": 0.0597259987157984
   },
   "BNB-USDT": {
    "mengde": 0.05426126379557629,
    "snittpris": 805.372,
-   "maalvekt": 0.0400315205354368
+   "maalvekt": 0.03943144429842029
   },
   "DOGE-USDT": {
    "mengde": 464.3784434307704,
@@ -32,30 +32,20 @@
    "snittpris": 0.2463,
    "maalvekt": 0.06478518272341098
   },
-  "LINK-USDT": {
-   "mengde": 2.8042175311417914,
-   "snittpris": 13.2195,
-   "maalvekt": 0.031599952653790474
-  },
-  "AVAX-USDT": {
-   "mengde": 6.253241021117878,
-   "snittpris": 10.93294616519652,
-   "maalvekt": 0.07128344717825685
-  },
   "DOT-USDT": {
    "mengde": 47.57028470756847,
    "snittpris": 1.1865,
-   "maalvekt": 0.05458417226267079
+   "maalvekt": 0.05385411820229117
   },
   "LTC-USDT": {
    "mengde": 0.8635647690721509,
    "snittpris": 62.72,
-   "maalvekt": 0.058020770621639656
+   "maalvekt": 0.05847957356916757
   },
   "CAKE-USDT": {
    "mengde": 19.15367729463664,
    "snittpris": 2.5902712909299885,
-   "maalvekt": 0.05128998120806982
+   "maalvekt": 0.05122886222523401
   },
   "XRP-USDT": {
    "mengde": 19.721613965384982,
@@ -63,15 +53,15 @@
    "maalvekt": 0.04797141475184541
   },
   "UNI-USDT": {
-   "mengde": 1.9234290029801786,
-   "snittpris": 9.284463726577489,
-   "maalvekt": 0.07144198232649468
+   "mengde": 7.7391936432398385,
+   "snittpris": 9.000435676930454,
+   "maalvekt": 0.07017616643359952
   }
  },
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 985.0271064907361,
-  "handler": 5
+  "handler": 8
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."

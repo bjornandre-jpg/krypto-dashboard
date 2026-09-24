@@ -1,5 +1,5 @@
 {
- "kontanter": 505.13751732135006,
+ "kontanter": 519.9504611040747,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -26,11 +26,6 @@
    "mengde": 13.928650749469988,
    "snittpris": 1.1862,
    "maalvekt": 0.015555835565815333
-  },
-  "SUI-USDT": {
-   "mengde": 15.772547127198141,
-   "snittpris": 1.02700865820124,
-   "maalvekt": 0.015853209760049145
   },
   "SOL-USDT": {
    "mengde": 0.14052041124627368,
@@ -161,7 +156,7 @@
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 961.7625770295009,
-  "handler": 10
+  "handler": 11
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
