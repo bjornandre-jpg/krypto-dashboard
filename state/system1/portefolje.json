@@ -1,16 +1,16 @@
 {
- "kontanter": 399.30448661258356,
+ "kontanter": 396.5635261827987,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-USDT": {
    "mengde": 0.0004951084398329357,
    "snittpris": 86895.05485332507,
-   "maalvekt": 0.04501087545369538
+   "maalvekt": 0.0450916775934651
   },
   "ETH-USDT": {
    "mengde": 0.016500770200618485,
    "snittpris": 2793.1418937213007,
-   "maalvekt": 0.048327037591352234
+   "maalvekt": 0.048241992027400135
   },
   "SOL-USDT": {
    "mengde": 0.5106768739404494,
@@ -20,7 +20,7 @@
   "BNB-USDT": {
    "mengde": 0.05426126379557629,
    "snittpris": 805.372,
-   "maalvekt": 0.040900482042132175
+   "maalvekt": 0.0421603108824176
   },
   "DOGE-USDT": {
    "mengde": 464.3784434307704,
@@ -35,7 +35,7 @@
   "LINK-USDT": {
    "mengde": 2.8042175311417914,
    "snittpris": 13.2195,
-   "maalvekt": 0.03601040609473318
+   "maalvekt": 0.036250837824145836
   },
   "AVAX-USDT": {
    "mengde": 6.253241021117878,
@@ -45,17 +45,17 @@
   "DOT-USDT": {
    "mengde": 47.57028470756847,
    "snittpris": 1.1865,
-   "maalvekt": 0.05049656052224565
+   "maalvekt": 0.0535322616293204
   },
   "LTC-USDT": {
-   "mengde": 0.9687527947761437,
+   "mengde": 0.8635647690721509,
    "snittpris": 62.72,
-   "maalvekt": 0.062459873470664354
+   "maalvekt": 0.05844628754512511
   },
   "CAKE-USDT": {
    "mengde": 19.15367729463664,
    "snittpris": 2.5902712909299885,
-   "maalvekt": 0.050983123872989845
+   "maalvekt": 0.05106617067175343
   },
   "XRP-USDT": {
    "mengde": 19.721613965384982,
@@ -63,15 +63,15 @@
    "maalvekt": 0.04797141475184541
   },
   "UNI-USDT": {
-   "mengde": 0.8746553150790648,
-   "snittpris": 9.2331,
-   "maalvekt": 0.07128782829901568
+   "mengde": 1.9234290029801786,
+   "snittpris": 9.284463726577489,
+   "maalvekt": 0.07144198232649468
   }
  },
  "dag": {
   "dato": "2026-09-24",
   "start_egenkapital": 985.0271064907361,
-  "handler": 3
+  "handler": 5
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
