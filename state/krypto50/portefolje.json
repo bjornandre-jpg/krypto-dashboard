@@ -1,5 +1,5 @@
 {
- "kontanter": 402.41309055817027,
+ "kontanter": 425.28318097269687,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -162,11 +162,6 @@
    "snittpris": 0.49893086770338785,
    "maalvekt": 0.021806887408869834
   },
-  "LSK-USDT": {
-   "mengde": 63.3102416978002,
-   "snittpris": 0.396,
-   "maalvekt": 0.02612759379355622
-  },
   "ONE-USDT": {
    "mengde": 7297.892785476425,
    "snittpris": 0.001637,
@@ -186,7 +181,7 @@
  "dag": {
   "dato": "2026-09-25",
   "start_egenkapital": 985.5211029060239,
-  "handler": 2
+  "handler": 3
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
