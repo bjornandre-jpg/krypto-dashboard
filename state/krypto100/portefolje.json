@@ -1,5 +1,5 @@
 {
- "kontanter": 361.97878438727685,
+ "kontanter": 374.2581852704247,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -131,11 +131,6 @@
    "mengde": 270.7912226369232,
    "snittpris": 0.03991,
    "maalvekt": 0.008885861851239844
-  },
-  "AERO-USDT": {
-   "mengde": 14.539499143273662,
-   "snittpris": 0.6972,
-   "maalvekt": 0.011955016426182404
   },
   "RAY-USDT": {
    "mengde": 5.662511751901637,
@@ -371,7 +366,7 @@
  "dag": {
   "dato": "2026-09-25",
   "start_egenkapital": 987.152105062361,
-  "handler": 27
+  "handler": 28
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
