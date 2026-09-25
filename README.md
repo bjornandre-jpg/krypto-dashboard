@@ -15,7 +15,7 @@ GitHub Pages) leser `state/*/dashboard.json` direkte.
 | Hysterese | 2 like beslutninger på rad (kjøringer) | 2 like på rad per LUKKET candle (8 t) |
 | Grenser | 10 % per mynt, 60 % totalt | 4 % per mynt, 80 % totalt |
 
-Felles: terskel ±0,30, stop-loss 8 %, take-profit 20 %, rebalansering ved 1,05× målvekt,
+Felles: terskel ±0,30, stop-loss 15 %, ingen take-profit, rebalansering ved 1,05× målvekt,
 maks 30 handler/døgn, maks dagstap 5 % (stopper nye kjøp), gebyr 0,1 %, kun long/spot.
 
 **Nødstopp:** lag en tom fil `state/system1/STOPP` eller `state/krypto50/STOPP`
@@ -57,3 +57,18 @@ Identisk med Krypto50, men topp 100 mynter etter volum (≥365 d historikk,
 2 % per mynt (80 % totalt). Backtest ~3 år: +66,5 % (-28,0 % maks nedgang);
 med 4 % per mynt +95,7 % men -40,3 % nedgang; stokket signal -9,5 %.
 System 1 heter nå Krypto13 i dashbordet (mappen er fortsatt `state/system1`).
+
+## Exit-reglene endret (2026-09-25)
+Backtest over ~3 år viste at take-profit på 20 % og stop-loss på 8 % kostet mye:
+de kuttet vinnerne og kastet ut posisjoner i vanlig støy. Nye regler for alle tre
+systemene: stop-loss 15 %, ingen take-profit. Krypto13 fikk i tillegg trendvindu
+SMA 10/40 (fra 8/33).
+
+| System | Før | Etter |
+|---|---|---|
+| Krypto13 | +35,8 % (-36,7 % nedgang) | +83,9 % (-28,0 %) |
+| Krypto50 | +87,8 % (-23,8 %) | +172,2 % (-26,4 %) |
+| Krypto100 | +66,5 % (-28,0 %) | +138,5 % (-31,5 %) |
+
+Helt uten stop-loss ble tallene enda bedre (Krypto50 +188,8 %), men stop-loss
+beholdes som forsikring mot at én mynt kollapser.

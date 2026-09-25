@@ -17,8 +17,8 @@ from datetime import datetime, timezone
 STANDARD = {
     "gebyr": 0.001,            # KuCoin spot taker
     "min_handel": 5.0,         # USDT
-    "stop_loss": 0.08,
-    "take_profit": 0.20,
+    "stop_loss": 0.15,        # vidt nok til at vanlig krypto-støy ikke kaster ut posisjonen
+    "take_profit": None,      # AV: et trendsystem lever av de få store vinnerne (backtest 2026-09-25)
     "rebal_mult": 1.05,
     "max_handler_dag": 30,
     "max_dagstap": 0.05,       # stopper nye kjøp resten av døgnet (UTC)
@@ -141,7 +141,7 @@ def vurder_mynt(pf, sym, priser, egenkapital, beslutn, score, bekreftet, signal_
         if endring <= -c["stop_loss"]:
             pf.selg(sym, p["mengde"], pris, f"stop-loss {endring:+.1%}", ts)
             return "stop-loss"
-        if endring >= c["take_profit"]:
+        if c["take_profit"] and endring >= c["take_profit"]:
             pf.selg(sym, p["mengde"], pris, f"take-profit {endring:+.1%}", ts)
             return "take-profit"
         # 2. drift-rebalansering

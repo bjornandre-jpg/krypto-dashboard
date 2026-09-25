@@ -12,10 +12,10 @@ from felles.portefolje import Portefolje, vurder_mynt, lagre, utc_iso
 MAPPE = os.path.join("state", "system1")
 MYNTER = ["BTC-USDT", "ETH-USDT", "XRP-USDT", "SOL-USDT", "BNB-USDT", "DOGE-USDT", "ADA-USDT",
           "LINK-USDT", "AVAX-USDT", "DOT-USDT", "LTC-USDT", "UNI-USDT", "CAKE-USDT"]
-# Giret opp 2026-09-19: kortere trendvindu (SMA 8/33) og tyngre TA-vekt, se backtest i README.
+# Giret opp 2026-09-19 (kortere trendvindu, tyngre TA-vekt), justert 2026-09-25 til SMA 10/40. Se README.
 VEKT_BTC = {"nyheter": 0.05, "onchain": 0.05, "ta": 0.75, "fg": 0.05, "funding": 0.10}
 VEKT_ANDRE = {"nyheter": 0.05, "ta": 0.80, "fg": 0.05, "funding": 0.10}
-SMA_RASK, SMA_TREG = 8, 33
+SMA_RASK, SMA_TREG = 10, 40
 CFG = {"max_per_mynt": 0.10, "max_total": 0.60,
        "kill_switch": os.path.exists(os.path.join(MAPPE, "STOPP"))}
 
