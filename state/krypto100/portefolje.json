@@ -1,5 +1,5 @@
 {
- "kontanter": 374.2581852704247,
+ "kontanter": 384.2733625835459,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -46,11 +46,6 @@
    "mengde": 32.8027331463958,
    "snittpris": 0.2391,
    "maalvekt": 0.006997767923915563
-  },
-  "SEI-USDT": {
-   "mengde": 140.1734132499564,
-   "snittpris": 0.05943,
-   "maalvekt": 0.010264213269218163
   },
   "ARB-USDT": {
    "mengde": 40.8542961655909,
@@ -366,7 +361,7 @@
  "dag": {
   "dato": "2026-09-25",
   "start_egenkapital": 987.152105062361,
-  "handler": 28
+  "handler": 29
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."

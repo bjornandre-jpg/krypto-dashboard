@@ -1,5 +1,5 @@
 {
- "kontanter": 339.6115187408759,
+ "kontanter": 359.6172056654112,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -41,11 +41,6 @@
    "mengde": 1.6045200474335928,
    "snittpris": 13.243883452891087,
    "maalvekt": 0.026503452453630092
-  },
-  "SEI-USDT": {
-   "mengde": 280.1582629710748,
-   "snittpris": 0.059469999999999995,
-   "maalvekt": 0.020528426538436326
   },
   "LTC-USDT": {
    "mengde": 0.3438959509173503,
@@ -196,7 +191,7 @@
  "dag": {
   "dato": "2026-09-25",
   "start_egenkapital": 985.5211029060239,
-  "handler": 21
+  "handler": 22
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
