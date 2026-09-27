@@ -1,5 +1,5 @@
 {
- "kontanter": 207.83480941093754,
+ "kontanter": 234.50841684437873,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -197,11 +197,6 @@
    "snittpris": 0.2631,
    "maalvekt": 0.024956356691140647
   },
-  "ONE-USDT": {
-   "mengde": 12327.011884202395,
-   "snittpris": 0.0026430171050465163,
-   "maalvekt": 0.028946676684459653
-  },
   "AVAX-USDT": {
    "mengde": 1.938155985204098,
    "snittpris": 10.68375711968434,
@@ -226,7 +221,7 @@
  "dag": {
   "dato": "2026-09-27",
   "start_egenkapital": 1010.5002308306323,
-  "handler": 4
+  "handler": 5
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."

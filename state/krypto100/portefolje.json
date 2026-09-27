@@ -1,5 +1,5 @@
 {
- "kontanter": 215.24786141113913,
+ "kontanter": 225.81565070674773,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -377,11 +377,6 @@
    "snittpris": 4.497e-06,
    "maalvekt": 0.006588287733610388
   },
-  "ONE-USDT": {
-   "mengde": 4883.826252664763,
-   "snittpris": 0.002609320114616217,
-   "maalvekt": 0.014473338342229827
-  },
   "FARTCOIN-USDT": {
    "mengde": 32.91993289598288,
    "snittpris": 0.1973,
@@ -446,7 +441,7 @@
  "dag": {
   "dato": "2026-09-27",
   "start_egenkapital": 1009.7109582534849,
-  "handler": 2
+  "handler": 3
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
