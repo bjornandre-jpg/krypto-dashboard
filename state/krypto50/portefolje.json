@@ -1,5 +1,5 @@
 {
- "kontanter": 207.71335097019207,
+ "kontanter": 212.70866194110812,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -38,7 +38,7 @@
    "maalvekt": 0.018080153538067748
   },
   "LINK-USDT": {
-   "mengde": 1.6045200474335928,
+   "mengde": 1.2471532988970433,
    "snittpris": 13.243883452891087,
    "maalvekt": 0.017280452515719438
   },
@@ -231,7 +231,7 @@
  "dag": {
   "dato": "2026-09-27",
   "start_egenkapital": 1010.5002308306323,
-  "handler": 20
+  "handler": 21
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
