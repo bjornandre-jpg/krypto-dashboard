@@ -1,5 +1,5 @@
 {
- "kontanter": 204.6851860885166,
+ "kontanter": 209.68525938132512,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -138,7 +138,7 @@
    "maalvekt": 0.015895075931093204
   },
   "B2-USDT": {
-   "mengde": 41.449666523798705,
+   "mengde": 31.546464364756943,
    "snittpris": 0.49893086770338785,
    "maalvekt": 0.01569743846930953
   },
@@ -226,7 +226,7 @@
  "dag": {
   "dato": "2026-09-27",
   "start_egenkapital": 1010.5002308306323,
-  "handler": 10
+  "handler": 11
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
