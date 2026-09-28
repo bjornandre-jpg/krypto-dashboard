@@ -1,5 +1,5 @@
 {
- "kontanter": 208.55648375400895,
+ "kontanter": 214.69012270238528,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -232,11 +232,6 @@
    "snittpris": 0.2977,
    "maalvekt": 0.00788803530576145
   },
-  "COTI-USDT": {
-   "mengde": 442.9854781459902,
-   "snittpris": 0.01635,
-   "maalvekt": 0.006575167242173729
-  },
   "TIA-USDT": {
    "mengde": 14.232525536712448,
    "snittpris": 0.4603,
@@ -451,7 +446,7 @@
  "dag": {
   "dato": "2026-09-28",
   "start_egenkapital": 1024.6567590618477,
-  "handler": 1
+  "handler": 2
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
