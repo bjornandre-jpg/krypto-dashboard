@@ -1,41 +1,41 @@
 {
- "kontanter": 404.46199423200835,
+ "kontanter": 402.10250589456854,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-USDT": {
    "mengde": 0.0004280011390932003,
    "snittpris": 86895.05485332507,
-   "maalvekt": 0.03563736651961217
+   "maalvekt": 0.033186796397546674
   },
   "ETH-USDT": {
    "mengde": 0.01397336354826828,
    "snittpris": 2793.1418937213007,
-   "maalvekt": 0.03485677823148578
+   "maalvekt": 0.03229240046152415
   },
   "SOL-USDT": {
    "mengde": 0.5728560888753557,
    "snittpris": 119.55957721765209,
-   "maalvekt": 0.06541509796290408
+   "maalvekt": 0.06374391395803419
   },
   "BNB-USDT": {
    "mengde": 0.045661401817247184,
    "snittpris": 805.372,
-   "maalvekt": 0.034878569180634346
+   "maalvekt": 0.031568716338603114
   },
   "DOGE-USDT": {
    "mengde": 546.2339958489335,
    "snittpris": 0.09810341223511422,
-   "maalvekt": 0.05099492030832159
+   "maalvekt": 0.04753992879868491
   },
   "ADA-USDT": {
    "mengde": 293.198671205736,
    "snittpris": 0.24455837940575345,
-   "maalvekt": 0.06997279761184291
+   "maalvekt": 0.06989996083690732
   },
   "DOT-USDT": {
    "mengde": 47.57028470756847,
    "snittpris": 1.1865,
-   "maalvekt": 0.06306751747199482
+   "maalvekt": 0.061893105833669596
   },
   "LTC-USDT": {
    "mengde": 0.7774447920954888,
@@ -48,14 +48,14 @@
    "maalvekt": 0.056841186972867434
   },
   "XRP-USDT": {
-   "mengde": 32.26778064687513,
+   "mengde": 26.281882785324626,
    "snittpris": 1.5116641321713387,
-   "maalvekt": 0.044260957052339685
+   "maalvekt": 0.03870157646522891
   },
   "UNI-USDT": {
    "mengde": 6.187686070619422,
    "snittpris": 9.000435676930454,
-   "maalvekt": 0.05921934517981611
+   "maalvekt": 0.05802682075684175
   },
   "AVAX-USDT": {
    "mengde": 0.9434770834482287,
@@ -63,15 +63,15 @@
    "maalvekt": 0.07330933176661629
   },
   "LINK-USDT": {
-   "mengde": 1.542246582379161,
-   "snittpris": 14.015681246296312,
-   "maalvekt": 0.07054806307217883
+   "mengde": 2.354708567685368,
+   "snittpris": 13.936398174873359,
+   "maalvekt": 0.06989488291166925
   }
  },
  "dag": {
   "dato": "2026-09-28",
   "start_egenkapital": 1023.2286778514328,
-  "handler": 10
+  "handler": 12
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
