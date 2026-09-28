@@ -1,5 +1,5 @@
 {
- "kontanter": 244.63876178758213,
+ "kontanter": 249.881812416355,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -113,7 +113,7 @@
    "maalvekt": 0.00689687896389658
   },
   "ALGO-USDT": {
-   "mengde": 97.8965963395379,
+   "mengde": 55.7415848720636,
    "snittpris": 0.1121,
    "maalvekt": 0.007054761552349941
   },
@@ -446,7 +446,7 @@
  "dag": {
   "dato": "2026-09-28",
   "start_egenkapital": 1024.6567590618477,
-  "handler": 9
+  "handler": 10
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
