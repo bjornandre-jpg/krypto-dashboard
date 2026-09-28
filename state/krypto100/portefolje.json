@@ -1,5 +1,5 @@
 {
- "kontanter": 260.0831960251275,
+ "kontanter": 265.5983480990372,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -367,11 +367,6 @@
    "snittpris": 4.497e-06,
    "maalvekt": 0.007543243483486159
   },
-  "FARTCOIN-USDT": {
-   "mengde": 32.91993289598288,
-   "snittpris": 0.1973,
-   "maalvekt": 0.007896535410746504
-  },
   "AERO-USDT": {
    "mengde": 13.261447341708035,
    "snittpris": 0.8443,
@@ -441,7 +436,7 @@
  "dag": {
   "dato": "2026-09-28",
   "start_egenkapital": 1024.6567590618477,
-  "handler": 12
+  "handler": 13
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
