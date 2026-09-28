@@ -1,5 +1,5 @@
 {
- "kontanter": 203.2492526899774,
+ "kontanter": 208.296756741086,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -93,7 +93,7 @@
    "maalvekt": 0.017256850101119367
   },
   "DASH-USDT": {
-   "mengde": 0.3390520725446515,
+   "mengde": 0.26531365153302994,
    "snittpris": 60.71357246889289,
    "maalvekt": 0.017953612268826424
   },
@@ -236,7 +236,7 @@
  "dag": {
   "dato": "2026-09-28",
   "start_egenkapital": 1016.4030972850078,
-  "handler": 6
+  "handler": 7
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
