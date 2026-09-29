@@ -1,5 +1,5 @@
 {
- "kontanter": 275.9516806433575,
+ "kontanter": 286.7677236362565,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -257,11 +257,6 @@
    "snittpris": 1.0793726812131537,
    "maalvekt": 0.006317855412231052
   },
-  "G-USDT": {
-   "mengde": 2279.341023739311,
-   "snittpris": 0.005634589726260778,
-   "maalvekt": 0.00814307092759977
-  },
   "WLD-USDT": {
    "mengde": 15.046840341620523,
    "snittpris": 0.45770263708082803,
@@ -426,7 +421,7 @@
  "dag": {
   "dato": "2026-09-29",
   "start_egenkapital": 988.0379502884459,
-  "handler": 4
+  "handler": 5
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
