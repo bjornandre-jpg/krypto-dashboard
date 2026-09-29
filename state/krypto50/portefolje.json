@@ -1,5 +1,5 @@
 {
- "kontanter": 290.54917358661186,
+ "kontanter": 295.928734750186,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -28,7 +28,7 @@
    "maalvekt": 0.01287762775159193
   },
   "AAVE-USDT": {
-   "mengde": 0.12212972125251041,
+   "mengde": 0.08735672558104071,
    "snittpris": 148.87814731607935,
    "maalvekt": 0.013879169831822172
   },
@@ -221,7 +221,7 @@
  "dag": {
   "dato": "2026-09-29",
   "start_egenkapital": 983.3771367054189,
-  "handler": 4
+  "handler": 5
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
