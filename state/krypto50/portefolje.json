@@ -1,5 +1,5 @@
 {
- "kontanter": 263.3297302723419,
+ "kontanter": 290.54917358661186,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -31,11 +31,6 @@
    "mengde": 0.12212972125251041,
    "snittpris": 148.87814731607935,
    "maalvekt": 0.013879169831822172
-  },
-  "ARB-USDT": {
-   "mengde": 76.55773823206236,
-   "snittpris": 0.2293514630203932,
-   "maalvekt": 0.013521432942812325
   },
   "LINK-USDT": {
    "mengde": 1.2471532988970433,
@@ -172,11 +167,6 @@
    "snittpris": 0.5425,
    "maalvekt": 0.018648253295288863
   },
-  "VVV-USDT": {
-   "mengde": 0.4699562167895917,
-   "snittpris": 31.314,
-   "maalvekt": 0.01492288688217704
-  },
   "STRK-USDT": {
    "mengde": 451.2190242497575,
    "snittpris": 0.040946710067433195,
@@ -231,7 +221,7 @@
  "dag": {
   "dato": "2026-09-29",
   "start_egenkapital": 983.3771367054189,
-  "handler": 2
+  "handler": 4
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
