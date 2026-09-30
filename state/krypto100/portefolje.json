@@ -1,5 +1,5 @@
 {
- "kontanter": 254.53789860013606,
+ "kontanter": 260.1692048068859,
  "startkapital": 1000.0,
  "posisjoner": {
   "ETH-USDT": {
@@ -417,11 +417,6 @@
    "snittpris": 0.1856,
    "maalvekt": 0.0073885164706992594
   },
-  "BR-USDT": {
-   "mengde": 7.831807085654334,
-   "snittpris": 0.8622,
-   "maalvekt": 0.006128752559064983
-  },
   "CRV-USDT": {
    "mengde": 28.826798556053323,
    "snittpris": 0.3893,
@@ -446,7 +441,7 @@
  "dag": {
   "dato": "2026-09-30",
   "start_egenkapital": 981.2290171102259,
-  "handler": 4
+  "handler": 5
  },
  "opprettet": "2026-09-21T18:53:06Z",
  "merknad": "Felles nullstilling av alle tre systemer 2026-09-21 for sammenlignbar avkastning. Tidligere historikk i state/arkiv/2026-09-21/."
