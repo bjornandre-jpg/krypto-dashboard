@@ -1,4 +1,4 @@
-name: Oppdater Krypto50-univers (manuelt)
+name: Oppdater myntunivers fra Bitvavo (manuelt)
 
 on:
   workflow_dispatch: {}
@@ -15,8 +15,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m krypto50.univers
+      - run: python -m krypto50.univers 100
       - run: |
           git config user.name "krypto-bot"
           git config user.email "krypto-bot@users.noreply.github.com"
-          git add krypto50/univers.json
+          git add krypto50/univers.json krypto100/univers.json
           git diff --cached --quiet || (git commit -m "Oppdatert univers" && git pull --rebase && git push)

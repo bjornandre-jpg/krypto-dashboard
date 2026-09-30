@@ -94,7 +94,14 @@
   .rad .hoyre { text-align: right; }
   .pos { grid-template-columns: 1fr auto auto; }
   .pos .pnl { min-width: 64px; text-align: right; font-weight: 500; }
-  .handel { grid-template-columns: auto 1fr auto; }
+  .handel { display: block; padding: 10px 14px; }
+  .handel .l1 { display: flex; align-items: center; gap: 9px; }
+  .handel .l1 .sp { flex: 1; }
+  .handel .l1 .pct { font-weight: 600; font-size: 15px; }
+  .handel .l1 .belop { font-size: 15px; color: var(--skifer-2); }
+  .handel .l2 { display: flex; justify-content: space-between; gap: 10px; margin-top: 3px;
+                font-size: 13px; color: var(--skifer-2); }
+  .handel .l2 b { font-weight: 500; }
   .merkelapp { font-size: 12px; font-weight: 600; padding: 2px 8px; border: 1px solid currentColor; }
   .sig { grid-template-columns: 64px 70px 1fr 46px; }
   .sig .beslutning { font-size: 13px; font-weight: 600; }
@@ -150,7 +157,7 @@
   </section>
 
   <footer>
-    Simulert papirhandel med 1 000 USDT i startkapital per system. Ingen ekte penger. Systemene kjøres hver time på GitHub sine servere, ofte 5–30 minutter forsinket. Ikke finansiell rådgivning.
+    Simulert papirhandel med 1 000 EUR i startkapital per system, på Bitvavos kurser. Ingen ekte penger. Systemene kjøres hver time på GitHub sine servere, ofte 5–30 minutter forsinket. Ikke finansiell rådgivning.
   </footer>
 </div>
 
@@ -159,19 +166,20 @@
   const SYS = {
     system1:   { navn: "Krypto13",  farge: "#383B46", tak: 60, beskr: "13 faste mynter, daglige candles og seks signalkilder",
                  sig: "Ny vurdering hver time. Kjøp eller salg krever samme signal to timer på rad." },
-    krypto50:  { navn: "Krypto50",  farge: "#A88F5C", tak: 80, beskr: "De 50 største myntene etter volum, 4-timers candles",
+    krypto50:  { navn: "Krypto50",  farge: "#A88F5C", tak: 70, beskr: "De 50 mest omsatte EUR-parene på Bitvavo, 4-timers candles",
                  sig: "Ny vurdering hver fjerde time når en candle lukkes. Samme signal to ganger på rad kreves." },
-    krypto100: { navn: "Krypto100", farge: "#7F95B0", tak: 80, beskr: "De 100 største myntene etter volum, 4-timers candles",
+    krypto100: { navn: "Krypto100", farge: "#7F95B0", tak: 70, beskr: "De 100 mest omsatte EUR-parene på Bitvavo, 4-timers candles",
                  sig: "Ny vurdering hver fjerde time når en candle lukkes. Samme signal to ganger på rad kreves." },
   };
   const NOKKEL = Object.keys(SYS);
   const REF = {
+    btc:        { navn: "Bitcoin", farge: "#8A6E3F" },
     sp500:      { navn: "S&P 500", farge: "#5E7C6B" },
     nordnet125: { navn: "Nordnet Global 125", farge: "#B2785A" },
     virtune10:  { navn: "Virtune Top 10", farge: "#6E5A8C" },
   };
   let referanser = null;
-  let synlig = { system1: true, krypto50: true, krypto100: true, sp500: true, nordnet125: true, virtune10: true };
+  let synlig = { system1: true, krypto50: true, krypto100: true, btc: true, sp500: false, nordnet125: false, virtune10: false };
   try { Object.assign(synlig, JSON.parse(localStorage.getItem("krypto-synlig") || "{}")); } catch (e) {}
   const lagreSynlig = () => { try { localStorage.setItem("krypto-synlig", JSON.stringify(synlig)); } catch (e) {} };
   const data = {};
@@ -190,9 +198,9 @@
   function tegnGraf() {
     const svg = document.getElementById("kurve"), W = 340, H = 190, L = 34, R = 6, T = 8, B = 22;
     const sysSerier = NOKKEL.filter(k => data[k]).map(k => {
-      const d = data[k], s = d.start_capital || 1000;
+      const d = data[k], s = d.startkapital || 1000;
       const pkt = (d.equity_curve || []).map(([t, v]) => [new Date(t).getTime(), (v / s - 1) * 100]);
-      pkt.push([new Date(d.updated_at).getTime(), (d.equity_usd / s - 1) * 100]);
+      pkt.push([new Date(d.updated_at).getTime(), (d.egenkapital / s - 1) * 100]);
       return { k, pkt, farge: SYS[k].farge, ref: false, siste: pkt[pkt.length - 1][1] };
     });
     const refSerier = Object.keys(REF).filter(k => referanser?.serier?.[k]).map(k => {
@@ -245,8 +253,8 @@
     document.getElementById("beskr").textContent = S.beskr;
     document.getElementById("sig-under").textContent = S.sig;
     if (!d) { document.getElementById("belop").textContent = "–"; return; }
-    const r = (d.equity_usd / (d.start_capital || 1000) - 1) * 100;
-    document.getElementById("belop").innerHTML = `${nf(d.equity_usd, 2)}<small>USDT</small>`;
+    const r = (d.egenkapital / (d.startkapital || 1000) - 1) * 100;
+    document.getElementById("belop").innerHTML = `${nf(d.egenkapital, 2)}<small>EUR</small>`;
     const e = document.getElementById("endring");
     e.textContent = `${pst(r, 2)} siden start`; e.className = "endring " + (r > 0 ? "opp" : r < 0 ? "ned" : "");
     const eks = d.total_exposure_pct || 0, fg = d.fear_greed_value;
@@ -257,19 +265,35 @@
       <div><div class="n">${fg ?? "–"}</div><div class="t">Fear &amp; Greed: ${fgTekst}</div>
         <div class="maaler"><span style="width:${fg ?? 0}%"></span></div></div>`;
 
-    const ps = (d.positions || []).slice().sort((a, b) => b.value_usd - a.value_usd);
+    const ps = (d.positions || []).slice().sort((a, b) => b.verdi - a.verdi);
     document.getElementById("pos-under").textContent = ps.length
-      ? `${ps.length} åpne posisjoner, til sammen ${nf(d.positions_value_usd || 0, 0)} USDT. Kontanter ${nf(d.cash_usd, 0)} USDT.` : "";
+      ? `${ps.length} åpne posisjoner, til sammen ${nf(d.posisjonsverdi || 0, 0)} EUR. Kontanter ${nf(d.kontanter, 0)} EUR.` : "";
     document.getElementById("posisjoner").innerHTML = ps.length ? ps.map(p => `
       <div class="rad pos"><div><div class="navn">${esc(tick(p.asset))}</div><div class="liten">kjøpt ${kurs(p.entry_price)}, nå ${kurs(p.current_price)}</div></div>
-        <div class="hoyre">${nf(p.value_usd, 0)}</div><div class="pnl ${p.pnl_pct >= 0 ? "opp" : "ned"}">${pst(p.pnl_pct)}</div></div>`).join("")
+        <div class="hoyre">${nf(p.verdi, 0)}</div><div class="pnl ${p.pnl_pct >= 0 ? "opp" : "ned"}">${pst(p.pnl_pct)}</div></div>`).join("")
       : `<div class="tom">Ingen åpne posisjoner. Systemet kjøper når et signal er bekreftet.</div>`;
 
     const hs = (d.recent_trades || []).slice(0, 10);
-    document.getElementById("handler").innerHTML = hs.length ? hs.map(h => `
-      <div class="rad handel"><span class="merkelapp ${h.side === "KJØP" ? "opp" : "ned"}">${h.side === "KJØP" ? "Kjøp" : "Salg"}</span>
-        <div><span class="navn">${esc(tick(h.mynt))}</span> <span class="liten">${esc(h.grunn)}</span></div>
-        <div class="hoyre"><div>${nf(parseFloat(h.belop_usdt), 0)}</div><div class="liten">${siden(h.tid)}</div></div></div>`).join("")
+    const tall = v => v === "" || v == null ? null : parseFloat(v);
+    const dagtekst = v => { const n = tall(v); return n == null ? null : n < 1 ? "under et døgn" : `${nf(n, n < 10 ? 1 : 0)} d`; };
+    document.getElementById("handler").innerHTML = hs.length ? hs.map(h => {
+      const kjop = h.side === "KJØP";
+      const pct = tall(kjop ? h.urealisert_pst : h.avkastning_pst);
+      const eur = tall(kjop ? h.urealisert : h.gevinst);
+      const dg = dagtekst(h.dager_vist);
+      const belop = nf(parseFloat(h.belop), 0);
+      const hoyre = pct == null
+        ? `<span class="belop">${belop} €</span>`
+        : `<span class="pct ${pct >= 0 ? "opp" : "ned"}">${pst(pct)}</span>`;
+      const under = [esc(h.grunn), kjop ? (dg ? `${dg} siden` : null) : (dg ? `holdt ${dg}` : null)]
+        .filter(Boolean).join(" · ");
+      const hoyre2 = eur == null ? ""
+        : `<b class="${eur >= 0 ? "opp" : "ned"}">${(eur > 0 ? "+" : eur < 0 ? "−" : "")}${nf(Math.abs(eur), 2)} €</b> av ${belop} €`;
+      return `<div class="rad handel">
+        <div class="l1"><span class="merkelapp ${kjop ? "opp" : "ned"}">${kjop ? "Kjøp" : "Salg"}</span>
+          <span class="navn">${esc(tick(h.mynt))}</span><span class="sp"></span>${hoyre}</div>
+        <div class="l2"><span>${under}</span><span>${hoyre2}</span></div></div>`;
+    }).join("")
       : `<div class="tom">Ingen handler ennå.</div>`;
 
     const ss = (d.signals || []).slice().sort((a, b) => (b.score ?? -9) - (a.score ?? -9));

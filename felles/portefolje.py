@@ -15,8 +15,8 @@ import os
 from datetime import datetime, timezone
 
 STANDARD = {
-    "gebyr": 0.001,            # KuCoin spot taker
-    "min_handel": 5.0,         # USDT
+    "gebyr": 0.0025,           # Bitvavo spot taker (EUR-par); limit/maker er 0,15 %
+    "min_handel": 5.0,         # EUR
     "stop_loss": 0.15,        # vidt nok til at vanlig krypto-støy ikke kaster ut posisjonen
     "take_profit": None,      # AV: et trendsystem lever av de få store vinnerne (backtest 2026-09-25)
     "rebal_mult": 1.05,
@@ -29,6 +29,18 @@ STANDARD = {
 def utc_iso(ts=None):
     d = datetime.fromtimestamp(ts, timezone.utc) if ts else datetime.now(timezone.utc)
     return d.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _dager_siden(iso, ts=None):
+    """Antall døgn fra et ISO-tidspunkt til nå (eller til ts i backtest)."""
+    if not iso:
+        return None
+    try:
+        start = datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+    naa = datetime.fromtimestamp(ts, timezone.utc) if ts else datetime.now(timezone.utc)
+    return (naa - start).total_seconds() / 86400
 
 
 class Portefolje:
@@ -67,11 +79,13 @@ class Portefolje:
             self.s["dag"] = {"dato": dato, "start_egenkapital": egenkapital, "handler": 0}
 
     # ---------- handler ----------
-    def _logg(self, ts, sym, side, mengde, pris, belop, gebyr, grunn):
+    def _logg(self, ts, sym, side, mengde, pris, belop, gebyr, grunn, ekstra=None):
         self.handler.append({"tid": utc_iso(ts), "mynt": sym, "side": side,
                              "mengde": round(mengde, 10), "pris": pris,
-                             "belop_usdt": round(belop, 4), "gebyr_usdt": round(gebyr, 4),
-                             "grunn": grunn})
+                             "belop": round(belop, 4), "gebyr": round(gebyr, 4),
+                             "grunn": grunn,
+                             **{k: "" for k in ("kostpris", "avkastning_pst", "gevinst", "dager")},
+                             **(ekstra or {})})
         self.s["dag"]["handler"] = self.s["dag"].get("handler", 0) + 1
 
     def kjop(self, sym, usd, pris, grunn, ts=None, maalvekt=None):
@@ -81,6 +95,8 @@ class Portefolje:
         gebyr = usd * self.cfg["gebyr"]
         mengde = (usd - gebyr) / pris
         p = self.s["posisjoner"].setdefault(sym, {"mengde": 0.0, "snittpris": pris, "maalvekt": 0.0})
+        if p["mengde"] <= 0:                     # posisjonen åpnes på nytt
+            p["apnet"] = utc_iso(ts)
         ny = p["mengde"] + mengde
         p["snittpris"] = (p["mengde"] * p["snittpris"] + mengde * pris) / ny
         p["mengde"] = ny
@@ -99,13 +115,21 @@ class Portefolje:
             return 0.0
         brutto = mengde * pris
         gebyr = brutto * self.cfg["gebyr"]
+        # realisert resultat mot kostbasis, etter gebyr
+        kost = p["snittpris"] * mengde
+        gevinst = (brutto - gebyr) - kost
+        dager = _dager_siden(p.get("apnet"), ts)
         p["mengde"] -= mengde
         self.s["kontanter"] += brutto - gebyr
         if p["mengde"] * pris < 0.01:
             del self.s["posisjoner"][sym]
         elif maalvekt is not None:
             p["maalvekt"] = maalvekt
-        self._logg(ts, sym, "SELG", mengde, pris, brutto, gebyr, grunn)
+        self._logg(ts, sym, "SELG", mengde, pris, brutto, gebyr, grunn,
+                   {"kostpris": round(kost / mengde, 10) if mengde else "",
+                    "avkastning_pst": round(gevinst / kost * 100, 3) if kost else "",
+                    "gevinst": round(gevinst, 4),
+                    "dager": "" if dager is None else round(dager, 2)})
         return brutto
 
     # ---------- risiko ----------

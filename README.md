@@ -1,4 +1,4 @@
-# Krypto papirhandel - Krypto13, Krypto50 og Krypto100 på GitHub Actions
+# Krypto papirhandel - Krypto13, Krypto50 og Krypto100 på Bitvavo (EUR)
 
 **Simulert papirhandel. Ingen ekte penger, ingen API-nøkler, ingen ordre sendes til noen børs.**
 
@@ -9,11 +9,11 @@ GitHub Pages) leser `state/*/dashboard.json` direkte.
 
 | | System 1 | Krypto50 |
 |---|---|---|
-| Mynter | 13 faste (inkl. CAKE) | Topp 50 etter volum, ≥365 d historikk |
+| Mynter | 13 faste (inkl. CAKE) | Topp 50 EUR-par på Bitvavo, ≥365 d historikk, spread ≤0,30 % |
 | Candles | Daglige, SMA 8/33 (giret opp 2026-09-19) | 4-timers, SMA 50/200 (= 8/33 dager) |
 | Signal | Nyheter, on-chain (BTC), TA, Fear&Greed, funding | TA 80 %, Fear&Greed 10 %, funding 10 % |
 | Hysterese | 2 like beslutninger på rad (kjøringer) | 2 like på rad per LUKKET candle (8 t) |
-| Grenser | 10 % per mynt, 60 % totalt | 4 % per mynt, 80 % totalt |
+| Grenser | 10 % per mynt, 60 % totalt | 3 % per mynt, 70 % totalt |
 
 Felles: terskel ±0,30, stop-loss 15 %, ingen take-profit, rebalansering ved 1,05× målvekt,
 maks 30 handler/døgn, maks dagstap 5 % (stopper nye kjøp), gebyr 0,1 %, kun long/spot.
@@ -72,3 +72,52 @@ SMA 10/40 (fra 8/33).
 
 Helt uten stop-loss ble tallene enda bedre (Krypto50 +188,8 %), men stop-loss
 beholdes som forsikring mot at én mynt kollapser.
+
+## Flyttet til Bitvavo (2026-09-27)
+Kurser og (senere) handel skjer på **Bitvavo i euro**, ikke lenger KuCoin i USDT.
+Bakgrunn: Bitvavo har MiCA-lisens (nederlandske AFM), 0,15 % maker / 0,25 % taker
+mot Kraken sine 0,40/0,80 %, og alle 13 Krypto13-myntene er listet.
+Funding hentes fortsatt fra KuCoin futures, siden Bitvavo ikke har perpetuals og
+funding er et markedsbredt signal.
+
+Alle tre systemene ble nullstilt til 1 000 EUR samtidig; tidligere historikk i
+`state/arkiv/`. Universene bygges på nytt fra Bitvavos EUR-par, nå også med et
+**spread-filter på 0,30 %** - en måling viste at små par som POND (1,33 %) koster
+mer i spread enn i gebyr. Krypto50 er samtidig dempet til 3 % per mynt og 70 %
+totalt, og Krypto100 til 1,5 % / 70 %, for å holde maks nedgang på nivå med Krypto13.
+
+Backtest på Bitvavos egne eurokurser, ved 0,25 % gebyr (spread ikke medregnet):
+
+| System | Avkastning | Årlig | Maks nedgang | Stokket kontroll |
+|---|---|---|---|---|
+| Krypto13 (3,9 år) | +99,4 % | +19,2 % | -31,4 % | +36,2 % |
+| Krypto50 (3,0 år) | +91,9 % | +24,0 % | -42,0 % | -30,4 % |
+
+Krypto50-tallet gjelder 4 % per mynt; med 3 % / 70 % ble det +69,1 % og -34,2 %.
+
+## Live matchet ikke backtesten (rettet 2026-09-30)
+Den ukentlige helsesjekken avdekket at systemene omsatte ca. fire ganger mer
+enn backtesten forutsatte. Årsaken var at beslutninger ble tatt for ofte:
+
+- **Krypto13** regnet TA på en dagscandle som ikke var ferdig, og godtok to
+  påfølgende TIMESKJØRINGER som bekreftelse. Backtesten krever to påfølgende
+  LUKKEDE dager. Rettet: kun lukkede dagscandles, én beslutning per døgn.
+- **Krypto50/100** hadde riktig hysterese, men sjekket stop-loss og
+  rebalansering hver time. Rettet: handler bare når en 4-timers candle lukkes.
+
+Målt på samme data og samme handelskode:
+
+| Krypto13, 4 år | Avkastning | Maks ned | Omsetning | Gebyr/år |
+|---|---|---|---|---|
+| Signal daglig (rettet) | +99,3 % | -23,0 % | 255/uke | 3,3 % |
+| Signal daglig + stop-loss hver time | +83,5 % | -26,7 % | 261/uke | 3,4 % |
+| Signal hver time (slik det var) | +73,7 % | -26,8 % | 562/uke | 7,3 % |
+
+| 3 år | Stop-loss ved candle-slutt | Stop-loss løpende |
+|---|---|---|
+| Krypto50 | +73,7 % (-33,7 %) | +58,6 % (-36,0 %) |
+| Krypto100 | +54,6 % (-33,4 %) | +42,1 % (-37,0 %) |
+
+Daglig vant i seks av sju nabo-oppsett for Krypto13. Hyppigere sjekk ga
+lavere avkastning OG dypere fall i alle tre systemene: posisjoner kastes ut
+på støy som er hentet inn igjen ved candle-slutt.

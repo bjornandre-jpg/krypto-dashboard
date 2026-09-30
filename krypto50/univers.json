@@ -1,228 +1,266 @@
 {
- "bygget": "2026-09-19T20:02:30Z",
+ "bygget": "2026-09-26T22:09:53Z",
+ "bors": "Bitvavo",
+ "valuta": "EUR",
  "min_dager_historikk": 365,
+ "maks_spread_pst": 0.3,
  "mynter": [
   {
-   "symbol": "BTC-USDT",
-   "volum_usdt_24t": 533869917
+   "symbol": "XRP-EUR",
+   "omsetning_eur_24t": 32783635,
+   "spread_pst": 0.001
   },
   {
-   "symbol": "ETH-USDT",
-   "volum_usdt_24t": 212088322
+   "symbol": "BTC-EUR",
+   "omsetning_eur_24t": 14355612,
+   "spread_pst": 0.001
   },
   {
-   "symbol": "ZEC-USDT",
-   "volum_usdt_24t": 96057561
+   "symbol": "SOL-EUR",
+   "omsetning_eur_24t": 12505663,
+   "spread_pst": 0.005
   },
   {
-   "symbol": "XMR-USDT",
-   "volum_usdt_24t": 77352481
+   "symbol": "ADA-EUR",
+   "omsetning_eur_24t": 11623314,
+   "spread_pst": 0.018
   },
   {
-   "symbol": "XRP-USDT",
-   "volum_usdt_24t": 69516410
+   "symbol": "TAO-EUR",
+   "omsetning_eur_24t": 10374492,
+   "spread_pst": 0.075
   },
   {
-   "symbol": "AVAX-USDT",
-   "volum_usdt_24t": 61278296
+   "symbol": "QNT-EUR",
+   "omsetning_eur_24t": 8986064,
+   "spread_pst": 0.105
   },
   {
-   "symbol": "NEAR-USDT",
-   "volum_usdt_24t": 52575514
+   "symbol": "SUI-EUR",
+   "omsetning_eur_24t": 8303725,
+   "spread_pst": 0.04
   },
   {
-   "symbol": "TAO-USDT",
-   "volum_usdt_24t": 45587607
+   "symbol": "WLD-EUR",
+   "omsetning_eur_24t": 6816949,
+   "spread_pst": 0.047
   },
   {
-   "symbol": "DOT-USDT",
-   "volum_usdt_24t": 44901925
+   "symbol": "NEAR-EUR",
+   "omsetning_eur_24t": 5804091,
+   "spread_pst": 0.039
   },
   {
-   "symbol": "SUI-USDT",
-   "volum_usdt_24t": 41168747
+   "symbol": "ETH-EUR",
+   "omsetning_eur_24t": 5713043,
+   "spread_pst": 0.0
   },
   {
-   "symbol": "UNI-USDT",
-   "volum_usdt_24t": 40619744
+   "symbol": "HYPE-EUR",
+   "omsetning_eur_24t": 4557681,
+   "spread_pst": 0.044
   },
   {
-   "symbol": "SOL-USDT",
-   "volum_usdt_24t": 40331558
+   "symbol": "FET-EUR",
+   "omsetning_eur_24t": 4524602,
+   "spread_pst": 0.065
   },
   {
-   "symbol": "AAVE-USDT",
-   "volum_usdt_24t": 35706988
+   "symbol": "LINK-EUR",
+   "omsetning_eur_24t": 4171734,
+   "spread_pst": 0.031
   },
   {
-   "symbol": "DOGE-USDT",
-   "volum_usdt_24t": 31844836
+   "symbol": "LTC-EUR",
+   "omsetning_eur_24t": 3348280,
+   "spread_pst": 0.041
   },
   {
-   "symbol": "ARB-USDT",
-   "volum_usdt_24t": 28706256
+   "symbol": "PHA-EUR",
+   "omsetning_eur_24t": 3205277,
+   "spread_pst": 0.183
   },
   {
-   "symbol": "LINK-USDT",
-   "volum_usdt_24t": 26508079
+   "symbol": "AVAX-EUR",
+   "omsetning_eur_24t": 2885519,
+   "spread_pst": 0.093
   },
   {
-   "symbol": "SEI-USDT",
-   "volum_usdt_24t": 24351734
+   "symbol": "PUMP-EUR",
+   "omsetning_eur_24t": 2715403,
+   "spread_pst": 0.107
   },
   {
-   "symbol": "ENA-USDT",
-   "volum_usdt_24t": 23584389
+   "symbol": "RARE-EUR",
+   "omsetning_eur_24t": 2582242,
+   "spread_pst": 0.156
   },
   {
-   "symbol": "LTC-USDT",
-   "volum_usdt_24t": 17097151
+   "symbol": "XPL-EUR",
+   "omsetning_eur_24t": 2513324,
+   "spread_pst": 0.063
   },
   {
-   "symbol": "WIF-USDT",
-   "volum_usdt_24t": 16680376
+   "symbol": "ONDO-EUR",
+   "omsetning_eur_24t": 2455541,
+   "spread_pst": 0.034
   },
   {
-   "symbol": "PEPE-USDT",
-   "volum_usdt_24t": 15315863
+   "symbol": "SAGA-EUR",
+   "omsetning_eur_24t": 1919345,
+   "spread_pst": 0.16
   },
   {
-   "symbol": "BNB-USDT",
-   "volum_usdt_24t": 14831382
+   "symbol": "KAS-EUR",
+   "omsetning_eur_24t": 1828703,
+   "spread_pst": 0.099
   },
   {
-   "symbol": "AKE-USDT",
-   "volum_usdt_24t": 14598361
+   "symbol": "ENA-EUR",
+   "omsetning_eur_24t": 1667836,
+   "spread_pst": 0.08
   },
   {
-   "symbol": "TRUMP-USDT",
-   "volum_usdt_24t": 11852717
+   "symbol": "RENDER-EUR",
+   "omsetning_eur_24t": 1629706,
+   "spread_pst": 0.052
   },
   {
-   "symbol": "SHIB-USDT",
-   "volum_usdt_24t": 10773276
+   "symbol": "PEPE-EUR",
+   "omsetning_eur_24t": 1592962,
+   "spread_pst": 0.076
   },
   {
-   "symbol": "HYPE-USDT",
-   "volum_usdt_24t": 8200607
+   "symbol": "XLM-EUR",
+   "omsetning_eur_24t": 1396213,
+   "spread_pst": 0.058
   },
   {
-   "symbol": "KCS-USDT",
-   "volum_usdt_24t": 8057511
+   "symbol": "USELESS-EUR",
+   "omsetning_eur_24t": 1328398,
+   "spread_pst": 0.082
   },
   {
-   "symbol": "TRX-USDT",
-   "volum_usdt_24t": 7303832
+   "symbol": "DOGE-EUR",
+   "omsetning_eur_24t": 1249220,
+   "spread_pst": 0.022
   },
   {
-   "symbol": "INJ-USDT",
-   "volum_usdt_24t": 6759877
+   "symbol": "LSK-EUR",
+   "omsetning_eur_24t": 1143250,
+   "spread_pst": 0.09
   },
   {
-   "symbol": "ADA-USDT",
-   "volum_usdt_24t": 5756354
+   "symbol": "GRASS-EUR",
+   "omsetning_eur_24t": 1110614,
+   "spread_pst": 0.215
   },
   {
-   "symbol": "ONDO-USDT",
-   "volum_usdt_24t": 5753147
+   "symbol": "DOT-EUR",
+   "omsetning_eur_24t": 1089825,
+   "spread_pst": 0.092
   },
   {
-   "symbol": "XLM-USDT",
-   "volum_usdt_24t": 5042091
+   "symbol": "FIL-EUR",
+   "omsetning_eur_24t": 1078365,
+   "spread_pst": 0.223
   },
   {
-   "symbol": "STRK-USDT",
-   "volum_usdt_24t": 4967694
+   "symbol": "HBAR-EUR",
+   "omsetning_eur_24t": 1069368,
+   "spread_pst": 0.071
   },
   {
-   "symbol": "FIL-USDT",
-   "volum_usdt_24t": 4756609
+   "symbol": "EIGEN-EUR",
+   "omsetning_eur_24t": 1006806,
+   "spread_pst": 0.046
   },
   {
-   "symbol": "B2-USDT",
-   "volum_usdt_24t": 4465116
+   "symbol": "SEI-EUR",
+   "omsetning_eur_24t": 987519,
+   "spread_pst": 0.051
   },
   {
-   "symbol": "AR-USDT",
-   "volum_usdt_24t": 3587508
+   "symbol": "UNI-EUR",
+   "omsetning_eur_24t": 877965,
+   "spread_pst": 0.081
   },
   {
-   "symbol": "DASH-USDT",
-   "volum_usdt_24t": 3539118
+   "symbol": "AVNT-EUR",
+   "omsetning_eur_24t": 859746,
+   "spread_pst": 0.14
   },
   {
-   "symbol": "GRAM-USDT",
-   "volum_usdt_24t": 3069369
+   "symbol": "ARB-EUR",
+   "omsetning_eur_24t": 853486,
+   "spread_pst": 0.111
   },
   {
-   "symbol": "USELESS-USDT",
-   "volum_usdt_24t": 2934176
+   "symbol": "KMNO-EUR",
+   "omsetning_eur_24t": 815293,
+   "spread_pst": 0.089
   },
   {
-   "symbol": "APT-USDT",
-   "volum_usdt_24t": 2910607
+   "symbol": "NIL-EUR",
+   "omsetning_eur_24t": 763553,
+   "spread_pst": 0.221
   },
   {
-   "symbol": "VVV-USDT",
-   "volum_usdt_24t": 2797582
+   "symbol": "BCH-EUR",
+   "omsetning_eur_24t": 744875,
+   "spread_pst": 0.071
   },
   {
-   "symbol": "PUMP-USDT",
-   "volum_usdt_24t": 2756480
+   "symbol": "VET-EUR",
+   "omsetning_eur_24t": 737031,
+   "spread_pst": 0.094
   },
   {
-   "symbol": "BB-USDT",
-   "volum_usdt_24t": 2609350
+   "symbol": "ARK-EUR",
+   "omsetning_eur_24t": 695672,
+   "spread_pst": 0.251
   },
   {
-   "symbol": "FET-USDT",
-   "volum_usdt_24t": 2567422
+   "symbol": "PYTH-EUR",
+   "omsetning_eur_24t": 695388,
+   "spread_pst": 0.177
   },
   {
-   "symbol": "SYN-USDT",
-   "volum_usdt_24t": 2496024
+   "symbol": "AERO-EUR",
+   "omsetning_eur_24t": 629344,
+   "spread_pst": 0.132
   },
   {
-   "symbol": "BCH-USDT",
-   "volum_usdt_24t": 2215663
+   "symbol": "ICP-EUR",
+   "omsetning_eur_24t": 599306,
+   "spread_pst": 0.139
   },
   {
-   "symbol": "ONE-USDT",
-   "volum_usdt_24t": 2057543
+   "symbol": "PENGU-EUR",
+   "omsetning_eur_24t": 599298,
+   "spread_pst": 0.092
   },
   {
-   "symbol": "LSK-USDT",
-   "volum_usdt_24t": 2023339
+   "symbol": "AAVE-EUR",
+   "omsetning_eur_24t": 596316,
+   "spread_pst": 0.073
   },
   {
-   "symbol": "XTZ-USDT",
-   "volum_usdt_24t": 1839001
+   "symbol": "INJ-EUR",
+   "omsetning_eur_24t": 582391,
+   "spread_pst": 0.24
   },
   {
-   "symbol": "RENDER-USDT",
-   "volum_usdt_24t": 1828523
+   "symbol": "SHIB-EUR",
+   "omsetning_eur_24t": 576159,
+   "spread_pst": 0.075
   }
  ],
  "forkastet_for_lite_historikk": [
-  "ASTER-USDT",
-  "LONGXIA-USDT",
-  "PIEVERSE-USDT",
-  "GNOT-USDT",
-  "ZAMA-USDT",
-  "LAPTOP-USDT",
-  "MCAT-USDT",
-  "PONS-USDT",
-  "TA-USDT",
-  "ADI-USDT",
-  "MHA-USDT",
-  "CAP-USDT",
-  "MARSCOIN-USDT",
-  "NIULAI-USDT",
-  "ON-USDT",
-  "DGAI-USDT",
-  "TEA-USDT",
-  "TINA-USDT",
-  "KII-USDT",
-  "SWARM-USDT"
+  "2Z"
+ ],
+ "forkastet_for_vid_spread": [
+  "POND (1.33 %)",
+  "AMP (0.68 %)"
  ]
 }
