@@ -10,7 +10,7 @@ from datetime import datetime, timedelta, timezone
 
 from .http import get_json
 
-START_DATO = "2026-09-27"
+START_DATO = "2026-10-01"
 REF = {
     "sp500": {"navn": "S&P 500", "valuta": "USD", "kilde": "yahoo", "id": "^GSPC", "intradag": True},
     "btc": {"navn": "Bitcoin", "valuta": "EUR", "kilde": "bitvavo", "id": "BTC-EUR", "intradag": True},
