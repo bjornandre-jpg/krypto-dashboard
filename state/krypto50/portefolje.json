@@ -2,7 +2,11 @@
  "kontanter": 1000.0,
  "startkapital": 1000.0,
  "posisjoner": {},
- "dag": {},
+ "dag": {
+  "dato": "2026-09-30",
+  "start_egenkapital": 1000.0,
+  "handler": 0
+ },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
 }
