@@ -121,3 +121,41 @@ Målt på samme data og samme handelskode:
 Daglig vant i seks av sju nabo-oppsett for Krypto13. Hyppigere sjekk ga
 lavere avkastning OG dypere fall i alle tre systemene: posisjoner kastes ut
 på støy som er hentet inn igjen ved candle-slutt.
+
+## Ekte penger på Bitvavo (2026-10-02)
+
+`ekte/kjor.py` kjører Krypto13 med ekte penger. Signalkoden importeres fra
+`system1/kjor.py`, så papir og ekte kan ikke skli fra hverandre.
+
+Sperrene, i den rekkefølgen de virker:
+
+1. `state/ekte/STOPP` finnes -> ingen kjøring. Fila skrives automatisk ved
+   avvik, og må fjernes for hånd.
+2. Avstemming mot faktisk saldo (`felles/avstemming.py`). Avvik over 1 euro
+   eller 0,5 % stopper kjøringen. Boka rettes aldri etter børsen; første
+   kjøring skriver en åpningsbalanse, deretter er avvik et varsel.
+3. `BITVAVO_EKTE` må være "ja". Settes av arbeidsflyten, kan slås av med
+   repo-variabelen `EKTE_HANDEL=nei` eller tørrkjøringsvalget ved manuell
+   start.
+4. Hver ordre må ligge mellom 5 og 50 euro (`felles/bitvavo_handel.py`).
+5. Hysterese: en beslutning må gjenta seg to lukkede dagscandles på rad før
+   den utløser handel. Første kjøring kan derfor aldri handle.
+
+Børsen eier antallet, boka eier kostprisen: etter hver ordre leses saldoen
+på nytt, mens kostpris, målvekt og åpningsdato regnes ut fra faktisk fyll.
+
+Bitvavo krever `operatorId` på hver ordre. Testordre 1001, Krypto13 13,
+Krypto50 50, Krypto100 100.
+
+Målt på en ekte testordre 2026-10-02: spread på BTC-EUR 0,001 %, gebyr
+0,40 % hver vei - ikke 0,25 % som `/account` oppgir. Satsen varierer med
+Bitvavos priskategori per marked og må leses med `/account/fees?market=`.
+Backtestene bruker fortsatt 0,25 % og undervurderer dermed kostnaden.
+
+Med rundt 100 euro på konto blir en full posisjon 5-10 euro. Målposisjoner
+under minsteordren på 5 euro blir ikke kjøpt, så ekte-systemet eier færre og
+sterkere posisjoner enn papirversjonen. Papirsystemet går videre ved siden av
+som fasit på hva strategien egentlig gjør.
+
+Tester: `verktoy/test_avstemming.py` og `verktoy/test_ekte.py` kjøres før
+hver ekte kjøring i arbeidsflyten.

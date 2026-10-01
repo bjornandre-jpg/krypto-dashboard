@@ -1,0 +1,57 @@
+name: Krypto13 EKTE penger
+
+on:
+  schedule:
+    - cron: "17 * * * *"      # hver time, 17 min over (UTC), forskjøvet fra papirhandelen
+  workflow_dispatch:
+    inputs:
+      torrkjor:
+        description: "Bare vis hva den ville gjort, uten å handle? ja/nei"
+        default: "nei"
+        required: false
+
+concurrency:
+  group: handel               # deler kø med papirhandelen, aldri to samtidig
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  kjor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install vaderSentiment==3.3.2
+
+      # Sikkerhetsnettet testes før hver eneste kjøring. Feiler det, handler
+      # vi ikke - da er det noe galt med koden som skal fange feil.
+      - name: Test sikkerhetsnettet
+        run: |
+          python verktoy/test_avstemming.py
+          python verktoy/test_ekte.py
+
+      - name: Krypto13 med ekte penger
+        id: ekte
+        env:
+          BITVAVO_API_KEY: ${{ secrets.BITVAVO_API_KEY }}
+          BITVAVO_API_SECRET: ${{ secrets.BITVAVO_API_SECRET }}
+          # Handler på ekte, med mindre du ber om tørrkjøring her, eller setter
+          # variabelen EKTE_HANDEL til "nei" under Settings -> Variables.
+          BITVAVO_EKTE: ${{ (github.event.inputs.torrkjor == 'ja' || vars.EKTE_HANDEL == 'nei') && 'nei' || 'ja' }}
+        run: python -m ekte.kjor
+
+      - name: Lagre status
+        if: always()
+        run: |
+          git config user.name "krypto-bot"
+          git config user.email "krypto-bot@users.noreply.github.com"
+          git add state
+          git diff --cached --quiet && exit 0
+          git commit -m "Ekte $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
+          exit 1

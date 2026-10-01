@@ -10,7 +10,9 @@ from datetime import datetime, timezone
 
 from felles import bitvavo, kucoin, fear_greed, nyheter, onchain, dashboard
 from felles.signal import ta_serie, fear_greed_score, funding_score, vektet, beslutning
-from felles.portefolje import Portefolje, vurder_mynt, lagre, utc_iso
+from felles.portefolje import STANDARD, Portefolje, vurder_mynt, lagre, utc_iso
+
+STANDARD_TERSKEL = STANDARD["terskel"]
 
 MAPPE = os.path.join("state", "system1")
 MYNTER = ["BTC-EUR", "ETH-EUR", "XRP-EUR", "SOL-EUR", "BNB-EUR", "DOGE-EUR", "ADA-EUR",
@@ -23,8 +25,13 @@ CFG = {"max_per_mynt": 0.10, "max_total": 0.60,
        "kill_switch": os.path.exists(os.path.join(MAPPE, "STOPP"))}
 
 
-def main():
-    pf = Portefolje(CFG, 1000.0, MAPPE)
+def markedsbilde():
+    """Henter alt som er felles for alle mynter: priser og de brede signalene.
+
+    Skilt ut fra main() slik at ekte-penger-systemet bruker nøyaktig samme
+    kode som papirsystemet. To kopier av signallogikken ville før eller siden
+    sklidd fra hverandre, og da måler vi ikke lenger det vi tror vi måler.
+    """
     priser = bitvavo.priser()
     kontrakter = kucoin.aktive_kontrakter()   # kun for funding-signalet
     try:
@@ -32,7 +39,45 @@ def main():
     except RuntimeError:
         fg = None
     nyh, n_titler = nyheter.score()
-    oc = onchain.score()
+    return {"priser": priser, "kontrakter": kontrakter, "fg": fg,
+            "nyheter": nyh, "titler": n_titler, "onchain": onchain.score()}
+
+
+def mynt_signal(s, mb):
+    """Score, beslutning og tidsstempel på siste lukkede dagscandle for én mynt."""
+    try:
+        c = bitvavo.candles(s, "1d", 120)        # KUN lukkede dagscandles
+        ta = ta_serie([x[4] for x in c], SMA_RASK, SMA_TREG)[-1] if c else None
+    except RuntimeError as e:
+        print(f"ADVARSEL: {s} candles: {e}")
+        c, ta = [], None
+    fr = kucoin.funding_naa(s.split("-")[0] + "-USDT", mb["kontrakter"])
+    deler = {"nyheter": mb["nyheter"], "onchain": mb["onchain"], "ta": ta,
+             "fg": fear_greed_score(mb["fg"]), "funding": funding_score(fr)}
+    sc = vektet(deler, VEKT_BTC if s == "BTC-EUR" else VEKT_ANDRE)
+    return {"score": sc, "beslutning": beslutning(sc, STANDARD_TERSKEL),
+            "ta": ta, "funding": fr, "ts": c[-1][0] if c else None}
+
+
+def ny_dag_og_bekreftelse(lagret, sig):
+    """Én beslutning per LUKKET dagscandle, bekreftelse krever to påfølgende.
+
+    Mellom dagene gjør systemet ingenting: målt over fire år ga timesvis
+    vurdering -25 prosentpoeng og dobbelt så høye gebyrer, og timesvis
+    stop-loss kastet ut posisjoner på intradag-støy som var hentet inn igjen
+    ved dagsslutt (se backtest/live_vs_test.py).
+    """
+    if not isinstance(lagret, dict):              # gammelt format {mynt: "KJØP"}
+        lagret = {}
+    ny_dag = sig["ts"] is not None and lagret.get("ts") != sig["ts"]
+    return ny_dag, ny_dag and lagret.get("beslutning") == sig["beslutning"]
+
+
+def main():
+    pf = Portefolje(CFG, 1000.0, MAPPE)
+    mb = markedsbilde()
+    priser, fg, nyh, oc, n_titler = (mb["priser"], mb["fg"], mb["nyheter"],
+                                     mb["onchain"], mb["titler"])
 
     eq = pf.egenkapital(priser)
     pf.start_dag(datetime.now(timezone.utc).strftime("%Y-%m-%d"), eq)
@@ -45,36 +90,17 @@ def main():
         if s not in priser:
             print(f"ADVARSEL: mangler pris for {s}")
             continue
-        try:
-            c = bitvavo.candles(s, "1d", 120)        # KUN lukkede dagscandles
-            ta = ta_serie([x[4] for x in c], SMA_RASK, SMA_TREG)[-1] if c else None
-        except RuntimeError as e:
-            print(f"ADVARSEL: {s} candles: {e}")
-            c, ta = [], None
-        fr = kucoin.funding_naa(s.split("-")[0] + "-USDT", kontrakter)
-        deler = {"nyheter": nyh, "onchain": oc, "ta": ta,
-                 "fg": fear_greed_score(fg), "funding": funding_score(fr)}
-        sc = vektet(deler, VEKT_BTC if s == "BTC-EUR" else VEKT_ANDRE)
-        b = beslutning(sc, pf.cfg["terskel"])
-
-        # Én beslutning per LUKKET dagscandle, og bekreftelse krever to
-        # påfølgende dager. Mellom dagene gjør systemet ingenting: målt over
-        # fire år ga timesvis vurdering -25 prosentpoeng og dobbelt så høye
-        # gebyrer, og timesvis stop-loss kastet ut posisjoner på intradag-støy
-        # som var hentet inn igjen ved dagsslutt (se backtest/live_vs_test.py).
-        ts = c[-1][0] if c else None
-        fr_lagret = forrige.get(s) or {}
-        if not isinstance(fr_lagret, dict):          # gammelt format {mynt: "KJØP"}
-            fr_lagret = {}
-        ny_dag = ts is not None and fr_lagret.get("ts") != ts
-        bekreftet = ny_dag and fr_lagret.get("beslutning") == b
+        sig = mynt_signal(s, mb)
+        sc, b, ta, fr, ts = (sig["score"], sig["beslutning"], sig["ta"],
+                             sig["funding"], sig["ts"])
+        ny_dag, bekreftet = ny_dag_og_bekreftelse(forrige.get(s), sig)
         handling = ""
         if ny_dag:
             n_dager += 1
             handling = vurder_mynt(pf, s, priser, eq, b, sc, bekreftet, True)
             nye[s] = {"ts": ts, "beslutning": b}
         else:
-            nye[s] = fr_lagret or {"ts": ts, "beslutning": b}
+            nye[s] = forrige.get(s) or {"ts": ts, "beslutning": b}
 
         signaler.append({"asset": s.replace("-", "/"), "decision": b, "score": sc,
                          "confirmed": bekreftet, "funding_rate": fr, "price": priser[s],
