@@ -38,6 +38,25 @@ def main():
     except bh.BitvavoFeil as e:
         print(f"ADVARSEL konto: {e}")
 
+    # Gebyret er IKKE likt for alle markeder: Bitvavo deler dem i kategorier,
+    # og kontonivået over viser bare kategori A. Testordren på BTC-EUR ble
+    # belastet 0,40 %, ikke 0,25 %, så dette må leses per marked.
+    print("\nFaktisk gebyr per marked (taker er det vi betaler på markedsordre):")
+    from system1.kjor import MYNTER
+    satser = {}
+    for m in MYNTER:
+        try:
+            g = bh.gebyrer(m)
+        except bh.BitvavoFeil as e:
+            print(f"      {m:10s} feil: {e}")
+            continue
+        satser[m] = g["taker"]
+        print(f"      {m:10s} taker {g['taker'] * 100:.3f} %  maker {g['maker'] * 100:.3f} %  "
+              f"(tier {g['tier']})")
+    if satser:
+        snitt = sum(satser.values()) / len(satser)
+        print(f"      snitt taker {snitt * 100:.3f} %  ->  rundtur {snitt * 200:.3f} %")
+
     try:
         aapne = bh.aapne_ordrer()
         print(f"OK  åpne ordrer: {len(aapne)}")

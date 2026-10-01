@@ -94,6 +94,15 @@ def konto():
     return _kall("GET", "/account")
 
 
+def gebyrer(market=None):
+    """Faktisk gebyrsats. Bitvavo deler markedene i kategorier (A, B, C ...)
+    med ulik pris, så satsen må spørres om PER marked - kontonivået viser bare
+    kategori A. Returnerer {'tier': .., 'taker': .., 'maker': .., 'volume': ..}."""
+    d = _kall("GET", "/account/fees", {"market": market} if market else None)
+    return {"tier": d.get("tier"), "volume": d.get("volume"),
+            "taker": float(d.get("taker") or 0), "maker": float(d.get("maker") or 0)}
+
+
 def ordre_status(market, order_id):
     return _kall("GET", "/order", {"market": market, "orderId": order_id})
 
