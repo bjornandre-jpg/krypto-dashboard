@@ -29,6 +29,11 @@ VINDU = 10_000          # ms Bitvavo godtar at klokka vår avviker
 MIN_ORDRE = 5.0         # euro, Bitvavos minimum på de fleste markeder
 MAKS_ORDRE = 50.0       # euro, vår egen bremse
 
+# Bitvavo krever operatorId på hver ordre: et heltall som sier hvem eller hva
+# som la den. Hvert system får sitt eget nummer, så sporet i ordrehistorikken
+# viser hvilken kode som handlet.
+OPERATOR = {"testordre": 1001, "krypto13": 13, "krypto50": 50, "krypto100": 100}
+
 
 class BitvavoFeil(RuntimeError):
     pass
@@ -102,7 +107,8 @@ def _avrund(x, desimaler):
     return f"{x:.{desimaler}f}".rstrip("0").rstrip(".") or "0"
 
 
-def markedsordre(market, side, belop_eur=None, mengde=None, presisjon=None, grunn=""):
+def markedsordre(market, side, belop_eur=None, mengde=None, presisjon=None, grunn="",
+                 operator_id=OPERATOR["testordre"]):
     """Legger en markedsordre. KJØP oppgis i euro, SALG i antall enheter.
 
     Returnerer (status, data) der status er "sendt", "tørrkjøring" eller "avvist".
@@ -110,7 +116,10 @@ def markedsordre(market, side, belop_eur=None, mengde=None, presisjon=None, grun
     """
     if side not in ("buy", "sell"):
         raise BitvavoFeil(f"ugyldig side: {side}")
-    body = {"market": market, "side": side, "orderType": "market"}
+    if not isinstance(operator_id, int) or isinstance(operator_id, bool) or operator_id < 1:
+        raise BitvavoFeil(f"operatorId må være et positivt heltall, fikk {operator_id!r}")
+    body = {"market": market, "side": side, "orderType": "market",
+            "operatorId": operator_id}
     if side == "buy":
         if belop_eur is None:
             raise BitvavoFeil("kjøp krever belop_eur")
