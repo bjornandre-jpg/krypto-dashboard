@@ -1,11 +1,78 @@
 {
- "kontanter": 1000.0,
+ "kontanter": 424.49294275617956,
  "startkapital": 1000.0,
- "posisjoner": {},
+ "posisjoner": {
+  "BTC-EUR": {
+   "mengde": 0.0005047625956405455,
+   "snittpris": 73626.0,
+   "maalvekt": 0.03725679284875268,
+   "apnet": "2026-10-01T00:33:18Z"
+  },
+  "ETH-EUR": {
+   "mengde": 0.017959731397869716,
+   "snittpris": 2366.39,
+   "maalvekt": 0.042606244393588885,
+   "apnet": "2026-10-01T00:33:19Z"
+  },
+  "XRP-EUR": {
+   "mengde": 29.73962780579543,
+   "snittpris": 1.31209,
+   "maalvekt": 0.03911886541123421,
+   "apnet": "2026-10-01T00:33:19Z"
+  },
+  "SOL-EUR": {
+   "mengde": 0.540187777282229,
+   "snittpris": 104.048,
+   "maalvekt": 0.05634632365981088,
+   "apnet": "2026-10-01T00:33:20Z"
+  },
+  "DOGE-EUR": {
+   "mengde": 571.7945480348649,
+   "snittpris": 0.083243,
+   "maalvekt": 0.047717186528387225,
+   "apnet": "2026-10-01T00:33:21Z"
+  },
+  "ADA-EUR": {
+   "mengde": 270.1798550094236,
+   "snittpris": 0.21693,
+   "maalvekt": 0.05875700846836517,
+   "apnet": "2026-10-01T00:33:21Z"
+  },
+  "LINK-EUR": {
+   "mengde": 5.671767180450197,
+   "snittpris": 12.6549,
+   "maalvekt": 0.07195553533020471,
+   "apnet": "2026-10-01T00:33:22Z"
+  },
+  "AVAX-EUR": {
+   "mengde": 6.988931200213302,
+   "snittpris": 9.5858,
+   "maalvekt": 0.06716240270576909,
+   "apnet": "2026-10-01T00:33:22Z"
+  },
+  "DOT-EUR": {
+   "mengde": 47.75507029936773,
+   "snittpris": 1.0732,
+   "maalvekt": 0.05137918941882852,
+   "apnet": "2026-10-01T00:33:22Z"
+  },
+  "LTC-EUR": {
+   "mengde": 1.1009894797094324,
+   "snittpris": 59.239,
+   "maalvekt": 0.06538497823409228,
+   "apnet": "2026-10-01T00:33:23Z"
+  },
+  "CAKE-EUR": {
+   "mengde": 16.426320933113413,
+   "snittpris": 2.2968,
+   "maalvekt": 0.037822530244786864,
+   "apnet": "2026-10-01T00:33:24Z"
+  }
+ },
  "dag": {
-  "dato": "2026-09-30",
+  "dato": "2026-10-01",
   "start_egenkapital": 1000.0,
-  "handler": 0
+  "handler": 11
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
