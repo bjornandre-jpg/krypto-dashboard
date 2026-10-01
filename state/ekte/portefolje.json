@@ -1,0 +1,15 @@
+{
+ "kontanter": 103.91,
+ "startkapital": 103.91,
+ "posisjoner": {},
+ "dag": {
+  "dato": "2026-10-01",
+  "start_egenkapital": 103.91,
+  "handler": 0
+ },
+ "opprettet": "2026-10-01T23:23:48Z",
+ "apningsbalanse": {
+  "tid": "2026-10-01T23:23:48Z",
+  "egenkapital": 103.91
+ }
+}
