@@ -11,7 +11,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Les saldo (legger ingen ordrer)
+      - name: Test avstemmingslogikken (oppdiktede tall, ingen nettverk)
+        run: python verktoy/test_avstemming.py
+      - name: Les saldo og avstem (legger ingen ordrer)
         env:
           BITVAVO_API_KEY: ${{ secrets.BITVAVO_API_KEY }}
           BITVAVO_API_SECRET: ${{ secrets.BITVAVO_API_SECRET }}

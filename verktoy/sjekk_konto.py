@@ -1,15 +1,20 @@
 """Lesetest mot Bitvavo-kontoen. Legger INGEN ordrer.
 
-Svarer på to spørsmål:
+Svarer på tre spørsmål:
   1. Virker API-nøkkelen?
   2. Slipper Bitvavo autentiserte kall gjennom fra GitHub sine servere?
+  3. Stemmer børsens tall med bøkene til et ekte-penger-system, hvis det finnes?
 
 Kjøres manuelt fra Actions -> "Sjekk Bitvavo-konto".
 """
+import os
 import sys
 
 sys.path.insert(0, ".")
-from felles import bitvavo_handel as bh
+from felles import avstemming, bitvavo, bitvavo_handel as bh
+from felles.portefolje import Portefolje
+
+EKTE_MAPPE = os.path.join("state", "ekte")
 
 
 def main():
@@ -38,6 +43,25 @@ def main():
         print(f"OK  åpne ordrer: {len(aapne)}")
     except bh.BitvavoFeil as e:
         print(f"ADVARSEL åpne ordrer: {e}")
+
+    print("\nAvstemming mot ekte-penger-bøkene:")
+    if not os.path.exists(os.path.join(EKTE_MAPPE, "portefolje.json")):
+        print("      ingen bok åpnet ennå - ingenting å avstemme mot.")
+        verdi = 0.0
+        if s:
+            priser = bitvavo.priser()
+            verdi = sum(v["tilgjengelig"] + v["i_ordre"]
+                        if sym == "EUR" else
+                        (v["tilgjengelig"] + v["i_ordre"]) * priser.get(f"{sym}-EUR", 0.0)
+                        for sym, v in s.items())
+            print(f"      kontoen er verdt {verdi:.2f} EUR i dag.")
+    else:
+        pf = Portefolje({"max_per_mynt": 0.1, "max_total": 0.6}, 0.0, EKTE_MAPPE)
+        r = avstemming.avstem(pf, bitvavo.priser(), s)
+        avstemming.skriv(EKTE_MAPPE, r)      # leser bare, stopper ingenting
+        print(avstemming.tekstrapport(r))
+        if not r["ok"]:
+            print("      NB: dette er en lesetest. Et handelssystem ville stoppet her.")
 
     print("\nKonklusjon: autentiserte kall til Bitvavo virker herfra.")
     return 0
