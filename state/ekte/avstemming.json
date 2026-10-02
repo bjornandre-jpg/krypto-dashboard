@@ -1,14 +1,14 @@
 {
- "tid": "2026-10-02T06:32:57Z",
+ "tid": "2026-10-02T07:29:30Z",
  "ok": true,
- "bokfort_egenkapital": 104.2918,
- "faktisk_egenkapital": 104.2918,
+ "bokfort_egenkapital": 104.0414,
+ "faktisk_egenkapital": 104.0414,
  "differanse_eur": 0.0,
  "linjer": [
   {
    "navn": "EUR",
-   "bokfort": 85.35,
-   "faktisk": 85.35,
+   "bokfort": 72.69,
+   "faktisk": 72.69,
    "differanse": 0.0,
    "differanse_eur": 0.0,
    "grense_eur": 1.0,
@@ -26,9 +26,29 @@
    "merknad": ""
   },
   {
+   "navn": "AVAX-EUR",
+   "bokfort": 0.6506227,
+   "faktisk": 0.6506227,
+   "differanse": 0.0,
+   "differanse_eur": 0.0,
+   "grense_eur": 1.0,
+   "ok": true,
+   "merknad": ""
+  },
+  {
    "navn": "LINK-EUR",
    "bokfort": 0.57544656,
    "faktisk": 0.57544656,
+   "differanse": 0.0,
+   "differanse_eur": 0.0,
+   "grense_eur": 1.0,
+   "ok": true,
+   "merknad": ""
+  },
+  {
+   "navn": "LTC-EUR",
+   "bokfort": 0.09980553,
+   "faktisk": 0.09980553,
    "differanse": 0.0,
    "differanse_eur": 0.0,
    "grense_eur": 1.0,
