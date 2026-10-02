@@ -57,6 +57,34 @@ def main():
         snitt = sum(satser.values()) / len(satser)
         print(f"      snitt taker {snitt * 100:.3f} %  ->  rundtur {snitt * 200:.3f} %")
 
+    # Oppgitt sats er én ting, belastet gebyr er en annen. Testordren
+    # 2026-10-02 ble belastet 0,40 % selv om satsen over sier 0,25 %, så her
+    # måler vi hva vi faktisk har betalt på egne handler.
+    print("\nMålt gebyr på egne handler:")
+    sum_omsetning = sum_gebyr = 0.0
+    for m in MYNTER:
+        try:
+            h = bh.handler(m, 100)
+        except bh.BitvavoFeil:
+            continue
+        for t in h:
+            try:
+                oms = float(t["amount"]) * float(t["price"])
+                g = float(t.get("fee") or 0)
+            except (KeyError, TypeError, ValueError):
+                continue
+            if (t.get("feeCurrency") or "EUR").upper() != "EUR":
+                g *= float(t["price"])
+            sum_omsetning += oms
+            sum_gebyr += g
+            print(f"      {m:10s} {t.get('side'):4s} {oms:7.2f} EUR  "
+                  f"gebyr {g:.4f} = {g / oms * 100:.3f} %")
+    if sum_omsetning:
+        print(f"      SNITT over {sum_omsetning:.2f} EUR omsatt: "
+              f"{sum_gebyr / sum_omsetning * 100:.3f} %")
+    else:
+        print("      ingen handler ennå")
+
     try:
         aapne = bh.aapne_ordrer()
         print(f"OK  åpne ordrer: {len(aapne)}")
