@@ -1,20 +1,91 @@
 {
- "tid": "2026-10-02T00:34:43Z",
- "ok": true,
+ "tid": "2026-10-02T01:27:31Z",
+ "ok": false,
  "bokfort_egenkapital": 103.91,
- "faktisk_egenkapital": 103.91,
- "differanse_eur": 0.0,
+ "faktisk_egenkapital": 103.808,
+ "differanse_eur": -0.102,
  "linjer": [
   {
    "navn": "EUR",
    "bokfort": 103.91,
-   "faktisk": 103.91,
-   "differanse": 0.0,
-   "differanse_eur": 0.0,
+   "faktisk": 85.35,
+   "differanse": -18.560000000000002,
+   "differanse_eur": -18.56,
    "grense_eur": 1.0,
-   "ok": true,
+   "ok": false,
    "merknad": ""
+  },
+  {
+   "navn": "ADA-EUR",
+   "bokfort": 0.0,
+   "faktisk": 26.200274,
+   "differanse": 26.200274,
+   "differanse_eur": 5.7117,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": "ikke bokført hos oss"
+  },
+  {
+   "navn": "LINK-EUR",
+   "bokfort": 0.0,
+   "faktisk": 0.57544656,
+   "differanse": 0.57544656,
+   "differanse_eur": 7.2656,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": "ikke bokført hos oss"
+  },
+  {
+   "navn": "SOL-EUR",
+   "bokfort": 0.0,
+   "faktisk": 0.05185079,
+   "differanse": 0.05185079,
+   "differanse_eur": 5.4807,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": "ikke bokført hos oss"
   }
  ],
- "avvik": []
+ "avvik": [
+  {
+   "navn": "EUR",
+   "bokfort": 103.91,
+   "faktisk": 85.35,
+   "differanse": -18.560000000000002,
+   "differanse_eur": -18.56,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": ""
+  },
+  {
+   "navn": "ADA-EUR",
+   "bokfort": 0.0,
+   "faktisk": 26.200274,
+   "differanse": 26.200274,
+   "differanse_eur": 5.7117,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": "ikke bokført hos oss"
+  },
+  {
+   "navn": "LINK-EUR",
+   "bokfort": 0.0,
+   "faktisk": 0.57544656,
+   "differanse": 0.57544656,
+   "differanse_eur": 7.2656,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": "ikke bokført hos oss"
+  },
+  {
+   "navn": "SOL-EUR",
+   "bokfort": 0.0,
+   "faktisk": 0.05185079,
+   "differanse": 0.05185079,
+   "differanse_eur": 5.4807,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": "ikke bokført hos oss"
+  }
+ ]
 }
