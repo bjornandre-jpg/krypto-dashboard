@@ -1,7 +1,26 @@
 {
- "kontanter": 103.91,
+ "kontanter": 85.35,
+ "posisjoner": {
+  "ADA-EUR": {
+   "mengde": 26.200274,
+   "snittpris": 0.21946335370385822,
+   "maalvekt": 0.0,
+   "apnet": "2026-10-02T00:34:48Z"
+  },
+  "LINK-EUR": {
+   "mengde": 0.57544656,
+   "snittpris": 12.720555667236937,
+   "maalvekt": 0.0,
+   "apnet": "2026-10-02T00:34:49Z"
+  },
+  "SOL-EUR": {
+   "mengde": 0.05185079,
+   "snittpris": 105.88073971486259,
+   "maalvekt": 0.0,
+   "apnet": "2026-10-02T00:34:45Z"
+  }
+ },
  "startkapital": 103.91,
- "posisjoner": {},
  "dag": {
   "dato": "2026-10-01",
   "start_egenkapital": 103.91,
@@ -11,5 +30,6 @@
  "apningsbalanse": {
   "tid": "2026-10-01T23:23:48Z",
   "egenkapital": 103.91
- }
+ },
+ "gjenopprettet": "2026-10-02T05:44:32Z"
 }
