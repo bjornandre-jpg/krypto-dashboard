@@ -1,0 +1,40 @@
+name: Gjenopprett ekte-boka (manuell)
+
+on:
+  workflow_dispatch:
+    inputs:
+      bekreft:
+        description: 'Skriv JA for å bygge boka på nytt fra Bitvavo og fjerne STOPP'
+        default: ""
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: handel
+  cancel-in-progress: false
+
+jobs:
+  gjenopprett:
+    if: inputs.bekreft == 'JA'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Bygg boka fra faktisk saldo og handelshistorikk
+        env:
+          BITVAVO_API_KEY: ${{ secrets.BITVAVO_API_KEY }}
+          BITVAVO_API_SECRET: ${{ secrets.BITVAVO_API_SECRET }}
+        run: python verktoy/gjenopprett.py
+      - name: Lagre
+        run: |
+          git config user.name "krypto-bot"
+          git config user.email "krypto-bot@users.noreply.github.com"
+          git add state
+          git diff --cached --quiet && exit 0
+          git commit -m "Gjenopprettet ekte-boka $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
+          exit 1

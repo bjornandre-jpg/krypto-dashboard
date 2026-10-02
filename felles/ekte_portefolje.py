@@ -5,23 +5,31 @@ metodene som flytter verdier: kjop() og selg() legger nå faktiske ordrer.
 Slik kjører ekte penger gjennom nøyaktig samme regler som papirhandelen,
 og en endring i strategien treffer begge.
 
-To prinsipper styrer koden:
+Tre prinsipper styrer koden, alle tre lært av feil 2026-10-02:
 
-1. BØRSEN EIER TALLENE. Etter hver ordre leser vi saldoen på nytt og setter
-   kontanter og antall enheter til det Bitvavo faktisk viser. Vi regner oss
-   ikke fram til hva vi burde ha - da ville små avvik i gebyr, avrunding og
-   delfyll hopet seg opp usett.
-2. VÅR BOK EIER KOSTPRISEN. Kostpris, målvekt og åpningsdato finnes ikke på
-   børsen, og er vårt ansvar å holde orden på. De regnes ut fra hva ordren
-   faktisk ble fylt til, ikke fra prisen vi håpet på.
+1. SALDOENDRINGEN ER FASIT. Hva vi faktisk fikk og hva det faktisk kostet
+   leses som forskjellen på saldoen før og etter ordren - ikke fra feltene i
+   ordresvaret. Bitvavo kan oppgi gebyret i base- eller kvotevaluta, kan
+   returnere et ordresvar før tallene er fylt ut, og svarer 404 på en ordre
+   som nettopp er ferdig. Saldoen lyver ikke.
+2. BOKA SKRIVES ETTER HVER ENESTE ORDRE. Første natt kjøpte systemet SOL,
+   krasjet på neste mynt, og mistet hele boka fordi den ble skrevet til slutt.
+   Posisjonen var ekte, bokføringen fantes ikke, og avstemmingen stoppet alt
+   neste time. Nå er hver handel på disk før neste ordre sendes.
+3. BØRSEN EIER ANTALLET, BOKA EIER KOSTPRISEN. Kostpris, målvekt og
+   åpningsdato finnes ikke på børsen og er vårt ansvar.
 
 Tørrkjøring er standard: uten BITVAVO_EKTE=ja regnes ordrene ut og skrives
 ut, men sendes ikke, og boka står urørt.
 """
+import json
+import os
 import time
 
 from . import bitvavo_handel as bh
-from .portefolje import Portefolje, utc_iso
+from .portefolje import Portefolje, _append_csv, _dager_siden, utc_iso
+
+VENT_PA_OPPGJOR = 15        # sekunder vi venter på at saldoen endrer seg
 
 
 class EktePortefolje(Portefolje):
@@ -35,49 +43,60 @@ class EktePortefolje(Portefolje):
     def _pres(self, sym):
         return self.presisjon.get(sym, {"mengde": 8, "notional": 2})
 
-    def _vent_pa_fyll(self, sym, order_id, forsok=12):
-        o = {}
-        for _ in range(forsok):
-            o = bh.ordre_status(sym, order_id)
-            if o.get("status") in ("filled", "canceled", "rejected", "expired"):
-                return o
-            time.sleep(1)
-        print(f"  ADVARSEL: {sym} ordre {order_id} er ikke ferdig etter {forsok} s")
-        return o
+    @staticmethod
+    def _flat(saldo):
+        return {k: v["tilgjengelig"] + v["i_ordre"] for k, v in saldo.items()}
 
-    def _synk_saldo(self, symboler):
-        """Setter kontanter og antall enheter til det børsen faktisk viser."""
-        s = bh.saldo()
-        self.s["kontanter"] = (s.get("EUR", {}).get("tilgjengelig", 0.0)
-                               + s.get("EUR", {}).get("i_ordre", 0.0))
-        for sym in symboler:
-            p = self.pos(sym)
-            if not p:
-                continue
-            f = s.get(sym.split("-")[0], {})
-            p["mengde"] = f.get("tilgjengelig", 0.0) + f.get("i_ordre", 0.0)
-            if p["mengde"] <= 0:
-                del self.s["posisjoner"][sym]
+    def _vent_pa_endring(self, base, for_):
+        """Leser saldoen til den har endret seg, eller til tiden er ute.
+
+        Returnerer den nye saldoen uansett - er den uendret, oppdager den som
+        kalte det ved at differansen er null, og vi bokfører ingenting.
+        """
+        for forsok in range(VENT_PA_OPPGJOR + 1):
+            etter = self._flat(bh.saldo())
+            if (abs(etter.get(base, 0.0) - for_.get(base, 0.0)) > 0
+                    or abs(etter.get("EUR", 0.0) - for_.get("EUR", 0.0)) > 0):
+                return etter
+            if forsok < VENT_PA_OPPGJOR:
+                time.sleep(1)
+        return etter
 
     @staticmethod
-    def _fyll_tall(sym, o):
-        """(mottatt mengde, kostnad i euro, gebyr i euro) fra et ordresvar."""
-        base = sym.split("-")[0]
-        fylt = float(o.get("filledAmount") or 0)
-        kvote = float(o.get("filledAmountQuote") or 0)
-        gebyr = float(o.get("feePaid") or 0)
-        # Bitvavo kan trekke gebyret i base- eller kvotevaluta. Står det i base,
-        # fikk vi mindre krypto; står det i euro, betalte vi mer euro.
-        if (o.get("feeCurrency") or "EUR").upper() == base:
-            pris = kvote / fylt if fylt else 0.0
-            return fylt - gebyr, kvote, gebyr * pris
-        return fylt, kvote + gebyr, gebyr
+    def _gebyr_eur(o, pris):
+        """Gebyret fra ordresvaret, omregnet til euro. Kun til loggen."""
+        try:
+            g = float(o.get("feePaid") or 0)
+        except (TypeError, ValueError):
+            return 0.0
+        return g * pris if (o.get("feeCurrency") or "EUR").upper() != "EUR" else g
+
+    def _lagre_bok(self, rad=None):
+        """Skriver boka til disk med én gang, og loggfører handelen."""
+        if not self.mappe:
+            return
+        os.makedirs(self.mappe, exist_ok=True)
+        with open(os.path.join(self.mappe, "portefolje.json"), "w", encoding="utf-8") as f:
+            json.dump(self.s, f, ensure_ascii=False, indent=1)
+        if rad:
+            _append_csv(os.path.join(self.mappe, "handler.csv"), [rad])
+
+    def _sett_saldo(self, etter, sym):
+        self.s["kontanter"] = etter.get("EUR", 0.0)
+        p = self.pos(sym)
+        if p:
+            p["mengde"] = etter.get(sym.split("-")[0], 0.0)
+            if p["mengde"] <= 0:
+                del self.s["posisjoner"][sym]
 
     # ---------- handel ----------
     def kjop(self, sym, usd, pris, grunn, ts=None, maalvekt=None):
         usd = min(usd, self.kontanter, bh.MAKS_ORDRE)
-        if usd < self.cfg["min_handel"] or usd < bh.MIN_ORDRE:
+        if usd < max(self.cfg["min_handel"], bh.MIN_ORDRE):
             return 0.0
+        base = sym.split("-")[0]
+        for_ = self._flat(bh.saldo())
+
         status, data = bh.markedsordre(sym, "buy", belop_eur=usd,
                                        presisjon=self._pres(sym), grunn=grunn,
                                        operator_id=self.operator_id)
@@ -90,36 +109,41 @@ class EktePortefolje(Portefolje):
             print(f"  [tørrkjøring] ville kjøpt {sym} for {usd:.2f} EUR ({grunn})")
             return 0.0
 
-        o = self._vent_pa_fyll(sym, data["orderId"])
-        mengde, kost, gebyr = self._fyll_tall(sym, o)
-        if mengde <= 0:
-            print(f"  {sym}: kjøpsordren ble ikke fylt ({o.get('status')})")
+        etter = self._vent_pa_endring(base, for_)
+        mengde = etter.get(base, 0.0) - for_.get(base, 0.0)
+        kost = for_.get("EUR", 0.0) - etter.get("EUR", 0.0)
+        if mengde <= 0 or kost <= 0:
+            print(f"  ADVARSEL {sym}: ordre {data.get('orderId')} ga ingen "
+                  f"saldoendring (mengde {mengde:+.8f}, euro {-kost:+.2f}). "
+                  f"Ingenting bokført.")
             return 0.0
+
         snitt = kost / mengde
         p = self.s["posisjoner"].setdefault(sym, {"mengde": 0.0, "snittpris": snitt,
                                                   "maalvekt": 0.0})
         if p["mengde"] <= 0:
             p["apnet"] = utc_iso(ts)
-        ny = p["mengde"] + mengde
-        p["snittpris"] = (p["mengde"] * p["snittpris"] + kost) / ny
-        p["mengde"] = ny
+        p["snittpris"] = (p["mengde"] * p["snittpris"] + kost) / (p["mengde"] + mengde)
+        p["mengde"] += mengde
         if maalvekt is not None:
             p["maalvekt"] = maalvekt
-        self._logg(ts, sym, "KJØP", mengde, snitt, kost, gebyr, grunn)
-        self._synk_saldo([sym])
+        self._sett_saldo(etter, sym)
+        self._logg(ts, sym, "KJØP", mengde, snitt, kost,
+                   self._gebyr_eur(data, pris), grunn)
+        self._lagre_bok(self.handler[-1])
         print(f"  KJØPT {sym}: {mengde:.8f} for {kost:.2f} EUR "
-              f"(kurs {snitt:.6f}, gebyr {gebyr:.4f}) - {grunn}")
+              f"(kurs {snitt:.6f}) - {grunn}")
         return kost
 
     def selg(self, sym, mengde, pris, grunn, ts=None, maalvekt=None):
         p = self.pos(sym)
         if not p:
             return 0.0
+        base = sym.split("-")[0]
         mengde = min(mengde, p["mengde"])
         helt_ut = mengde >= p["mengde"] * 0.999
-        # rund NED, aldri opp: en ordre på mer enn vi eier blir avvist
         des = self._pres(sym).get("mengde", 8)
-        mengde = int(mengde * 10 ** des) / 10 ** des
+        mengde = int(mengde * 10 ** des) / 10 ** des      # rund NED, aldri opp
         if mengde <= 0:
             return 0.0
         if mengde * pris < max(self.cfg["min_handel"], bh.MIN_ORDRE) and not helt_ut:
@@ -129,6 +153,7 @@ class EktePortefolje(Portefolje):
                   f"minsteordren, lar den ligge")
             return 0.0
 
+        for_ = self._flat(bh.saldo())
         status, data = bh.markedsordre(sym, "sell", mengde=mengde,
                                        presisjon=self._pres(sym), grunn=grunn,
                                        operator_id=self.operator_id)
@@ -143,31 +168,31 @@ class EktePortefolje(Portefolje):
                   f"(~{mengde * pris:.2f} EUR) ({grunn})")
             return 0.0
 
-        o = self._vent_pa_fyll(sym, data["orderId"])
-        solgt = float(o.get("filledAmount") or 0)
-        brutto = float(o.get("filledAmountQuote") or 0)
-        gebyr = float(o.get("feePaid") or 0)
-        if (o.get("feeCurrency") or "EUR").upper() != "EUR":
-            gebyr = gebyr * (brutto / solgt if solgt else 0.0)
-        if solgt <= 0:
-            print(f"  {sym}: salgsordren ble ikke fylt ({o.get('status')})")
+        etter = self._vent_pa_endring(base, for_)
+        solgt = for_.get(base, 0.0) - etter.get(base, 0.0)
+        netto = etter.get("EUR", 0.0) - for_.get("EUR", 0.0)
+        if solgt <= 0 or netto <= 0:
+            print(f"  ADVARSEL {sym}: salgsordre {data.get('orderId')} ga ingen "
+                  f"saldoendring. Ingenting bokført.")
             return 0.0
+
+        gebyr = self._gebyr_eur(data, pris)
         kost = p["snittpris"] * solgt
-        gevinst = (brutto - gebyr) - kost
-        from .portefolje import _dager_siden
+        gevinst = netto - kost                      # netto er allerede etter gebyr
         dager = _dager_siden(p.get("apnet"), ts)
         p["mengde"] -= solgt
         if maalvekt is not None:
             p["maalvekt"] = maalvekt
-        self._logg(ts, sym, "SELG", solgt, brutto / solgt, brutto, gebyr, grunn,
-                   {"kostpris": round(p["snittpris"], 10),
+        self._sett_saldo(etter, sym)
+        self._logg(ts, sym, "SELG", solgt, netto / solgt, netto + gebyr, gebyr, grunn,
+                   {"kostpris": round(kost / solgt, 10),
                     "avkastning_pst": round(gevinst / kost * 100, 3) if kost else "",
                     "gevinst": round(gevinst, 4),
                     "dager": "" if dager is None else round(dager, 2)})
-        self._synk_saldo([sym])
-        print(f"  SOLGT {sym}: {solgt:.8f} for {brutto:.2f} EUR "
-              f"(gebyr {gebyr:.4f}, resultat {gevinst:+.2f} EUR) - {grunn}")
-        return brutto
+        self._lagre_bok(self.handler[-1])
+        print(f"  SOLGT {sym}: {solgt:.8f} for {netto:.2f} EUR netto "
+              f"(resultat {gevinst:+.2f} EUR) - {grunn}")
+        return netto
 
 
 def apningsbalanse(pf, priser, saldo=None):

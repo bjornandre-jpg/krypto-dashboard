@@ -196,13 +196,17 @@ def vurder_mynt(pf, sym, priser, egenkapital, beslutn, score, bekreftet, signal_
     return ""
 
 
-def lagre(pf, egenkapital, ekstra_csv=None):
-    """Skriver portefølje, og appender handler/egenkapital til CSV-historikk."""
+def lagre(pf, egenkapital, ekstra_csv=None, skriv_handler=True):
+    """Skriver portefølje, og appender handler/egenkapital til CSV-historikk.
+
+    skriv_handler=False brukes av ekte-penger-porteføljen, som loggfører hver
+    handel i det den skjer i stedet for å vente til slutten av kjøringen.
+    """
     m = pf.mappe
     os.makedirs(m, exist_ok=True)
     with open(os.path.join(m, "portefolje.json"), "w", encoding="utf-8") as f:
         json.dump(pf.s, f, ensure_ascii=False, indent=1)
-    if pf.handler:
+    if pf.handler and skriv_handler:
         _append_csv(os.path.join(m, "handler.csv"), pf.handler)
     _append_csv(os.path.join(m, "egenkapital.csv"),
                 [{"tid": utc_iso(), "egenkapital": round(egenkapital, 4),

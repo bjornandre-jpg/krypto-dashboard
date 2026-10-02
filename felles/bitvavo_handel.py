@@ -103,6 +103,13 @@ def gebyrer(market=None):
             "taker": float(d.get("taker") or 0), "maker": float(d.get("maker") or 0)}
 
 
+def handler(market, limit=500):
+    """Egne handler i ett marked, eldste først. Brukes til å rekonstruere
+    kostpris når boka må bygges opp igjen."""
+    d = _kall("GET", "/trades", {"market": market, "limit": limit})
+    return sorted(d, key=lambda t: t.get("timestamp") or 0)
+
+
 def ordre_status(market, order_id):
     return _kall("GET", "/order", {"market": market, "orderId": order_id})
 

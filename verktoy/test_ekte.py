@@ -11,21 +11,35 @@ import tempfile
 sys.path.insert(0, ".")
 from felles import ekte_portefolje as ep
 
+ep.VENT_PA_OPPGJOR = 0      # den falske børsen gjør opp med én gang
+
 FEIL = []
 
 
 class FalskBors:
-    """Erstatter felles.bitvavo_handel. Fyller alt umiddelbart til `kurs`."""
+    """Erstatter felles.bitvavo_handel. Fyller alt umiddelbart til `kurs`.
+
+    Ordresvaret er med vilje magert: etter 2026-10-02 vet vi at Bitvavo kan
+    svare uten fylltall og 404 på oppslag rett etterpå. Koden skal klare seg
+    med saldoendringen alene, og testene later derfor som ordresvaret er tomt.
+    """
     MIN_ORDRE, MAKS_ORDRE = 5.0, 50.0
 
     def __init__(self, kurs=100.0, eur=100.0, beholdning=None, gebyr=0.004,
-                 gebyr_i_base=False, ekte=True):
-        self.kurs, self.gebyr, self.gebyr_i_base, self._ekte = kurs, gebyr, gebyr_i_base, ekte
+                 gebyr_i_base=False, ekte=True, tomt_svar=True):
+        self.kurs, self.gebyr, self.gebyr_i_base = kurs, gebyr, gebyr_i_base
+        self._ekte, self.tomt_svar = ekte, tomt_svar
         self.konto = {"EUR": eur, **(beholdning or {})}
-        self.sendte, self.ordrer, self._n = [], {}, 0
+        self.ordrer, self._n = [], 0
 
     def ekte_handel(self):
         return self._ekte
+
+    def _svar(self, oid, gebyr, valuta):
+        if self.tomt_svar:                       # som i felt: bare en kvittering
+            return {"orderId": oid, "status": "filled"}
+        return {"orderId": oid, "status": "filled", "feePaid": str(gebyr),
+                "feeCurrency": valuta}
 
     def markedsordre(self, market, side, belop_eur=None, mengde=None,
                      presisjon=None, grunn="", operator_id=None):
@@ -36,32 +50,22 @@ class FalskBors:
         base = market.split("-")[0]
         self._n += 1
         oid = f"o{self._n}"
+        self.ordrer.append((side, market, belop_eur if side == "buy" else mengde))
         if side == "buy":
             if belop_eur > self.MAKS_ORDRE:
                 FEIL.append(f"ordre over grensen slapp gjennom: {belop_eur}")
             if belop_eur > self.konto["EUR"] + 1e-9:
                 FEIL.append(f"kjøpte for {belop_eur} med bare {self.konto['EUR']} EUR")
-            gebyr = belop_eur * self.gebyr
-            kvote = belop_eur - gebyr
-            fylt = kvote / self.kurs
             self.konto["EUR"] -= belop_eur
             if self.gebyr_i_base:
-                # børsen tar gebyret i krypto i stedet: vi får mindre, men
-                # bruker hele beløpet i euro
+                # gebyret trekkes i krypto: vi bruker hele beløpet, får mindre
                 fylt = belop_eur / self.kurs
-                kvote = belop_eur
                 gebyr = fylt * self.gebyr
-                self.konto["EUR"] = self.konto["EUR"] + belop_eur - belop_eur
                 self.konto[base] = self.konto.get(base, 0.0) + fylt - gebyr
-                self.ordrer[oid] = {"status": "filled", "filledAmount": str(fylt),
-                                    "filledAmountQuote": str(kvote),
-                                    "feePaid": str(gebyr), "feeCurrency": base}
-                return "sendt", {"orderId": oid}
-            self.konto[base] = self.konto.get(base, 0.0) + fylt
-            self.ordrer[oid] = {"status": "filled", "filledAmount": str(fylt),
-                                "filledAmountQuote": str(kvote),
-                                "feePaid": str(gebyr), "feeCurrency": "EUR"}
-            return "sendt", {"orderId": oid}
+                return "sendt", self._svar(oid, gebyr, base)
+            gebyr = belop_eur * self.gebyr
+            self.konto[base] = self.konto.get(base, 0.0) + (belop_eur - gebyr) / self.kurs
+            return "sendt", self._svar(oid, gebyr, "EUR")
 
         if mengde > self.konto.get(base, 0.0) + 1e-12:
             FEIL.append(f"solgte {mengde} {base} med bare {self.konto.get(base, 0.0)}")
@@ -70,13 +74,10 @@ class FalskBors:
         gebyr = brutto * self.gebyr
         self.konto[base] -= mengde
         self.konto["EUR"] += brutto - gebyr
-        self.ordrer[oid] = {"status": "filled", "filledAmount": str(mengde),
-                            "filledAmountQuote": str(brutto),
-                            "feePaid": str(gebyr), "feeCurrency": "EUR"}
-        return "sendt", {"orderId": oid}
+        return "sendt", self._svar(oid, gebyr, "EUR")
 
     def ordre_status(self, market, order_id):
-        return self.ordrer[order_id]
+        raise AssertionError("ordre_status skal ikke brukes: den svarer 404 i felt")
 
     def saldo(self):
         return {k: {"tilgjengelig": v, "i_ordre": 0.0}
@@ -118,7 +119,7 @@ def main():
         b = FalskBors(ekte=False)
         pf = ny_pf(b, m)
         sjekk(pf.kjop("X-EUR", 20.0, 100.0, "signal") == 0.0, "tørrkjøring returnerte beløp")
-        sjekk(not b.sendte and not b.ordrer, "tørrkjøring sendte ordre")
+        sjekk(not b.ordrer, "tørrkjøring sendte ordre")
         sjekk(pf.s["posisjoner"] == {}, "tørrkjøring endret boka")
         sjekk(pf.kontanter == 100.0, "tørrkjøring endret kontanter")
         sjekk(len(pf.planlagt) == 1 and pf.planlagt[0]["side"] == "KJØP",
@@ -187,6 +188,48 @@ def main():
         sjekk(not b.ordrer, "sendte salgsordre under minstebeløpet")
     kjor("rest under 5 EUR forsøkes ikke solgt", rest_under_minsteordre)
 
+    def boka_paa_disk(m):
+        """Den dyre feilen 2026-10-02: boka ble skrevet først til slutt, så en
+        krasj midt i kjøringen etterlot en ekte posisjon uten bokføring."""
+        import json
+        import os
+        b = FalskBors(kurs=100.0, eur=100.0)
+        pf = ny_pf(b, m)
+        pf.kjop("X-EUR", 20.0, 100.0, "signal", maalvekt=0.2)
+        fil = os.path.join(m, "portefolje.json")
+        sjekk(os.path.exists(fil), "portefolje.json ikke skrevet etter kjøp")
+        d = json.load(open(fil, encoding="utf-8"))
+        sjekk("X-EUR" in d["posisjoner"], "posisjonen mangler i fila på disk")
+        sjekk(abs(d["kontanter"] - 80.0) < 1e-9, f"kontanter på disk {d['kontanter']}")
+        sjekk(os.path.exists(os.path.join(m, "handler.csv")),
+              "handler.csv ikke skrevet etter kjøp")
+
+        # neste mynt krasjer: det som allerede er kjøpt skal fortsatt stå
+        b2 = FalskBors(kurs=100.0, eur=80.0)
+
+        def kræsj(*a, **k):
+            raise RuntimeError("børsen svarte 404")
+        b2.markedsordre = kræsj
+        ep.bh = b2
+        try:
+            pf.kjop("Y-EUR", 20.0, 100.0, "signal")
+        except RuntimeError:
+            pass
+        d = json.load(open(fil, encoding="utf-8"))
+        sjekk("X-EUR" in d["posisjoner"], "krasj på neste mynt slettet forrige kjøp")
+    kjor("boka ligger på disk etter hver ordre", boka_paa_disk)
+
+    def ingen_saldoendring(m):
+        """Svarer børsen OK uten at noe faktisk skjedde, skal vi ikke bokføre."""
+        b = FalskBors(kurs=100.0, eur=100.0)
+        b.markedsordre = lambda *a, **k: ("sendt", {"orderId": "spøkelse"})
+        pf = ny_pf(b, m)
+        sjekk(pf.kjop("X-EUR", 20.0, 100.0, "signal") == 0.0,
+              "bokførte et kjøp som ikke endret saldoen")
+        sjekk(pf.s["posisjoner"] == {}, "spøkelsesposisjon i boka")
+        sjekk(pf.kontanter == 100.0, "kontanter endret uten handel")
+    kjor("ordre uten saldoendring bokføres ikke", ingen_saldoendring)
+
     def apning(m):
         b = FalskBors(kurs=100.0, eur=103.91, beholdning={"X": 0.5, "STOV": 0.0001})
         pf = ny_pf(b, m, kontanter=0.0)
@@ -196,6 +239,39 @@ def main():
               f"posisjoner {list(pf.s['posisjoner'])} (støv skal utelates)")
         sjekk(abs(eq - 153.91) < 1e-9, f"egenkapital {eq}")
     kjor("åpningsbalanse tar kontoen som den er, uten støv", apning)
+
+    print("\nGjenoppretting av kostpris fra handelshistorikk:")
+    import gjenopprett as g
+
+    def led(navn, handler, ventet_mengde, ventet_kost):
+        g.bh.handler = lambda market, limit=500: handler
+        m, k, _ = g._ledger("X-EUR")
+        ok = abs(m - ventet_mengde) < 1e-9 and abs(k - ventet_kost) < 1e-6
+        print(("  ok    " if ok else "  FEIL  ") + navn
+              + ("" if ok else f": fikk mengde {m}, kost {k}, ventet "
+                               f"{ventet_mengde} / {ventet_kost}"))
+        if not ok:
+            FEIL.append(navn)
+
+    led("ett kjøp, gebyr i euro",
+        [{"timestamp": 1, "side": "buy", "amount": "0.2", "price": "100",
+          "fee": "0.08", "feeCurrency": "EUR"}], 0.2, 20.08)
+    led("ett kjøp, gebyr i krypto",
+        [{"timestamp": 1, "side": "buy", "amount": "0.2", "price": "100",
+          "fee": "0.0008", "feeCurrency": "X"}], 0.1992, 20.0)
+    led("to kjøp til ulik kurs",
+        [{"timestamp": 1, "side": "buy", "amount": "0.1", "price": "100", "fee": "0"},
+         {"timestamp": 2, "side": "buy", "amount": "0.1", "price": "200", "fee": "0"}],
+        0.2, 30.0)
+    led("delsalg beholder forholdsmessig kostpris",
+        [{"timestamp": 1, "side": "buy", "amount": "0.2", "price": "100", "fee": "0"},
+         {"timestamp": 2, "side": "sell", "amount": "0.1", "price": "500", "fee": "0"}],
+        0.1, 10.0)
+    led("alt solgt og kjøpt på nytt nullstiller kostprisen",
+        [{"timestamp": 1, "side": "buy", "amount": "0.2", "price": "100", "fee": "0"},
+         {"timestamp": 2, "side": "sell", "amount": "0.2", "price": "500", "fee": "0"},
+         {"timestamp": 3, "side": "buy", "amount": "0.1", "price": "700", "fee": "0"}],
+        0.1, 70.0)
 
     print(f"\n{'ALLE TESTER OK' if not FEIL else str(len(FEIL)) + ' FEIL'}")
     return 1 if FEIL else 0

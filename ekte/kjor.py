@@ -71,7 +71,7 @@ def main():
     bfil = os.path.join(MAPPE, "beslutninger.json")
     forrige = json.load(open(bfil, encoding="utf-8")) if os.path.exists(bfil) else {}
 
-    signaler, logg, nye = [], [], {}
+    signaler, logg, nye, feil = [], [], {}, []
     n_dager = 0
     for s in MYNTER:
         if s not in priser:
@@ -82,8 +82,15 @@ def main():
         handling = ""
         if ny_dag:
             n_dager += 1
-            handling = vurder_mynt(pf, s, priser, eq, sig["beslutning"], sig["score"],
-                                   bekreftet, True)
+            # Én mynt som feiler skal ikke rive med seg resten av kjøringen.
+            # Boka er allerede skrevet for hver ordre, så det som er handlet
+            # står trygt; her handler det om at de øvrige myntene får sin tur.
+            try:
+                handling = vurder_mynt(pf, s, priser, eq, sig["beslutning"],
+                                       sig["score"], bekreftet, True)
+            except Exception as e:  # noqa: BLE001
+                feil.append(f"{s}: {type(e).__name__} {e}")
+                print(f"  FEIL på {s}: {type(e).__name__} {e}")
             nye[s] = {"ts": sig["ts"], "beslutning": sig["beslutning"]}
         else:
             nye[s] = forrige.get(s) or {"ts": sig["ts"], "beslutning": sig["beslutning"]}
@@ -111,12 +118,18 @@ def main():
             print(f"  {o['side']:5s} {o['mynt']:10s} ~{o['belop']:.2f} EUR  ({o['grunn']})")
 
     eq = pf.egenkapital(priser)
-    lagre(pf, eq, {"signaler.csv": logg} if logg else None)
+    # handler.csv er allerede skrevet for hver enkelt ordre
+    lagre(pf, eq, {"signaler.csv": logg} if logg else None, skriv_handler=False)
     dashboard.skriv(pf, priser, signaler, mb["fg"],
                     {"system": "Krypto13 EKTE - Bitvavo", "valuta": "EUR",
                      "ekte": ekte, "news_headlines": mb["titler"]})
     print(f"\nKrypto13 EKTE: egenkapital {eq:.2f} EUR, {len(pf.handler)} handler, "
           f"{len(pf.s['posisjoner'])} posisjoner, {n_dager} nye dagsbeslutninger")
+    if feil:
+        print(f"\n{len(feil)} mynt(er) feilet:")
+        for f in feil:
+            print(f"  {f}")
+        return 1
     return 0
 
 

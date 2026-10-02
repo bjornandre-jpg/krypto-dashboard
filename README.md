@@ -159,3 +159,23 @@ som fasit på hva strategien egentlig gjør.
 
 Tester: `verktoy/test_avstemming.py` og `verktoy/test_ekte.py` kjøres før
 hver ekte kjøring i arbeidsflyten.
+
+### Første natt på ekte gikk galt (rettet 2026-10-02)
+
+Kjøringen 00:34 UTC kjøpte SOL, ADA og LINK for til sammen 18,56 euro, og
+krasjet så på oppslaget av LINK-ordren. Tre feil samtidig:
+
+1. `GET /order` svarte 404 (`errorCode 240, No active order found`) på en
+   markedsordre som nettopp var fylt. For ADA svarte den `status: filled`
+   uten fylltall. Ordresvaret er altså ikke til å stole på.
+   RETTET: fyllet leses nå som forskjellen på saldoen før og etter ordren.
+2. Boka ble skrevet til slutt i kjøringen. Krasjen gjorde at SOL-kjøpet var
+   ekte, men ubokført.
+   RETTET: `portefolje.json` og `handler.csv` skrives etter hver enkelt ordre.
+3. Én mynt som feilet rev med seg resten av kjøringen.
+   RETTET: hver mynt kjøres for seg, feil samles og rapporteres til slutt.
+
+Avstemmingen gjorde jobben sin: den oppdaget de ubokførte posisjonene timen
+etter og stoppet all handel til boka var i orden.
+`verktoy/gjenopprett.py` bygger boka opp igjen fra faktisk saldo og egen
+handelshistorikk, slik at kostprisen blir det vi faktisk betalte.
