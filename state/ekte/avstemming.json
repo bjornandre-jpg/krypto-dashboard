@@ -1,8 +1,8 @@
 {
- "tid": "2026-10-02T15:30:10Z",
+ "tid": "2026-10-02T16:28:40Z",
  "ok": true,
- "bokfort_egenkapital": 104.0676,
- "faktisk_egenkapital": 104.0676,
+ "bokfort_egenkapital": 104.004,
+ "faktisk_egenkapital": 104.004,
  "differanse_eur": 0.0,
  "linjer": [
   {
