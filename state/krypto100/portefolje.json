@@ -532,9 +532,9 @@
   }
  },
  "dag": {
-  "dato": "2026-10-03",
-  "start_egenkapital": 994.834459128107,
-  "handler": 29
+  "dato": "2026-10-04",
+  "start_egenkapital": 1003.6129133945199,
+  "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
