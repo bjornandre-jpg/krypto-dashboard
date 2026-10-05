@@ -1,42 +1,48 @@
 {
- "kontanter": 72.69,
+ "kontanter": 67.54,
  "posisjoner": {
   "ADA-EUR": {
    "mengde": 26.200274,
    "snittpris": 0.21946335370385822,
-   "maalvekt": 0.04568640408947738,
+   "maalvekt": 0.0517696306800579,
    "apnet": "2026-10-02T00:34:48Z"
   },
   "LINK-EUR": {
    "mengde": 0.57544656,
    "snittpris": 12.720555667236937,
-   "maalvekt": 0.05519283034051532,
+   "maalvekt": 0.0549864557516524,
    "apnet": "2026-10-02T00:34:49Z"
   },
   "SOL-EUR": {
    "mengde": 0.05185079,
    "snittpris": 105.88073971486259,
-   "maalvekt": 0.0501746652859305,
+   "maalvekt": 0.04918433282875804,
    "apnet": "2026-10-02T00:34:45Z"
   },
   "AVAX-EUR": {
    "mengde": 0.6506227,
    "snittpris": 9.882839931653157,
-   "maalvekt": 0.051583393390386235,
+   "maalvekt": 0.04760974214521267,
    "apnet": "2026-10-02T06:33:01Z"
   },
   "LTC-EUR": {
    "mengde": 0.09980553,
    "snittpris": 62.421390878842125,
-   "maalvekt": 0.049321107432194644,
+   "maalvekt": 0.04618821621117663,
    "apnet": "2026-10-02T06:33:03Z"
+  },
+  "BNB-EUR": {
+   "mengde": 0.00726618,
+   "snittpris": 708.7630639483183,
+   "maalvekt": 0.04941553366659702,
+   "apnet": "2026-10-05T00:37:21Z"
   }
  },
  "startkapital": 103.91,
  "dag": {
-  "dato": "2026-10-04",
-  "start_egenkapital": 103.73114273848,
-  "handler": 0
+  "dato": "2026-10-05",
+  "start_egenkapital": 104.201116084706,
+  "handler": 1
  },
  "opprettet": "2026-10-01T23:23:48Z",
  "apningsbalanse": {
