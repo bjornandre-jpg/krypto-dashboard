@@ -1,14 +1,14 @@
 {
- "tid": "2026-10-05T00:37:18Z",
+ "tid": "2026-10-05T01:27:16Z",
  "ok": true,
- "bokfort_egenkapital": 104.2011,
- "faktisk_egenkapital": 104.2011,
- "differanse_eur": 0.0,
+ "bokfort_egenkapital": 104.4808,
+ "faktisk_egenkapital": 104.4808,
+ "differanse_eur": -0.0,
  "linjer": [
   {
    "navn": "EUR",
-   "bokfort": 72.69,
-   "faktisk": 72.69,
+   "bokfort": 67.54,
+   "faktisk": 67.54,
    "differanse": 0.0,
    "differanse_eur": 0.0,
    "grense_eur": 1.0,
@@ -29,6 +29,16 @@
    "navn": "AVAX-EUR",
    "bokfort": 0.6506227,
    "faktisk": 0.6506227,
+   "differanse": 0.0,
+   "differanse_eur": 0.0,
+   "grense_eur": 1.0,
+   "ok": true,
+   "merknad": ""
+  },
+  {
+   "navn": "BNB-EUR",
+   "bokfort": 0.00726618,
+   "faktisk": 0.00726618,
    "differanse": 0.0,
    "differanse_eur": 0.0,
    "grense_eur": 1.0,
