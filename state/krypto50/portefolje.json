@@ -1,5 +1,5 @@
 {
- "kontanter": 391.37210117486535,
+ "kontanter": 445.93910574551484,
  "startkapital": 1000.0,
  "posisjoner": {
   "XRP-EUR": {
@@ -110,12 +110,6 @@
    "maalvekt": 0.011281406244870064,
    "apnet": "2026-10-01T00:33:37Z"
   },
-  "GRASS-EUR": {
-   "mengde": 16.98129018503005,
-   "snittpris": 0.61965,
-   "maalvekt": 0.011534209178909505,
-   "apnet": "2026-10-01T00:33:38Z"
-  },
   "DOT-EUR": {
    "mengde": 14.069365221405633,
    "snittpris": 1.07311930171648,
@@ -128,22 +122,10 @@
    "maalvekt": 0.01789358395254688,
    "apnet": "2026-10-01T00:33:39Z"
   },
-  "UNI-EUR": {
-   "mengde": 1.63283980473624,
-   "snittpris": 7.813,
-   "maalvekt": 0.009112649896744667,
-   "apnet": "2026-10-01T00:33:41Z"
-  },
   "AVNT-EUR": {
    "mengde": 131.0981668234835,
    "snittpris": 0.11286,
    "maalvekt": 0.011606588151193491,
-   "apnet": "2026-10-01T00:33:41Z"
-  },
-  "ARB-EUR": {
-   "mengde": 70.8373308323688,
-   "snittpris": 0.17867,
-   "maalvekt": 0.010415699912918436,
    "apnet": "2026-10-01T00:33:41Z"
   },
   "NIL-EUR": {
@@ -188,12 +170,6 @@
    "maalvekt": 0.010172370376197691,
    "apnet": "2026-10-02T00:31:59Z"
   },
-  "VET-EUR": {
-   "mengde": 1698.206876651993,
-   "snittpris": 0.0078383,
-   "maalvekt": 0.009045936684033603,
-   "apnet": "2026-10-02T00:32:02Z"
-  },
   "ARK-EUR": {
    "mengde": 83.62729470683023,
    "snittpris": 0.20859447139560483,
@@ -205,12 +181,6 @@
    "snittpris": 2.952705592014553,
    "maalvekt": 0.01145267442153894,
    "apnet": "2026-10-02T00:32:03Z"
-  },
-  "PENGU-EUR": {
-   "mengde": 1879.11380955852,
-   "snittpris": 0.00842519362654699,
-   "maalvekt": 0.010504446025559963,
-   "apnet": "2026-10-02T00:32:04Z"
   },
   "AAVE-EUR": {
    "mengde": 0.07397884703291,
@@ -282,7 +252,7 @@
  "dag": {
   "dato": "2026-10-08",
   "start_egenkapital": 972.5880600482435,
-  "handler": 1
+  "handler": 6
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
