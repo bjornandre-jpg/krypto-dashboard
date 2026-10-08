@@ -47,7 +47,7 @@
   "NEAR-EUR": {
    "mengde": 3.785576748737611,
    "snittpris": 4.585130470947802,
-   "maalvekt": 0.014445087192925832,
+   "maalvekt": 0.015960774588107955,
    "apnet": "2026-10-01T00:33:29Z"
   },
   "ETH-EUR": {
@@ -71,13 +71,13 @@
   "AVAX-EUR": {
    "mengde": 1.689290211229586,
    "snittpris": 9.747320973647872,
-   "maalvekt": 0.012667462330409407,
+   "maalvekt": 0.012956457115714786,
    "apnet": "2026-10-01T00:33:32Z"
   },
   "PUMP-EUR": {
    "mengde": 2292.391020030211,
    "snittpris": 0.005386840476037535,
-   "maalvekt": 0.011378644795005048,
+   "maalvekt": 0.010439682379234979,
    "apnet": "2026-10-01T00:33:32Z"
   },
   "SAGA-EUR": {
@@ -95,7 +95,7 @@
   "RENDER-EUR": {
    "mengde": 6.032364874216249,
    "snittpris": 1.7571058000542117,
-   "maalvekt": 0.011230378552439144,
+   "maalvekt": 0.010870567013429784,
    "apnet": "2026-10-01T00:33:35Z"
   },
   "PEPE-EUR": {
@@ -203,7 +203,7 @@
   "ARK-EUR": {
    "mengde": 83.62729470683023,
    "snittpris": 0.20859447139560483,
-   "maalvekt": 0.012074275927609845,
+   "maalvekt": 0.0149971820946408,
    "apnet": "2026-10-02T00:32:02Z"
   },
   "ICP-EUR": {
@@ -227,7 +227,7 @@
   "INJ-EUR": {
    "mengde": 1.9072971362458584,
    "snittpris": 6.5989,
-   "maalvekt": 0.010708605011939735,
+   "maalvekt": 0.010867358517746712,
    "apnet": "2026-10-02T00:32:05Z"
   },
   "SHIB-EUR": {
@@ -239,7 +239,7 @@
   "RARE-EUR": {
    "mengde": 735.3922501895723,
    "snittpris": 0.015791,
-   "maalvekt": 0.00931326290225832,
+   "maalvekt": 0.01133593737112894,
    "apnet": "2026-10-02T04:25:02Z"
   },
   "AERO-EUR": {
@@ -257,7 +257,7 @@
   "QNT-EUR": {
    "mengde": 0.046138841782180896,
    "snittpris": 219.33,
-   "maalvekt": 0.010112278080331131,
+   "maalvekt": 0.01142056232430019,
    "apnet": "2026-10-02T12:30:07Z"
   },
   "KAS-EUR": {
@@ -286,9 +286,9 @@
   }
  },
  "dag": {
-  "dato": "2026-10-07",
-  "start_egenkapital": 996.1873809774916,
-  "handler": 5
+  "dato": "2026-10-08",
+  "start_egenkapital": 972.5880600482435,
+  "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
