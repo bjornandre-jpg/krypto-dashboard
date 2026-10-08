@@ -1,5 +1,5 @@
 {
- "kontanter": 379.9256507126574,
+ "kontanter": 391.37210117486535,
  "startkapital": 1000.0,
  "posisjoner": {
   "XRP-EUR": {
@@ -85,12 +85,6 @@
    "snittpris": 0.022014,
    "maalvekt": 0.00954421222587516,
    "apnet": "2026-10-01T00:33:34Z"
-  },
-  "ENA-EUR": {
-   "mengde": 58.5555866100827,
-   "snittpris": 0.2325560216260771,
-   "maalvekt": 0.011700787631032848,
-   "apnet": "2026-10-01T00:33:35Z"
   },
   "RENDER-EUR": {
    "mengde": 6.032364874216249,
@@ -288,7 +282,7 @@
  "dag": {
   "dato": "2026-10-08",
   "start_egenkapital": 972.5880600482435,
-  "handler": 0
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
