@@ -1,5 +1,5 @@
 {
- "kontanter": 548.4608494094139,
+ "kontanter": 574.7527642958601,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -62,12 +62,6 @@
    "maalvekt": 0.032066766679532926,
    "apnet": "2026-10-01T00:33:23Z"
   },
-  "CAKE-EUR": {
-   "mengde": 13.70589642242789,
-   "snittpris": 2.2968,
-   "maalvekt": 0.03127865893732525,
-   "apnet": "2026-10-01T00:33:24Z"
-  },
   "BNB-EUR": {
    "mengde": 0.04989388403305616,
    "snittpris": 686.7274252982485,
@@ -76,9 +70,9 @@
   }
  },
  "dag": {
-  "dato": "2026-10-08",
-  "start_egenkapital": 989.8136379430928,
-  "handler": 4
+  "dato": "2026-10-09",
+  "start_egenkapital": 969.5956695005278,
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
