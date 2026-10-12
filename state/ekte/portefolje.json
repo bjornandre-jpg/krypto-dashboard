@@ -4,7 +4,7 @@
   "ADA-EUR": {
    "mengde": 26.200274,
    "snittpris": 0.21946335370385822,
-   "maalvekt": 0.05471450520921144,
+   "maalvekt": 0.03186894473294529,
    "apnet": "2026-10-02T00:34:48Z"
   },
   "LINK-EUR": {
@@ -40,8 +40,8 @@
  },
  "startkapital": 103.91,
  "dag": {
-  "dato": "2026-10-11",
-  "start_egenkapital": 101.73292561381601,
+  "dato": "2026-10-12",
+  "start_egenkapital": 102.73690670539202,
   "handler": 0
  },
  "opprettet": "2026-10-01T23:23:48Z",
