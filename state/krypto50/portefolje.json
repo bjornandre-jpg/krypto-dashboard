@@ -1,5 +1,5 @@
 {
- "kontanter": 375.69531194928237,
+ "kontanter": 388.54363342397465,
  "startkapital": 1000.0,
  "posisjoner": {
   "XRP-EUR": {
@@ -188,12 +188,6 @@
    "maalvekt": 0.012043965164048437,
    "apnet": "2026-10-02T08:27:13Z"
   },
-  "QNT-EUR": {
-   "mengde": 0.07046430581605835,
-   "snittpris": 220.25621674544362,
-   "maalvekt": 0.013018480817091213,
-   "apnet": "2026-10-02T12:30:07Z"
-  },
   "KAS-EUR": {
    "mengde": 426.36151077195683,
    "snittpris": 0.03839883047518589,
@@ -240,7 +234,7 @@
  "dag": {
   "dato": "2026-10-13",
   "start_egenkapital": 928.9915760130526,
-  "handler": 5
+  "handler": 6
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
