@@ -1,5 +1,5 @@
 {
- "kontanter": 388.54363342397465,
+ "kontanter": 399.27976317724125,
  "startkapital": 1000.0,
  "posisjoner": {
   "XRP-EUR": {
@@ -77,7 +77,7 @@
   "RENDER-EUR": {
    "mengde": 9.190634034017942,
    "snittpris": 1.7624302263846976,
-   "maalvekt": 0.018445257533276027,
+   "maalvekt": 0.015179439567509521,
    "apnet": "2026-10-01T00:33:35Z"
   },
   "PEPE-EUR": {
@@ -105,9 +105,9 @@
    "apnet": "2026-10-01T00:33:38Z"
   },
   "FIL-EUR": {
-   "mengde": 16.229390447425537,
+   "mengde": 11.286210254123576,
    "snittpris": 0.928624707870391,
-   "maalvekt": 0.01956590054159188,
+   "maalvekt": 0.012346811791108197,
    "apnet": "2026-10-01T00:33:39Z"
   },
   "AVNT-EUR": {
@@ -159,9 +159,9 @@
    "apnet": "2026-10-02T00:32:04Z"
   },
   "INJ-EUR": {
-   "mengde": 2.878405423635182,
+   "mengde": 2.096120300937618,
    "snittpris": 6.746806153072007,
-   "maalvekt": 0.020185961784526592,
+   "maalvekt": 0.0162574538059477,
    "apnet": "2026-10-02T00:32:05Z"
   },
   "SHIB-EUR": {
@@ -185,7 +185,7 @@
   "PYTH-EUR": {
    "mengde": 150.1716198579506,
    "snittpris": 0.07074720260446082,
-   "maalvekt": 0.012043965164048437,
+   "maalvekt": 0.010688132059373297,
    "apnet": "2026-10-02T08:27:13Z"
   },
   "KAS-EUR": {
@@ -227,14 +227,14 @@
   "KMNO-EUR": {
    "mengde": 604.9092132693677,
    "snittpris": 0.03392186469505723,
-   "maalvekt": 0.019914881246398203,
+   "maalvekt": 0.01849738578708617,
    "apnet": "2026-10-11T18:02:33Z"
   }
  },
  "dag": {
   "dato": "2026-10-13",
   "start_egenkapital": 928.9915760130526,
-  "handler": 6
+  "handler": 8
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
