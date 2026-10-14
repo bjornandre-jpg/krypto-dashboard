@@ -1,5 +1,5 @@
 {
- "kontanter": 590.9082136342074,
+ "kontanter": 620.124482755585,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -25,12 +25,6 @@
    "snittpris": 104.048,
    "maalvekt": 0.0334082123007385,
    "apnet": "2026-10-01T00:33:20Z"
-  },
-  "DOGE-EUR": {
-   "mengde": 388.5269526637743,
-   "snittpris": 0.08350334425318308,
-   "maalvekt": 0.032088260509555995,
-   "apnet": "2026-10-01T00:33:21Z"
   },
   "ADA-EUR": {
    "mengde": 140.5502326465961,
@@ -70,9 +64,9 @@
   }
  },
  "dag": {
-  "dato": "2026-10-13",
-  "start_egenkapital": 965.5514815669499,
-  "handler": 0
+  "dato": "2026-10-14",
+  "start_egenkapital": 972.9101995814856,
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
