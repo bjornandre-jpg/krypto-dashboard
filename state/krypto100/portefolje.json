@@ -1,5 +1,5 @@
 {
- "kontanter": 489.34730770498123,
+ "kontanter": 508.3730922988798,
  "startkapital": 1000.0,
  "posisjoner": {
   "XRP-EUR": {
@@ -90,12 +90,6 @@
    "mengde": 1962905.8285235777,
    "snittpris": 3.7744e-06,
    "maalvekt": 0.007779929456769428,
-   "apnet": "2026-10-01T00:33:59Z"
-  },
-  "XLM-EUR": {
-   "mengde": 32.52658864580156,
-   "snittpris": 0.19897,
-   "maalvekt": 0.004821324021775634,
    "apnet": "2026-10-01T00:33:59Z"
   },
   "DOGE-EUR": {
@@ -380,12 +374,6 @@
    "maalvekt": 0.004619575143881764,
    "apnet": "2026-10-03T14:32:51Z"
   },
-  "HBAR-EUR": {
-   "mengde": 57.38105248635322,
-   "snittpris": 0.090868,
-   "maalvekt": 0.006704534143728214,
-   "apnet": "2026-10-03T19:03:38Z"
-  },
   "ROSE-EUR": {
    "mengde": 824.3864931145993,
    "snittpris": 0.007431,
@@ -416,12 +404,6 @@
    "maalvekt": 0.00901979184621855,
    "apnet": "2026-10-09T21:39:58Z"
   },
-  "PHA-EUR": {
-   "mengde": 107.70222849877193,
-   "snittpris": 0.055827,
-   "maalvekt": 0.008581284421026738,
-   "apnet": "2026-10-10T01:44:43Z"
-  },
   "ENA-EUR": {
    "mengde": 30.26842982964028,
    "snittpris": 0.19448,
@@ -440,12 +422,6 @@
    "maalvekt": 0.010488910197012539,
    "apnet": "2026-10-11T18:02:56Z"
   },
-  "MOVR-EUR": {
-   "mengde": 3.288415993585097,
-   "snittpris": 1.5333,
-   "maalvekt": 0.004937640187838956,
-   "apnet": "2026-10-11T18:03:17Z"
-  },
   "WIF-EUR": {
    "mengde": 28.195975226817488,
    "snittpris": 0.1957,
@@ -462,7 +438,7 @@
  "dag": {
   "dato": "2026-10-14",
   "start_egenkapital": 966.2242180344283,
-  "handler": 0
+  "handler": 4
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."

@@ -1,5 +1,5 @@
 {
- "kontanter": 408.6892596945284,
+ "kontanter": 419.5917651229663,
  "startkapital": 1000.0,
  "posisjoner": {
   "XRP-EUR": {
@@ -84,12 +84,6 @@
    "mengde": 3925811.6570471553,
    "snittpris": 3.7744e-06,
    "maalvekt": 0.015559858913538857,
-   "apnet": "2026-10-01T00:33:36Z"
-  },
-  "XLM-EUR": {
-   "mengde": 65.0662579083611,
-   "snittpris": 0.19893,
-   "maalvekt": 0.009642648043551269,
    "apnet": "2026-10-01T00:33:36Z"
   },
   "DOGE-EUR": {
@@ -240,7 +234,7 @@
  "dag": {
   "dato": "2026-10-14",
   "start_egenkapital": 939.4113499692899,
-  "handler": 3
+  "handler": 4
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
