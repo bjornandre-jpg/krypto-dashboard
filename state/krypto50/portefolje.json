@@ -1,5 +1,5 @@
 {
- "kontanter": 590.5909659410262,
+ "kontanter": 595.6037492544286,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -29,7 +29,7 @@
   "NEAR-EUR": {
    "mengde": 3.785576748737611,
    "snittpris": 4.585130470947802,
-   "maalvekt": 0.020958348849915022,
+   "maalvekt": 0.016771806253660065,
    "apnet": "2026-10-01T00:33:29Z"
   },
   "HYPE-EUR": {
@@ -45,9 +45,9 @@
    "apnet": "2026-10-01T00:33:32Z"
   },
   "RENDER-EUR": {
-   "mengde": 9.190634034017942,
+   "mengde": 6.332400226656585,
    "snittpris": 1.7624302263846976,
-   "maalvekt": 0.013619884209022876,
+   "maalvekt": 0.012089032056762742,
    "apnet": "2026-10-01T00:33:35Z"
   },
   "PEPE-EUR": {
@@ -107,19 +107,19 @@
   "INJ-EUR": {
    "mengde": 1.2591095321501768,
    "snittpris": 6.746806153072007,
-   "maalvekt": 0.009346817632084082,
+   "maalvekt": 0.015257899784914134,
    "apnet": "2026-10-02T00:32:05Z"
   },
   "AERO-EUR": {
    "mengde": 11.656218750049526,
    "snittpris": 0.756672960818061,
-   "maalvekt": 0.009805572776675276,
+   "maalvekt": 0.013363992987095437,
    "apnet": "2026-10-02T04:25:16Z"
   },
   "PYTH-EUR": {
    "mengde": 246.2520450951793,
    "snittpris": 0.07531290547758311,
-   "maalvekt": 0.02211080203595363,
+   "maalvekt": 0.02175228136308596,
    "apnet": "2026-10-02T08:27:13Z"
   },
   "GRASS-EUR": {
@@ -137,20 +137,20 @@
   "QNT-EUR": {
    "mengde": 0.049045025984817595,
    "snittpris": 192.024,
-   "maalvekt": 0.012909625496868055,
+   "maalvekt": 0.014857443330937562,
    "apnet": "2026-10-14T07:31:30Z"
   },
   "NIL-EUR": {
    "mengde": 256.37810187936117,
    "snittpris": 0.07653,
-   "maalvekt": 0.02083932804198542,
+   "maalvekt": 0.019893681259349323,
    "apnet": "2026-10-15T01:25:51Z"
   }
  },
  "dag": {
   "dato": "2026-10-15",
   "start_egenkapital": 913.5646545327397,
-  "handler": 13
+  "handler": 14
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
