@@ -1,14 +1,14 @@
 {
- "tid": "2026-10-15T01:27:04Z",
+ "tid": "2026-10-15T07:23:57Z",
  "ok": true,
- "bokfort_egenkapital": 99.7273,
- "faktisk_egenkapital": 99.7273,
+ "bokfort_egenkapital": 99.0601,
+ "faktisk_egenkapital": 99.0601,
  "differanse_eur": 0.0,
  "linjer": [
   {
    "navn": "EUR",
-   "bokfort": 67.54,
-   "faktisk": 67.54,
+   "bokfort": 72.79,
+   "faktisk": 72.79,
    "differanse": 0.0,
    "differanse_eur": 0.0,
    "grense_eur": 1.0,
@@ -49,16 +49,6 @@
    "navn": "LINK-EUR",
    "bokfort": 0.57544656,
    "faktisk": 0.57544656,
-   "differanse": 0.0,
-   "differanse_eur": 0.0,
-   "grense_eur": 1.0,
-   "ok": true,
-   "merknad": ""
-  },
-  {
-   "navn": "LTC-EUR",
-   "bokfort": 0.09980553,
-   "faktisk": 0.09980553,
    "differanse": 0.0,
    "differanse_eur": 0.0,
    "grense_eur": 1.0,
