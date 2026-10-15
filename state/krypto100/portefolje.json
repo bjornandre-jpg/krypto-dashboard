@@ -1,5 +1,5 @@
 {
- "kontanter": 566.5126807602446,
+ "kontanter": 621.2999686717797,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -95,7 +95,7 @@
   "NIL-EUR": {
    "mengde": 132.60590534486815,
    "snittpris": 0.0761957202057812,
-   "maalvekt": 0.010765406977911928,
+   "maalvekt": 0.010725496351048634,
    "apnet": "2026-10-01T00:34:06Z"
   },
   "BCH-EUR": {
@@ -103,18 +103,6 @@
    "snittpris": 270.01,
    "maalvekt": 0.006266756416240182,
    "apnet": "2026-10-01T00:34:06Z"
-  },
-  "LINK-EUR": {
-   "mengde": 0.45368239238433633,
-   "snittpris": 12.6941,
-   "maalvekt": 0.007347123422118967,
-   "apnet": "2026-10-02T00:32:13Z"
-  },
-  "LTC-EUR": {
-   "mengde": 0.11891729297138884,
-   "snittpris": 61.073,
-   "maalvekt": 0.00605180643127172,
-   "apnet": "2026-10-02T00:32:13Z"
   },
   "ONDO-EUR": {
    "mengde": 13.5943185346024,
@@ -158,12 +146,6 @@
    "maalvekt": 0.006789467898260125,
    "apnet": "2026-10-02T00:32:29Z"
   },
-  "VIRTUAL-EUR": {
-   "mengde": 8.25908213985609,
-   "snittpris": 0.7018,
-   "maalvekt": 0.00667741873544138,
-   "apnet": "2026-10-02T00:32:30Z"
-  },
   "ACE-EUR": {
    "mengde": 45.66319488692506,
    "snittpris": 0.16434,
@@ -175,12 +157,6 @@
    "snittpris": 7.8987,
    "maalvekt": 0.005216112951616652,
    "apnet": "2026-10-02T00:32:30Z"
-  },
-  "SPK-EUR": {
-   "mengde": 271.93831410865084,
-   "snittpris": 0.021018,
-   "maalvekt": 0.006332816157679272,
-   "apnet": "2026-10-02T00:32:33Z"
   },
   "AXS-EUR": {
    "mengde": 6.645458021527317,
@@ -227,13 +203,13 @@
   "PYTH-EUR": {
    "mengde": 103.84009518048266,
    "snittpris": 0.071473,
-   "maalvekt": 0.007917950754306624,
+   "maalvekt": 0.007422037048188469,
    "apnet": "2026-10-03T00:30:50Z"
   },
   "AERO-EUR": {
    "mengde": 8.297077040397753,
    "snittpris": 0.70682,
-   "maalvekt": 0.00602578218046905,
+   "maalvekt": 0.004902786388337638,
    "apnet": "2026-10-03T00:30:50Z"
   },
   "ICP-EUR": {
@@ -247,12 +223,6 @@
    "snittpris": 0.113544,
    "maalvekt": 0.010026246328832823,
    "apnet": "2026-10-03T00:30:56Z"
-  },
-  "ENJ-EUR": {
-   "mengde": 179.30519306291842,
-   "snittpris": 0.029792,
-   "maalvekt": 0.007321492575049873,
-   "apnet": "2026-10-03T00:31:02Z"
   },
   "SYN-EUR": {
    "mengde": 50.348659367004494,
@@ -278,22 +248,10 @@
    "maalvekt": 0.005340598625583713,
    "apnet": "2026-10-03T00:31:10Z"
   },
-  "SKY-EUR": {
-   "mengde": 138.03211298751646,
-   "snittpris": 0.07472433958233946,
-   "maalvekt": 0.010038922749019082,
-   "apnet": "2026-10-03T00:31:11Z"
-  },
-  "ATH-EUR": {
-   "mengde": 728.2212663587316,
-   "snittpris": 0.00611,
-   "maalvekt": 0.006589642150060689,
-   "apnet": "2026-10-03T00:31:12Z"
-  },
   "STX-EUR": {
    "mengde": 17.219667125156683,
    "snittpris": 0.33044,
-   "maalvekt": 0.008254917594665541,
+   "maalvekt": 0.006912183096295991,
    "apnet": "2026-10-03T00:31:12Z"
   },
   "BNB-EUR": {
@@ -307,12 +265,6 @@
    "snittpris": 0.023291,
    "maalvekt": 0.005564999975891039,
    "apnet": "2026-10-03T00:31:14Z"
-  },
-  "SEI-EUR": {
-   "mengde": 100.6246705528555,
-   "snittpris": 0.062749,
-   "maalvekt": 0.009312122792120101,
-   "apnet": "2026-10-03T04:25:07Z"
   },
   "ROSE-EUR": {
    "mengde": 824.3864931145993,
@@ -338,18 +290,6 @@
    "maalvekt": 0.00901979184621855,
    "apnet": "2026-10-09T21:39:58Z"
   },
-  "ENA-EUR": {
-   "mengde": 30.26842982964028,
-   "snittpris": 0.19448,
-   "maalvekt": 0.010324079110089923,
-   "apnet": "2026-10-10T01:44:46Z"
-  },
-  "ARB-EUR": {
-   "mengde": 47.808651670913676,
-   "snittpris": 0.17684,
-   "maalvekt": 0.007343436613141971,
-   "apnet": "2026-10-11T18:02:55Z"
-  },
   "KMNO-EUR": {
    "mengde": 197.99142464956455,
    "snittpris": 0.034154,
@@ -366,7 +306,7 @@
  "dag": {
   "dato": "2026-10-15",
   "start_egenkapital": 943.8791031393596,
-  "handler": 6
+  "handler": 16
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
