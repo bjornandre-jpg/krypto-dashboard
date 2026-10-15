@@ -1,5 +1,5 @@
 {
- "kontanter": 67.54,
+ "kontanter": 72.79,
  "posisjoner": {
   "ADA-EUR": {
    "mengde": 26.200274,
@@ -25,12 +25,6 @@
    "maalvekt": 0.043497685866706846,
    "apnet": "2026-10-02T06:33:01Z"
   },
-  "LTC-EUR": {
-   "mengde": 0.09980553,
-   "snittpris": 62.421390878842125,
-   "maalvekt": 0.032106766679532925,
-   "apnet": "2026-10-02T06:33:03Z"
-  },
   "BNB-EUR": {
    "mengde": 0.00726618,
    "snittpris": 708.7630639483183,
@@ -40,9 +34,9 @@
  },
  "startkapital": 103.91,
  "dag": {
-  "dato": "2026-10-14",
-  "start_egenkapital": 100.99726928771001,
-  "handler": 0
+  "dato": "2026-10-15",
+  "start_egenkapital": 99.72726197709001,
+  "handler": 1
  },
  "opprettet": "2026-10-01T23:23:48Z",
  "apningsbalanse": {
