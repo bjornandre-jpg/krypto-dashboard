@@ -1,5 +1,5 @@
 {
- "kontanter": 630.7201163065556,
+ "kontanter": 629.9149618126155,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -89,7 +89,7 @@
   "NIL-EUR": {
    "mengde": 132.60590534486815,
    "snittpris": 0.0761957202057812,
-   "maalvekt": 0.010725496351048634,
+   "maalvekt": 0.01041966402099271,
    "apnet": "2026-10-01T00:34:06Z"
   },
   "BCH-EUR": {
@@ -146,12 +146,6 @@
    "maalvekt": 0.009507220217696156,
    "apnet": "2026-10-02T00:32:30Z"
   },
-  "ETC-EUR": {
-   "mengde": 0.7437835943068488,
-   "snittpris": 7.8987,
-   "maalvekt": 0.005216112951616652,
-   "apnet": "2026-10-02T00:32:30Z"
-  },
   "AXS-EUR": {
    "mengde": 6.645458021527317,
    "snittpris": 1.0208,
@@ -191,7 +185,7 @@
   "PYTH-EUR": {
    "mengde": 103.84009518048266,
    "snittpris": 0.071473,
-   "maalvekt": 0.007422037048188469,
+   "maalvekt": 0.011055401017976816,
    "apnet": "2026-10-03T00:30:50Z"
   },
   "AERO-EUR": {
@@ -289,12 +283,18 @@
    "snittpris": 0.17846,
    "maalvekt": 0.005508003164498606,
    "apnet": "2026-10-15T01:26:28Z"
+  },
+  "QNT-EUR": {
+   "mengde": 0.03289906647121435,
+   "snittpris": 185.671,
+   "maalvekt": 0.006454812748434027,
+   "apnet": "2026-10-15T18:14:42Z"
   }
  },
  "dag": {
   "dato": "2026-10-15",
   "start_egenkapital": 943.8791031393596,
-  "handler": 18
+  "handler": 20
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
