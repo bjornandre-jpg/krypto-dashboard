@@ -1,5 +1,5 @@
 {
- "kontanter": 624.2115883504623,
+ "kontanter": 625.7562809672902,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -29,13 +29,13 @@
   "WLD-EUR": {
    "mengde": 17.445823892200465,
    "snittpris": 0.47518,
-   "maalvekt": 0.004864995022294197,
+   "maalvekt": 0.0071420247120190985,
    "apnet": "2026-10-01T00:33:51Z"
   },
   "NEAR-EUR": {
    "mengde": 1.890188471363095,
    "snittpris": 4.6839,
-   "maalvekt": 0.00928412136957463,
+   "maalvekt": 0.008679872357814904,
    "apnet": "2026-10-01T00:33:52Z"
   },
   "HYPE-EUR": {
@@ -59,7 +59,7 @@
   "RENDER-EUR": {
    "mengde": 3.265020530805041,
    "snittpris": 1.684,
-   "maalvekt": 0.004724193482986518,
+   "maalvekt": 0.0053695358284397525,
    "apnet": "2026-10-01T00:33:58Z"
   },
   "PEPE-EUR": {
@@ -77,7 +77,7 @@
   "FIL-EUR": {
    "mengde": 5.447249177104999,
    "snittpris": 0.92255,
-   "maalvekt": 0.007759268242217436,
+   "maalvekt": 0.00903027602786694,
    "apnet": "2026-10-01T00:34:02Z"
   },
   "AVNT-EUR": {
@@ -107,31 +107,31 @@
   "EIGEN-EUR": {
    "mengde": 29.146976335114978,
    "snittpris": 0.22154,
-   "maalvekt": 0.00924198496109863,
+   "maalvekt": 0.005662242708635955,
    "apnet": "2026-10-02T00:32:21Z"
   },
   "AAVE-EUR": {
    "mengde": 0.06060598983106442,
    "snittpris": 153.61,
-   "maalvekt": 0.005418680174344751,
+   "maalvekt": 0.005451878699241459,
    "apnet": "2026-10-02T00:32:26Z"
   },
   "INJ-EUR": {
    "mengde": 0.9561329915153509,
    "snittpris": 6.5989,
-   "maalvekt": 0.009416336516025326,
+   "maalvekt": 0.01048944663179919,
    "apnet": "2026-10-02T00:32:26Z"
   },
   "OP-EUR": {
    "mengde": 52.71163705095004,
    "snittpris": 0.11439,
-   "maalvekt": 0.005359973174993531,
+   "maalvekt": 0.006037798256860034,
    "apnet": "2026-10-02T00:32:28Z"
   },
   "PLUME-EUR": {
    "mengde": 390.95376744935055,
    "snittpris": 0.016567,
-   "maalvekt": 0.005818730194070145,
+   "maalvekt": 0.005085979661062912,
    "apnet": "2026-10-02T00:32:29Z"
   },
   "RAY-EUR": {
@@ -155,13 +155,13 @@
   "LPT-EUR": {
    "mengde": 3.9782666147341876,
    "snittpris": 1.5386,
-   "maalvekt": 0.0054735426790151346,
+   "maalvekt": 0.005177977852263918,
    "apnet": "2026-10-02T00:32:34Z"
   },
   "ZRO-EUR": {
    "mengde": 5.2602209706044585,
    "snittpris": 1.6256999999999997,
-   "maalvekt": 0.009837794074223074,
+   "maalvekt": 0.010074793293068618,
    "apnet": "2026-10-02T00:32:35Z"
   },
   "STRK-EUR": {
@@ -170,28 +170,22 @@
    "maalvekt": 0.008332603218358579,
    "apnet": "2026-10-02T00:32:36Z"
   },
-  "HUMA-EUR": {
-   "mengde": 298.12583968389566,
-   "snittpris": 0.029982,
-   "maalvekt": 0.005023348244955794,
-   "apnet": "2026-10-02T00:32:36Z"
-  },
   "TIA-EUR": {
    "mengde": 14.393623513595156,
    "snittpris": 0.38106,
-   "maalvekt": 0.009122221335366347,
+   "maalvekt": 0.009770385506546884,
    "apnet": "2026-10-02T00:32:37Z"
   },
   "PYTH-EUR": {
    "mengde": 103.84009518048266,
    "snittpris": 0.071473,
-   "maalvekt": 0.010513617940785345,
+   "maalvekt": 0.0072525327643096224,
    "apnet": "2026-10-03T00:30:50Z"
   },
   "AERO-EUR": {
    "mengde": 8.297077040397753,
    "snittpris": 0.70682,
-   "maalvekt": 0.008126500624889689,
+   "maalvekt": 0.007253515046277412,
    "apnet": "2026-10-03T00:30:50Z"
   },
   "ICP-EUR": {
@@ -203,7 +197,7 @@
   "ALGO-EUR": {
    "mengde": 59.01310752726269,
    "snittpris": 0.113544,
-   "maalvekt": 0.010026246328832823,
+   "maalvekt": 0.004917529257919341,
    "apnet": "2026-10-03T00:30:56Z"
   },
   "SYN-EUR": {
@@ -227,13 +221,13 @@
   "PEAQ-EUR": {
    "mengde": 152.60789975485218,
    "snittpris": 0.036006,
-   "maalvekt": 0.005661492286574703,
+   "maalvekt": 0.004870269371580551,
    "apnet": "2026-10-03T00:31:10Z"
   },
   "STX-EUR": {
    "mengde": 17.219667125156683,
    "snittpris": 0.33044,
-   "maalvekt": 0.005567591293104236,
+   "maalvekt": 0.005365462228843328,
    "apnet": "2026-10-03T00:31:12Z"
   },
   "BNB-EUR": {
@@ -257,7 +251,7 @@
   "GRASS-EUR": {
    "mengde": 14.431107073820996,
    "snittpris": 0.56555,
-   "maalvekt": 0.008602379076625264,
+   "maalvekt": 0.006676460288946886,
    "apnet": "2026-10-09T21:39:33Z"
   },
   "JASMY-EUR": {
@@ -275,32 +269,38 @@
   "KMNO-EUR": {
    "mengde": 197.99142464956455,
    "snittpris": 0.034154,
-   "maalvekt": 0.006575869968779356,
+   "maalvekt": 0.005146024714710065,
    "apnet": "2026-10-11T18:02:56Z"
   },
   "SUPER-EUR": {
    "mengde": 29.059127335415265,
    "snittpris": 0.17846,
-   "maalvekt": 0.007421720967945858,
+   "maalvekt": 0.008331657528755622,
    "apnet": "2026-10-15T01:26:28Z"
   },
   "QNT-EUR": {
    "mengde": 0.03289906647121435,
    "snittpris": 185.671,
-   "maalvekt": 0.007781048909480099,
+   "maalvekt": 0.008227347060837255,
    "apnet": "2026-10-15T18:14:42Z"
   },
   "MOVR-EUR": {
    "mengde": 4.4606515826390485,
    "snittpris": 1.2754,
-   "maalvekt": 0.004867250226592434,
+   "maalvekt": 0.005936925129049093,
    "apnet": "2026-10-15T22:13:10Z"
+  },
+  "SEI-EUR": {
+   "mengde": 102.30092402304012,
+   "snittpris": 0.056174,
+   "maalvekt": 0.006145472350218955,
+   "apnet": "2026-10-16T17:22:57Z"
   }
  },
  "dag": {
   "dato": "2026-10-16",
   "start_egenkapital": 951.8386009170448,
-  "handler": 0
+  "handler": 2
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
