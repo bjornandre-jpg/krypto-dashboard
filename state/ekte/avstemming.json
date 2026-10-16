@@ -1,18 +1,18 @@
 {
- "tid": "2026-10-16T11:19:18Z",
- "ok": true,
- "bokfort_egenkapital": 100.3002,
- "faktisk_egenkapital": 100.3002,
- "differanse_eur": 0.0,
+ "tid": "2026-10-16T16:36:03Z",
+ "ok": false,
+ "bokfort_egenkapital": 99.7594,
+ "faktisk_egenkapital": 109.7594,
+ "differanse_eur": 10.0,
  "linjer": [
   {
    "navn": "EUR",
    "bokfort": 72.79,
-   "faktisk": 72.79,
-   "differanse": 0.0,
-   "differanse_eur": 0.0,
+   "faktisk": 82.79,
+   "differanse": 10.0,
+   "differanse_eur": 10.0,
    "grense_eur": 1.0,
-   "ok": true,
+   "ok": false,
    "merknad": ""
   },
   {
@@ -66,5 +66,16 @@
    "merknad": ""
   }
  ],
- "avvik": []
+ "avvik": [
+  {
+   "navn": "EUR",
+   "bokfort": 72.79,
+   "faktisk": 82.79,
+   "differanse": 10.0,
+   "differanse_eur": 10.0,
+   "grense_eur": 1.0,
+   "ok": false,
+   "merknad": ""
+  }
+ ]
 }
