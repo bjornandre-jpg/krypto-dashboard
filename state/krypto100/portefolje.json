@@ -1,5 +1,5 @@
 {
- "kontanter": 659.8571212769203,
+ "kontanter": 683.7426498836152,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -29,7 +29,7 @@
   "NEAR-EUR": {
    "mengde": 1.890188471363095,
    "snittpris": 4.6839,
-   "maalvekt": 0.005706132503591215,
+   "maalvekt": 0.0050356766754223094,
    "apnet": "2026-10-01T00:33:52Z"
   },
   "AVAX-EUR": {
@@ -43,12 +43,6 @@
    "snittpris": 1.684,
    "maalvekt": 0.004655280508997374,
    "apnet": "2026-10-01T00:33:58Z"
-  },
-  "PEPE-EUR": {
-   "mengde": 1962905.8285235777,
-   "snittpris": 3.7744e-06,
-   "maalvekt": 0.007779929456769428,
-   "apnet": "2026-10-01T00:33:59Z"
   },
   "DOT-EUR": {
    "mengde": 6.746376450083344,
@@ -95,7 +89,7 @@
   "INJ-EUR": {
    "mengde": 0.9561329915153509,
    "snittpris": 6.5989,
-   "maalvekt": 0.005369848506894441,
+   "maalvekt": 0.00479006604663802,
    "apnet": "2026-10-02T00:32:26Z"
   },
   "OP-EUR": {
@@ -164,12 +158,6 @@
    "maalvekt": 0.009625771625470528,
    "apnet": "2026-10-03T00:30:50Z"
   },
-  "ALGO-EUR": {
-   "mengde": 59.01310752726269,
-   "snittpris": 0.113544,
-   "maalvekt": 0.004917529257919341,
-   "apnet": "2026-10-03T00:30:56Z"
-  },
   "SYN-EUR": {
    "mengde": 50.348659367004494,
    "snittpris": 0.1526,
@@ -200,12 +188,6 @@
    "maalvekt": 0.004936501704798292,
    "apnet": "2026-10-03T00:31:13Z"
   },
-  "AEVO-EUR": {
-   "mengde": 319.2848614550234,
-   "snittpris": 0.023291,
-   "maalvekt": 0.005564999975891039,
-   "apnet": "2026-10-03T00:31:14Z"
-  },
   "ROSE-EUR": {
    "mengde": 824.3864931145993,
    "snittpris": 0.007431,
@@ -224,12 +206,6 @@
    "maalvekt": 0.007987255018263691,
    "apnet": "2026-10-09T21:39:57Z"
   },
-  "GALA-EUR": {
-   "mengde": 3190.094539463094,
-   "snittpris": 0.0020154,
-   "maalvekt": 0.00901979184621855,
-   "apnet": "2026-10-09T21:39:58Z"
-  },
   "KMNO-EUR": {
    "mengde": 197.99142464956455,
    "snittpris": 0.034154,
@@ -245,7 +221,7 @@
   "QNT-EUR": {
    "mengde": 0.03289906647121435,
    "snittpris": 185.671,
-   "maalvekt": 0.006502977903109286,
+   "maalvekt": 0.007312353181393073,
    "apnet": "2026-10-15T18:14:42Z"
   },
   "MOVR-EUR": {
@@ -264,7 +240,7 @@
  "dag": {
   "dato": "2026-10-18",
   "start_egenkapital": 931.5344341337377,
-  "handler": 2
+  "handler": 6
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
