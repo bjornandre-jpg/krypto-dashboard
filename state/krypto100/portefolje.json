@@ -1,5 +1,5 @@
 {
- "kontanter": 688.2673017444006,
+ "kontanter": 718.7935959488434,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -7,18 +7,6 @@
    "snittpris": 73616.0,
    "maalvekt": 0.00460240157794941,
    "apnet": "2026-10-01T00:33:48Z"
-  },
-  "ADA-EUR": {
-   "mengde": 29.580929962978622,
-   "snittpris": 0.21693,
-   "maalvekt": 0.007520950425462098,
-   "apnet": "2026-10-01T00:33:49Z"
-  },
-  "TAO-EUR": {
-   "mengde": 0.02043496376502471,
-   "snittpris": 265.44,
-   "maalvekt": 0.009052125945583436,
-   "apnet": "2026-10-01T00:33:50Z"
   },
   "WLD-EUR": {
    "mengde": 17.445823892200465,
@@ -61,18 +49,6 @@
    "snittpris": 0.0761957202057812,
    "maalvekt": 0.008695926968515375,
    "apnet": "2026-10-01T00:34:06Z"
-  },
-  "BCH-EUR": {
-   "mengde": 0.021656785559224435,
-   "snittpris": 270.01,
-   "maalvekt": 0.006266756416240182,
-   "apnet": "2026-10-01T00:34:06Z"
-  },
-  "ONDO-EUR": {
-   "mengde": 13.5943185346024,
-   "snittpris": 0.44297,
-   "maalvekt": 0.005029876500055368,
-   "apnet": "2026-10-02T00:32:15Z"
   },
   "EIGEN-EUR": {
    "mengde": 29.146976335114978,
@@ -158,12 +134,6 @@
    "maalvekt": 0.006930060637068317,
    "apnet": "2026-10-03T00:31:05Z"
   },
-  "BABY-EUR": {
-   "mengde": 496.49844178985967,
-   "snittpris": 0.01214,
-   "maalvekt": 0.004919851496614172,
-   "apnet": "2026-10-03T00:31:07Z"
-  },
   "PEAQ-EUR": {
    "mengde": 152.60789975485218,
    "snittpris": 0.036006,
@@ -181,12 +151,6 @@
    "snittpris": 682.9,
    "maalvekt": 0.004936501704798292,
    "apnet": "2026-10-03T00:31:13Z"
-  },
-  "ROSE-EUR": {
-   "mengde": 824.3864931145993,
-   "snittpris": 0.007431,
-   "maalvekt": 0.010316224005441028,
-   "apnet": "2026-10-04T05:17:21Z"
   },
   "GRASS-EUR": {
    "mengde": 14.431107073820996,
@@ -234,7 +198,7 @@
  "dag": {
   "dato": "2026-10-18",
   "start_egenkapital": 931.5344341337377,
-  "handler": 7
+  "handler": 13
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."

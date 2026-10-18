@@ -1,5 +1,5 @@
 {
- "kontanter": 637.9183654189404,
+ "kontanter": 694.4225867388229,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -7,18 +7,6 @@
    "snittpris": 73626.0,
    "maalvekt": 0.00920480315589882,
    "apnet": "2026-10-01T00:33:26Z"
-  },
-  "ADA-EUR": {
-   "mengde": 59.91344591705576,
-   "snittpris": 0.22354553475984262,
-   "maalvekt": 0.015041900850924196,
-   "apnet": "2026-10-01T00:33:27Z"
-  },
-  "TAO-EUR": {
-   "mengde": 0.06063594806881829,
-   "snittpris": 267.93047638778245,
-   "maalvekt": 0.01810425189116687,
-   "apnet": "2026-10-01T00:33:27Z"
   },
   "NEAR-EUR": {
    "mengde": 2.2992821564675032,
@@ -50,29 +38,11 @@
    "maalvekt": 0.009542338965363151,
    "apnet": "2026-10-01T00:33:39Z"
   },
-  "BCH-EUR": {
-   "mengde": 0.04180830146638409,
-   "snittpris": 273.2681301566854,
-   "maalvekt": 0.012533512832480364,
-   "apnet": "2026-10-01T00:33:43Z"
-  },
-  "ONDO-EUR": {
-   "mengde": 23.26441291156228,
-   "snittpris": 0.4431044847743459,
-   "maalvekt": 0.010059753000110735,
-   "apnet": "2026-10-02T00:31:53Z"
-  },
   "EIGEN-EUR": {
    "mengde": 40.335401757050505,
    "snittpris": 0.23132266638742607,
    "maalvekt": 0.009977198417261109,
    "apnet": "2026-10-02T00:31:59Z"
-  },
-  "ICP-EUR": {
-   "mengde": 5.261253851380073,
-   "snittpris": 2.952705592014553,
-   "maalvekt": 0.019251543250941056,
-   "apnet": "2026-10-02T00:32:03Z"
   },
   "AAVE-EUR": {
    "mengde": 0.07397884703291,
@@ -138,7 +108,7 @@
  "dag": {
   "dato": "2026-10-18",
   "start_egenkapital": 902.2627983988444,
-  "handler": 4
+  "handler": 9
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
