@@ -1,5 +1,5 @@
 {
- "kontanter": 653.6108720984424,
+ "kontanter": 659.8571212769203,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -29,7 +29,7 @@
   "NEAR-EUR": {
    "mengde": 1.890188471363095,
    "snittpris": 4.6839,
-   "maalvekt": 0.006195510247954012,
+   "maalvekt": 0.005706132503591215,
    "apnet": "2026-10-01T00:33:52Z"
   },
   "AVAX-EUR": {
@@ -61,12 +61,6 @@
    "snittpris": 0.92255,
    "maalvekt": 0.004771169482681576,
    "apnet": "2026-10-01T00:34:02Z"
-  },
-  "AVNT-EUR": {
-   "mengde": 65.54908341174175,
-   "snittpris": 0.11286,
-   "maalvekt": 0.005538772016461966,
-   "apnet": "2026-10-01T00:34:04Z"
   },
   "NIL-EUR": {
    "mengde": 132.60590534486815,
@@ -101,7 +95,7 @@
   "INJ-EUR": {
    "mengde": 0.9561329915153509,
    "snittpris": 6.5989,
-   "maalvekt": 0.005942388178865552,
+   "maalvekt": 0.005369848506894441,
    "apnet": "2026-10-02T00:32:26Z"
   },
   "OP-EUR": {
@@ -149,7 +143,7 @@
   "TIA-EUR": {
    "mengde": 14.393623513595156,
    "snittpris": 0.38106,
-   "maalvekt": 0.005182804544413505,
+   "maalvekt": 0.004562979061954348,
    "apnet": "2026-10-02T00:32:37Z"
   },
   "PYTH-EUR": {
@@ -239,7 +233,7 @@
   "KMNO-EUR": {
    "mengde": 197.99142464956455,
    "snittpris": 0.034154,
-   "maalvekt": 0.0051654219432912775,
+   "maalvekt": 0.005116410589689245,
    "apnet": "2026-10-11T18:02:56Z"
   },
   "SUPER-EUR": {
@@ -251,7 +245,7 @@
   "QNT-EUR": {
    "mengde": 0.03289906647121435,
    "snittpris": 185.671,
-   "maalvekt": 0.007436651178550148,
+   "maalvekt": 0.006502977903109286,
    "apnet": "2026-10-15T18:14:42Z"
   },
   "MOVR-EUR": {
@@ -270,7 +264,7 @@
  "dag": {
   "dato": "2026-10-18",
   "start_egenkapital": 931.5344341337377,
-  "handler": 1
+  "handler": 2
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
