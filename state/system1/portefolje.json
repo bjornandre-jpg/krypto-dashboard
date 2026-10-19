@@ -1,5 +1,5 @@
 {
- "kontanter": 782.7549067170152,
+ "kontanter": 811.0173594492629,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -25,18 +25,12 @@
    "snittpris": 1.0776352372450904,
    "maalvekt": 0.04372165810070839,
    "apnet": "2026-10-01T00:33:22Z"
-  },
-  "LTC-EUR": {
-   "mengde": 0.5379499505803336,
-   "snittpris": 59.239,
-   "maalvekt": 0.032066766679532926,
-   "apnet": "2026-10-01T00:33:23Z"
   }
  },
  "dag": {
-  "dato": "2026-10-18",
-  "start_egenkapital": 956.3865196246189,
-  "handler": 2
+  "dato": "2026-10-19",
+  "start_egenkapital": 957.3522451398753,
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
