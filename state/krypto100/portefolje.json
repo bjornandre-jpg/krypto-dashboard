@@ -1,5 +1,5 @@
 {
- "kontanter": 783.5887136305057,
+ "kontanter": 788.1108689607247,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -127,18 +127,12 @@
    "snittpris": 185.671,
    "maalvekt": 0.006432575878177673,
    "apnet": "2026-10-15T18:14:42Z"
-  },
-  "HUMA-EUR": {
-   "mengde": 195.08946780493653,
-   "snittpris": 0.027703000000000002,
-   "maalvekt": 0.005794995483554761,
-   "apnet": "2026-10-21T15:13:22Z"
   }
  },
  "dag": {
   "dato": "2026-10-22",
   "start_egenkapital": 925.641527566216,
-  "handler": 8
+  "handler": 9
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
