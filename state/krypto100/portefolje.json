@@ -1,5 +1,5 @@
 {
- "kontanter": 733.3836523492555,
+ "kontanter": 738.1499566996401,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -164,12 +164,6 @@
    "maalvekt": 0.006432575878177673,
    "apnet": "2026-10-15T18:14:42Z"
   },
-  "MOVR-EUR": {
-   "mengde": 4.4606515826390485,
-   "snittpris": 1.2754,
-   "maalvekt": 0.00505853091870183,
-   "apnet": "2026-10-15T22:13:10Z"
-  },
   "SEI-EUR": {
    "mengde": 102.30092402304012,
    "snittpris": 0.056174,
@@ -184,8 +178,8 @@
   }
  },
  "dag": {
-  "dato": "2026-10-21",
-  "start_egenkapital": 931.3322134495461,
+  "dato": "2026-10-22",
+  "start_egenkapital": 925.641527566216,
   "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
