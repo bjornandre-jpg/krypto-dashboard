@@ -1,5 +1,5 @@
 {
- "kontanter": 738.1499566996401,
+ "kontanter": 762.4912413807351,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -68,12 +68,6 @@
    "maalvekt": 0.006352414066399167,
    "apnet": "2026-10-02T00:32:29Z"
   },
-  "RAY-EUR": {
-   "mengde": 3.64475831553001,
-   "snittpris": 1.68314,
-   "maalvekt": 0.006789467898260125,
-   "apnet": "2026-10-02T00:32:29Z"
-  },
   "LPT-EUR": {
    "mengde": 3.9782666147341876,
    "snittpris": 1.5386,
@@ -110,18 +104,6 @@
    "maalvekt": 0.008846876862389068,
    "apnet": "2026-10-03T00:30:50Z"
   },
-  "SYN-EUR": {
-   "mengde": 50.348659367004494,
-   "snittpris": 0.1526,
-   "maalvekt": 0.006930060637068317,
-   "apnet": "2026-10-03T00:31:05Z"
-  },
-  "PEAQ-EUR": {
-   "mengde": 152.60789975485218,
-   "snittpris": 0.036006,
-   "maalvekt": 0.004870269371580551,
-   "apnet": "2026-10-03T00:31:10Z"
-  },
   "STX-EUR": {
    "mengde": 17.219667125156683,
    "snittpris": 0.33044,
@@ -137,7 +119,7 @@
   "GRASS-EUR": {
    "mengde": 14.431107073820996,
    "snittpris": 0.56555,
-   "maalvekt": 0.008881189147043656,
+   "maalvekt": 0.009005056640628117,
    "apnet": "2026-10-09T21:39:33Z"
   },
   "JASMY-EUR": {
@@ -164,12 +146,6 @@
    "maalvekt": 0.006432575878177673,
    "apnet": "2026-10-15T18:14:42Z"
   },
-  "SEI-EUR": {
-   "mengde": 102.30092402304012,
-   "snittpris": 0.056174,
-   "maalvekt": 0.0048029679404661225,
-   "apnet": "2026-10-16T17:22:57Z"
-  },
   "HUMA-EUR": {
    "mengde": 195.08946780493653,
    "snittpris": 0.027703000000000002,
@@ -180,7 +156,7 @@
  "dag": {
   "dato": "2026-10-22",
   "start_egenkapital": 925.641527566216,
-  "handler": 1
+  "handler": 5
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
