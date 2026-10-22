@@ -1,5 +1,5 @@
 {
- "kontanter": 711.7200697723408,
+ "kontanter": 729.2421832933,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -32,18 +32,6 @@
    "maalvekt": 0.009542338965363151,
    "apnet": "2026-10-01T00:33:39Z"
   },
-  "EIGEN-EUR": {
-   "mengde": 40.335401757050505,
-   "snittpris": 0.23132266638742607,
-   "maalvekt": 0.009977198417261109,
-   "apnet": "2026-10-02T00:31:59Z"
-  },
-  "AAVE-EUR": {
-   "mengde": 0.07397884703291,
-   "snittpris": 153.61,
-   "maalvekt": 0.009327503845164304,
-   "apnet": "2026-10-02T00:32:04Z"
-  },
   "INJ-EUR": {
    "mengde": 1.4378027677208336,
    "snittpris": 7.174720628652287,
@@ -65,7 +53,7 @@
   "GRASS-EUR": {
    "mengde": 31.220844709556964,
    "snittpris": 0.5687256422827456,
-   "maalvekt": 0.018010113281256235,
+   "maalvekt": 0.015521073597595168,
    "apnet": "2026-10-09T21:39:11Z"
   },
   "KMNO-EUR": {
@@ -102,7 +90,7 @@
  "dag": {
   "dato": "2026-10-22",
   "start_egenkapital": 898.8698645385032,
-  "handler": 1
+  "handler": 3
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
