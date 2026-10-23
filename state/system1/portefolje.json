@@ -1,5 +1,5 @@
 {
- "kontanter": 838.8496365538027,
+ "kontanter": 874.9595405329751,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -7,12 +7,6 @@
    "snittpris": 73991.66944360572,
    "maalvekt": 0.041411425933251804,
    "apnet": "2026-10-01T00:33:18Z"
-  },
-  "AVAX-EUR": {
-   "mengde": 4.398110169197963,
-   "snittpris": 9.5858,
-   "maalvekt": 0.04347768586670684,
-   "apnet": "2026-10-01T00:33:22Z"
   },
   "DOT-EUR": {
    "mengde": 38.884146736742395,
@@ -22,9 +16,9 @@
   }
  },
  "dag": {
-  "dato": "2026-10-22",
-  "start_egenkapital": 956.3675763474521,
-  "handler": 0
+  "dato": "2026-10-23",
+  "start_egenkapital": 957.1678361916668,
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
