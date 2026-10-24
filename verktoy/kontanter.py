@@ -27,6 +27,14 @@ def main():
 
     print(f"Før:  kontanter {pf.kontanter:.2f} EUR · "
           f"startkapital {pf.s.get('startkapital', 0):.2f} EUR")
+    feil = kontantbevegelser.rydd(pf)
+    if feil:
+        print(f"Angret {len(feil)} bevegelse(r) som skjedde før boka ble åpnet "
+              f"og dermed alt lå i åpningsbalansen:")
+        for b in feil:
+            print(f"  {b['type']:9s} {b['netto']:+9.2f} EUR")
+        print(f"      kontanter {pf.kontanter:.2f} EUR · "
+              f"startkapital {pf.s.get('startkapital', 0):.2f} EUR")
     inn, ut = kontantbevegelser.hent()
     print(f"Bitvavo melder {len(inn)} innskudd og {len(ut)} uttak totalt.")
     nye = kontantbevegelser.juster(pf, inn, ut)

@@ -21,6 +21,24 @@ from . import bitvavo_handel as bh
 from .portefolje import utc_iso
 
 
+def apning_ms(pf):
+    """Når boka ble åpnet, i millisekunder.
+
+    Åpningsbalansen tok kontoen som den sto, og den inneholdt allerede
+    pengene som var satt inn fram til da. Innskudd FØR dette tidspunktet er
+    derfor alt med i boka, og skal aldri bokføres en gang til.
+    """
+    from datetime import datetime, timezone
+    iso = (pf.s.get("apningsbalanse") or {}).get("tid") or pf.s.get("opprettet")
+    if not iso:
+        return 0
+    try:
+        d = datetime.strptime(iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return 0
+    return int(d.timestamp() * 1000)
+
+
 def _nokkel(b):
     return f"{b.get('timestamp')}-{b.get('symbol')}-{b.get('amount')}"
 
@@ -53,10 +71,11 @@ def juster(pf, inn=None, ut=None):
     if inn is None or ut is None:
         inn, ut = hent()
     sett = {b["nokkel"] for b in pf.s.get("kontantbevegelser", [])}
+    grense = apning_ms(pf)
     nye = []
 
     for b in inn:
-        if b["nokkel"] in sett or b["symbol"] != "EUR":
+        if b["nokkel"] in sett or b["symbol"] != "EUR" or b["tid"] <= grense:
             continue
         netto = b["belop"] - b["gebyr"]
         pf.s["kontanter"] += netto
@@ -65,7 +84,7 @@ def juster(pf, inn=None, ut=None):
                     "bokfort": utc_iso()})
 
     for b in ut:
-        if b["nokkel"] in sett or b["symbol"] != "EUR":
+        if b["nokkel"] in sett or b["symbol"] != "EUR" or b["tid"] <= grense:
             continue
         netto = b["belop"] + b["gebyr"]
         pf.s["kontanter"] -= netto
@@ -76,6 +95,28 @@ def juster(pf, inn=None, ut=None):
     if nye:
         pf.s.setdefault("kontantbevegelser", []).extend(nye)
     return nye
+
+
+def rydd(pf):
+    """Angrer bevegelser som er bokført selv om de skjedde før åpningen.
+
+    Feilen 2026-10-24: første versjon bokførte hele innskuddshistorikken,
+    også de innskuddene som allerede lå inne i åpningsbalansen. Boka trodde
+    den hadde 102,90 euro mer enn kontoen faktisk hadde.
+    """
+    grense = apning_ms(pf)
+    beholdt, fjernet = [], []
+    for b in pf.s.get("kontantbevegelser", []):
+        if b.get("tid", 0) <= grense:
+            netto = float(b.get("netto", 0.0))
+            pf.s["kontanter"] -= netto
+            pf.s["startkapital"] = pf.s.get("startkapital", 0.0) - netto
+            fjernet.append(b)
+        else:
+            beholdt.append(b)
+    if fjernet:
+        pf.s["kontantbevegelser"] = beholdt
+    return fjernet
 
 
 def ubokfort_krypto(pf, inn=None, ut=None):
