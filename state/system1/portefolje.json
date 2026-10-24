@@ -1,5 +1,5 @@
 {
- "kontanter": 874.9595405329751,
+ "kontanter": 912.4238423726621,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -7,17 +7,11 @@
    "snittpris": 73991.66944360572,
    "maalvekt": 0.041411425933251804,
    "apnet": "2026-10-01T00:33:18Z"
-  },
-  "DOT-EUR": {
-   "mengde": 38.884146736742395,
-   "snittpris": 1.0776352372450904,
-   "maalvekt": 0.04372165810070839,
-   "apnet": "2026-10-01T00:33:22Z"
   }
  },
  "dag": {
-  "dato": "2026-10-23",
-  "start_egenkapital": 957.1678361916668,
+  "dato": "2026-10-24",
+  "start_egenkapital": 953.4651087777963,
   "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
