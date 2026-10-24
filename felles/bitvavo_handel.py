@@ -103,6 +103,22 @@ def gebyrer(market=None):
             "taker": float(d.get("taker") or 0), "maker": float(d.get("maker") or 0)}
 
 
+def innskudd(symbol=None, limit=500):
+    """Innskudd til kontoen. [{timestamp, symbol, amount, fee, status}]."""
+    p = {"limit": limit}
+    if symbol:
+        p["symbol"] = symbol
+    return _kall("GET", "/depositHistory", p)
+
+
+def uttak(symbol=None, limit=500):
+    """Uttak fra kontoen. Samme form som innskudd."""
+    p = {"limit": limit}
+    if symbol:
+        p["symbol"] = symbol
+    return _kall("GET", "/withdrawalHistory", p)
+
+
 def handler(market, limit=500):
     """Egne handler i ett marked, eldste først. Brukes til å rekonstruere
     kostpris når boka må bygges opp igjen."""

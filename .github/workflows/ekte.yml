@@ -34,6 +34,7 @@ jobs:
         run: |
           python verktoy/test_avstemming.py
           python verktoy/test_ekte.py
+          python verktoy/test_kontanter.py
 
       - name: Krypto13 med ekte penger
         id: ekte

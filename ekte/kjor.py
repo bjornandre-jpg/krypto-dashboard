@@ -25,7 +25,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-from felles import avstemming, bitvavo_handel as bh, dashboard
+from felles import avstemming, bitvavo_handel as bh, dashboard, kontantbevegelser
 from felles.ekte_portefolje import EktePortefolje, apningsbalanse
 from felles.portefolje import vurder_mynt, lagre, utc_iso
 from system1.kjor import MYNTER, markedsbilde, mynt_signal, ny_dag_og_bekreftelse
@@ -57,6 +57,21 @@ def main():
         print(f"Åpningsbalanse skrevet: {eq0:.2f} EUR "
               f"({len(pf.s['posisjoner'])} posisjoner fra kontoen)")
     else:
+        # Penger inn og ut er ikke avkastning, og ikke en feil. De bokføres
+        # FØR avstemmingen, men bare når Bitvavo selv bekrefter dem.
+        try:
+            inn, ut = kontantbevegelser.hent()
+            nye = kontantbevegelser.juster(pf, inn, ut)
+            if nye:
+                print(kontantbevegelser.tekst(nye))
+            krypto = kontantbevegelser.ubokfort_krypto(pf, inn, ut)
+            if krypto:
+                print("Kryptoinnskudd/-uttak som må håndteres for hånd:")
+                for b in krypto:
+                    print(f"  {b['symbol']} {b['belop']}")
+        except bh.BitvavoFeil as e:
+            print(f"ADVARSEL kunne ikke lese innskuddshistorikk: {e}")
+
         ok, rapport = avstemming.krev(pf, priser)
         print(avstemming.tekstrapport(rapport))
         if not ok:
