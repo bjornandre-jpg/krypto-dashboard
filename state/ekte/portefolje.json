@@ -1,5 +1,5 @@
 {
- "kontanter": 72.79,
+ "kontanter": 185.69,
  "posisjoner": {
   "ADA-EUR": {
    "mengde": 26.200274,
@@ -32,7 +32,7 @@
    "apnet": "2026-10-05T00:37:21Z"
   }
  },
- "startkapital": 103.91,
+ "startkapital": 216.81,
  "dag": {
   "dato": "2026-10-16",
   "start_egenkapital": 99.95188924935601,
@@ -43,5 +43,37 @@
   "tid": "2026-10-01T23:23:48Z",
   "egenkapital": 103.91
  },
- "gjenopprettet": "2026-10-02T05:44:32Z"
+ "gjenopprettet": "2026-10-02T05:44:32Z",
+ "kontantbevegelser": [
+  {
+   "tid": 1790890073000,
+   "symbol": "EUR",
+   "belop": 4.95,
+   "gebyr": 0.05,
+   "nokkel": "1790890073000-EUR-4.95",
+   "type": "innskudd",
+   "netto": 4.9,
+   "bokfort": "2026-10-24T20:42:01Z"
+  },
+  {
+   "tid": 1790893249000,
+   "symbol": "EUR",
+   "belop": 99.0,
+   "gebyr": 1.0,
+   "nokkel": "1790893249000-EUR-99",
+   "type": "innskudd",
+   "netto": 98.0,
+   "bokfort": "2026-10-24T20:42:01Z"
+  },
+  {
+   "tid": 1792160330000,
+   "symbol": "EUR",
+   "belop": 10.0,
+   "gebyr": 0.0,
+   "nokkel": "1792160330000-EUR-10",
+   "type": "innskudd",
+   "netto": 10.0,
+   "bokfort": "2026-10-24T20:42:01Z"
+  }
+ ]
 }
