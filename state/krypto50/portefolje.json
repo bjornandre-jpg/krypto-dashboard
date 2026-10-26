@@ -17,13 +17,13 @@
   "GRASS-EUR": {
    "mengde": 21.73604428744334,
    "snittpris": 0.5687256422827456,
-   "maalvekt": 0.014984403608079027,
+   "maalvekt": 0.015613107477009993,
    "apnet": "2026-10-09T21:39:11Z"
   },
   "KMNO-EUR": {
    "mengde": 335.8152952430433,
    "snittpris": 0.03392186469505723,
-   "maalvekt": 0.012583323266520058,
+   "maalvekt": 0.011261253240895379,
    "apnet": "2026-10-11T18:02:33Z"
   },
   "PEPE-EUR": {
@@ -34,9 +34,9 @@
   }
  },
  "dag": {
-  "dato": "2026-10-25",
-  "start_egenkapital": 886.0477233553264,
-  "handler": 1
+  "dato": "2026-10-26",
+  "start_egenkapital": 887.4579015399207,
+  "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."

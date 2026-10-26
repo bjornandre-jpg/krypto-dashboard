@@ -1,5 +1,5 @@
 {
- "kontanter": 861.4169776838266,
+ "kontanter": 855.7368082798955,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -35,13 +35,13 @@
   "GRASS-EUR": {
    "mengde": 14.431107073820996,
    "snittpris": 0.56555,
-   "maalvekt": 0.007492201804039513,
+   "maalvekt": 0.007806553738504997,
    "apnet": "2026-10-09T21:39:33Z"
   },
   "KMNO-EUR": {
    "mengde": 197.99142464956455,
    "snittpris": 0.034154,
-   "maalvekt": 0.006291661633260029,
+   "maalvekt": 0.0056306266204476894,
    "apnet": "2026-10-11T18:02:56Z"
   },
   "PEPE-EUR": {
@@ -49,11 +49,17 @@
    "snittpris": 4.0514e-06,
    "maalvekt": 0.005651631609528247,
    "apnet": "2026-10-23T23:06:27Z"
+  },
+  "REZ-EUR": {
+   "mengde": 1346.3155472071553,
+   "snittpris": 0.0042085,
+   "maalvekt": 0.006209133195741454,
+   "apnet": "2026-10-26T00:16:57Z"
   }
  },
  "dag": {
-  "dato": "2026-10-25",
-  "start_egenkapital": 914.1299440500503,
+  "dato": "2026-10-26",
+  "start_egenkapital": 914.8087542761839,
   "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
