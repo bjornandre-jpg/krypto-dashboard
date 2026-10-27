@@ -1,5 +1,5 @@
 {
- "kontanter": 849.2337026909628,
+ "kontanter": 856.8461524536553,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -14,16 +14,10 @@
    "maalvekt": 0.005902433300091626,
    "apnet": "2026-10-02T00:32:26Z"
   },
-  "ZRO-EUR": {
-   "mengde": 5.2602209706044585,
-   "snittpris": 1.6256999999999997,
-   "maalvekt": 0.010664826013582911,
-   "apnet": "2026-10-02T00:32:35Z"
-  },
   "TIA-EUR": {
    "mengde": 14.393623513595156,
    "snittpris": 0.38106,
-   "maalvekt": 0.007719848888245155,
+   "maalvekt": 0.005222307402180313,
    "apnet": "2026-10-02T00:32:37Z"
   },
   "BNB-EUR": {
@@ -53,20 +47,20 @@
   "REZ-EUR": {
    "mengde": 1346.3155472071553,
    "snittpris": 0.0042085,
-   "maalvekt": 0.0058589987981343735,
+   "maalvekt": 0.0068570596375579895,
    "apnet": "2026-10-26T00:16:57Z"
   },
   "BABY-EUR": {
    "mengde": 509.4516472913246,
    "snittpris": 0.012733,
-   "maalvekt": 0.00738093100075394,
+   "maalvekt": 0.004588195629710481,
    "apnet": "2026-10-26T19:14:40Z"
   }
  },
  "dag": {
   "dato": "2026-10-27",
   "start_egenkapital": 913.3118873756569,
-  "handler": 0
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
