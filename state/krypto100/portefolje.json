@@ -11,13 +11,13 @@
   "INJ-EUR": {
    "mengde": 0.9561329915153509,
    "snittpris": 6.5989,
-   "maalvekt": 0.006597992012067397,
+   "maalvekt": 0.005296477566951031,
    "apnet": "2026-10-02T00:32:26Z"
   },
   "TIA-EUR": {
    "mengde": 14.393623513595156,
    "snittpris": 0.38106,
-   "maalvekt": 0.006661152494078591,
+   "maalvekt": 0.0059280927188676575,
    "apnet": "2026-10-02T00:32:37Z"
   },
   "BNB-EUR": {
@@ -29,7 +29,7 @@
   "GRASS-EUR": {
    "mengde": 14.431107073820996,
    "snittpris": 0.56555,
-   "maalvekt": 0.005672820859243261,
+   "maalvekt": 0.00713906559653505,
    "apnet": "2026-10-09T21:39:33Z"
   },
   "KMNO-EUR": {
@@ -41,26 +41,26 @@
   "PEPE-EUR": {
    "mengde": 1272455.7194183427,
    "snittpris": 4.0514e-06,
-   "maalvekt": 0.0071875546492900216,
+   "maalvekt": 0.008937761745528284,
    "apnet": "2026-10-23T23:06:27Z"
   },
   "REZ-EUR": {
    "mengde": 1346.3155472071553,
    "snittpris": 0.0042085,
-   "maalvekt": 0.00952880641316346,
+   "maalvekt": 0.010220565035750915,
    "apnet": "2026-10-26T00:16:57Z"
   },
   "BABY-EUR": {
    "mengde": 509.4516472913246,
    "snittpris": 0.012733,
-   "maalvekt": 0.007456811418581113,
+   "maalvekt": 0.007915414161613846,
    "apnet": "2026-10-26T19:14:40Z"
   }
  },
  "dag": {
-  "dato": "2026-10-27",
-  "start_egenkapital": 913.3118873756569,
-  "handler": 1
+  "dato": "2026-10-28",
+  "start_egenkapital": 915.5399178950423,
+  "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
