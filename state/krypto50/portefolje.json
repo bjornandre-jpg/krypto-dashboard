@@ -29,14 +29,14 @@
   "PEPE-EUR": {
    "mengde": 3826059.6548880227,
    "snittpris": 4.099952798105852e-06,
-   "maalvekt": 0.02002876915470416,
+   "maalvekt": 0.02198343929824141,
    "apnet": "2026-10-21T10:04:34Z"
   }
  },
  "dag": {
-  "dato": "2026-10-28",
-  "start_egenkapital": 888.5742894308623,
-  "handler": 1
+  "dato": "2026-10-29",
+  "start_egenkapital": 888.4510740383731,
+  "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
