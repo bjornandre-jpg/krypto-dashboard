@@ -1,5 +1,5 @@
 {
- "kontanter": 835.8623737018594,
+ "kontanter": 852.5197820645221,
  "startkapital": 1000.0,
  "posisjoner": {
   "BTC-EUR": {
@@ -14,14 +14,8 @@
    "maalvekt": 0.010592955133902062,
    "apnet": "2026-10-02T00:32:05Z"
   },
-  "GRASS-EUR": {
-   "mengde": 21.73604428744334,
-   "snittpris": 0.5687256422827456,
-   "maalvekt": 0.010661685537433187,
-   "apnet": "2026-10-09T21:39:11Z"
-  },
   "PEPE-EUR": {
-   "mengde": 3826059.6548880227,
+   "mengde": 2646821.2952385717,
    "snittpris": 4.099952798105852e-06,
    "maalvekt": 0.013291797556954685,
    "apnet": "2026-10-21T10:04:34Z"
@@ -30,7 +24,7 @@
  "dag": {
   "dato": "2026-10-30",
   "start_egenkapital": 881.2560264314859,
-  "handler": 1
+  "handler": 3
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
