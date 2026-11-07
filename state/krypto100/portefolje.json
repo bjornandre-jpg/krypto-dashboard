@@ -5,7 +5,7 @@
   "PEPE-EUR": {
    "mengde": 1272455.7194183427,
    "snittpris": 4.0514e-06,
-   "maalvekt": 0.009587546358142853,
+   "maalvekt": 0.009210680002027809,
    "apnet": "2026-10-23T23:06:27Z"
   },
   "HYPE-EUR": {
@@ -22,8 +22,8 @@
   }
  },
  "dag": {
-  "dato": "2026-11-06",
-  "start_egenkapital": 905.5595512526749,
+  "dato": "2026-11-07",
+  "start_egenkapital": 905.7811972881003,
   "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
