@@ -1,5 +1,5 @@
 {
- "kontanter": 894.9062177758562,
+ "kontanter": 899.1293673559246,
  "startkapital": 1000.0,
  "posisjoner": {
   "PEPE-EUR": {
@@ -7,18 +7,12 @@
    "snittpris": 4.0514e-06,
    "maalvekt": 0.009297342211586509,
    "apnet": "2026-10-23T23:06:27Z"
-  },
-  "REZ-EUR": {
-   "mengde": 1400.6000776946844,
-   "snittpris": 0.0036829,
-   "maalvekt": 0.004806159157455446,
-   "apnet": "2026-11-01T19:37:24Z"
   }
  },
  "dag": {
   "dato": "2026-11-13",
   "start_egenkapital": 904.573867649089,
-  "handler": 0
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
