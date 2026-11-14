@@ -11,14 +11,14 @@
   "INJ-EUR": {
    "mengde": 0.8790424062508476,
    "snittpris": 7.2242,
-   "maalvekt": 0.00704080000677696,
+   "maalvekt": 0.006484585985078023,
    "apnet": "2026-11-13T22:34:12Z"
   }
  },
  "dag": {
-  "dato": "2026-11-13",
-  "start_egenkapital": 904.573867649089,
-  "handler": 2
+  "dato": "2026-11-14",
+  "start_egenkapital": 904.0450314268168,
+  "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
