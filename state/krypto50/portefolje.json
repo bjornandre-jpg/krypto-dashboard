@@ -1,10 +1,17 @@
 {
- "kontanter": 873.7790089723991,
+ "kontanter": 865.7581543922144,
  "startkapital": 1000.0,
- "posisjoner": {},
+ "posisjoner": {
+  "RARE-EUR": {
+   "mengde": 696.0245710077654,
+   "snittpris": 0.011495,
+   "maalvekt": 0.009179500191493028,
+   "apnet": "2026-11-16T02:42:15Z"
+  }
+ },
  "dag": {
-  "dato": "2026-11-15",
-  "start_egenkapital": 873.7189910973663,
+  "dato": "2026-11-16",
+  "start_egenkapital": 873.7790089723991,
   "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
