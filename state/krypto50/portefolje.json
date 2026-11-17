@@ -5,14 +5,14 @@
   "RARE-EUR": {
    "mengde": 696.0245710077654,
    "snittpris": 0.011495,
-   "maalvekt": 0.009179500191493028,
+   "maalvekt": 0.014384684178761186,
    "apnet": "2026-11-16T02:42:15Z"
   }
  },
  "dag": {
-  "dato": "2026-11-16",
-  "start_egenkapital": 873.7790089723991,
-  "handler": 1
+  "dato": "2026-11-17",
+  "start_egenkapital": 874.1675232591301,
+  "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
