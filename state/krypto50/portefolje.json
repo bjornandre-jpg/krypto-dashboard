@@ -5,13 +5,13 @@
   "RARE-EUR": {
    "mengde": 1184.2504188613723,
    "snittpris": 0.012049,
-   "maalvekt": 0.021316504626286707,
+   "maalvekt": 0.014398447622699852,
    "apnet": "2026-11-21T01:27:28Z"
   }
  },
  "dag": {
-  "dato": "2026-11-22",
-  "start_egenkapital": 873.2232833697857,
+  "dato": "2026-11-23",
+  "start_egenkapital": 872.5127331184689,
   "handler": 0
  },
  "opprettet": "2026-09-30T22:37:08Z",
