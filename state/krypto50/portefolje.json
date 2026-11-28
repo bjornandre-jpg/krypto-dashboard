@@ -1,18 +1,11 @@
 {
- "kontanter": 858.587132443078,
+ "kontanter": 870.4661825996177,
  "startkapital": 1000.0,
- "posisjoner": {
-  "RARE-EUR": {
-   "mengde": 1184.2504188613723,
-   "snittpris": 0.012049,
-   "maalvekt": 0.014398447622699852,
-   "apnet": "2026-11-21T01:27:28Z"
-  }
- },
+ "posisjoner": {},
  "dag": {
   "dato": "2026-11-28",
   "start_egenkapital": 871.0525523520128,
-  "handler": 0
+  "handler": 1
  },
  "opprettet": "2026-09-30T22:37:08Z",
  "merknad": "Nullstilt 2026-10-01 ved overgang fra KuCoin/USDT til Bitvavo/EUR og etter at handelsfrekvensen ble rettet. Startkapital 1000 EUR. Tidligere historikk i state/arkiv/."
